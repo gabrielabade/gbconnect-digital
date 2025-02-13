@@ -17,7 +17,11 @@
   --main-color: #DAFF00;
   --secundary-color: #FF175F;
   --white-color: #000842;
-  --shadow-color: rgba(129, 129, 129, 0.9);
+  --shadow-color: rgba(192, 192, 192, 0.274);
+
+  --transition-speed: 0.3s;
+  --border-radius: 1.2rem;
+  --spacing-unit: 1rem;
 }
 
 *::selection {
@@ -51,8 +55,10 @@ body {
   display: flex;
   align-items: center;
   z-index: 100;
-  transition: .5s;
-  background-color: var(--bg-color);
+  backdrop-filter: blur(10px);
+  background: rgba(0, 13, 91, 0.95);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-speed) ease;
 }
 
 .header.sticky {
@@ -73,10 +79,22 @@ body {
   color: var(--text-color);
   font-weight: 500;
   margin-right: 3.5rem;
+  transition: color var(--transition-speed) ease;
+  text-align: center;
+}
+.navbar a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: var(--main-color);
+  transition: width var(--transition-speed) ease;
 }
 
 .header.sticky .navbar a {
-  color: #6E6E6E;
+  color: #8a8a8a;
 }
 
 .header.sticky .navbar a.active {
@@ -238,7 +256,7 @@ section .testimonial-container {
   transform: translateY(-3px);
   background: transparent;
   color: var(--main-color);
-    border-color: var(--main-color);
+  border-color: var(--main-color);
 }
 
 .trust-indicators {
@@ -1099,7 +1117,7 @@ span {
 @media (max-width: 768px) {
   #menu-icon {
     display: block;
-    color: var(--white-color);
+    color: var(--secundary-color);
   }
 
   .navbar {
