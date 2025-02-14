@@ -11,6 +11,12 @@
   font-family: 'Poppins', sans-serif;
 }
 
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --bg-color: #000D5B;
   --text-color: #FFFFFF;
@@ -50,19 +56,19 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2rem 7%;
+  padding: 1rem 7%;
   background: transparent;
   display: flex;
   align-items: center;
   z-index: 100;
   backdrop-filter: blur(10px);
-  background: rgba(0, 13, 91, 0.95);
+  background: var(--main-color);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   transition: all var(--transition-speed) ease;
 }
 
 .header.sticky {
-  background: var(--text-color);
+  background: var(--bg-color);
   box-shadow: 0 .1rem 1rem var(--shadow-color);
 }
 
@@ -76,12 +82,13 @@ body {
 .navbar a {
   position: relative;
   font-size: 1.7rem;
-  color: var(--text-color);
+  color: var(--bg-color);
   font-weight: 500;
   margin-right: 3.5rem;
   transition: color var(--transition-speed) ease;
   text-align: center;
 }
+
 .navbar a::after {
   content: '';
   position: absolute;
@@ -145,8 +152,11 @@ section .testimonial-container {
 
 .home {
   display: flex;
+  justify-content: center;
   align-items: center;
+  text-align: center;
 }
+
 
 .home .home-content {
   position: relative;
@@ -222,6 +232,9 @@ section .testimonial-container {
 }
 
 .cta-buttons {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   display: flex;
   gap: 2rem;
   margin-bottom: 4rem;
@@ -261,6 +274,9 @@ section .testimonial-container {
 
 .trust-indicators {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   gap: 3rem;
   margin-bottom: 3rem;
 }
@@ -448,13 +464,26 @@ span {
 
 .about {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  justify-content: center;
+  gap: 3rem;
+  padding: 0;
+  margin: 0;
+  max-width: 100vw;
+  height: auto;
+}
+
+.about-img {
+  flex: 1;
+  max-width: 30%;
+  margin: 0;
+  padding: 0;
 }
 
 .about-img img {
-  width: 30vw;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .heading {
@@ -462,28 +491,61 @@ span {
   text-align: center;
 }
 
+.about-content {
+  flex: 2;
+  margin: 0;
+  max-width: 60%;
+  padding: 0;
+}
+
 .about-content h2 {
   text-align: left;
-  line-height: 1.2;
+  margin-bottom: 1.5rem;
 }
 
 .about-content h2 span {
-  color: var(--secundary-color);
+  background: linear-gradient(33deg, var(--main-color), var(--secundary-color));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .about-content p {
-  font-size: 2.5rem;
-  margin: 2rem 0 3rem;
+  font-size: 2.3rem;
+  margin: 1rem 0 2rem;
 }
 
 .about-content ul {
-  font-size: 2.5rem;
-  margin: 2rem 0 3rem;
+  font-size: 2.0rem;
+  margin: 1rem 0 2rem;
+  padding: 0;
 }
 
 .about-content ul li {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   list-style: none;
+}
+
+
+
+.about .btn {
+  display: inline-block;
+  padding: 1.2rem 2.8rem;
+  background: var(--secundary-color);
+  border-radius: .6rem;
+  box-shadow: 0 .2rem .5rem var(--shadow-color);
+  font-size: 1.6rem;
+  color: var(--text-color);
+  letter-spacing: .1rem;
+  font-weight: 600;
+  border: .2rem solid transparent;
+  transition: .5s ease;
+}
+
+.about .btn:hover {
+  background: transparent;
+  color: var(--main-color);
+  border-color: var(--main-color);
 }
 
 .services {
@@ -1036,9 +1098,14 @@ span {
 
 @media (max-width: 1024px) {
   .header {
-    padding: 1rem 3%;
+    padding: 1rem 24%;
+    gap: 8rem;
   }
 
+
+  .logo img{
+    width: 50vw;
+  }
   section {
     padding: 10rem 3% 2rem;
   }
@@ -1236,8 +1303,7 @@ span {
   }
 
   .about-img img {
-    width: 70vw;
-    margin-top: -2rem;
+    width: 100%;
   }
 
   .testimonial-container .testimonial-wrapper {
@@ -1353,6 +1419,42 @@ img {
 
 /* Mobile Styles */
 @media (max-width: 767px) {
+  .home .avatar-home-img {
+    display: none;
+  }
+
+  .about-content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .about-img {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .about-img img {
+    width: 100vw;
+  }
+
+  .about {
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 2rem;
+  }
+
+  .about-img {
+    order: 2;
+    width: 90%;
+  }
+
+  .about-content {
+    order: 1;
+    width: 100%;
+  }
+
   .portfolio-item {
     display: flex;
     flex-direction: column;

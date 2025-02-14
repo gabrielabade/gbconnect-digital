@@ -34,9 +34,11 @@ window.onscroll = () => {
   header.classList.toggle('sticky', window.scrollY > 100);
   // Mudar logo quando a página rolar
   if (window.scrollY > 100) {
-    logo.src = './images/logocolor1.png';  // A nova imagem para o estado sticky
+    logo.src = './images/logo-nav.png';
+    // A nova imagem para o estado sticky
   } else {
-    logo.src = './images/logo-nav.png';  // A imagem original
+    logo.src = './images/logocolor1.png';
+    // A imagem original
   }
 
   /*========== remove menu icon navbar when click navbar link (scroll) ==========*/
