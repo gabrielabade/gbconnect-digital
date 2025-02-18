@@ -1133,8 +1133,10 @@ span {
   padding: 44px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  box-shadow: 3px 5px 9px rgba(217, 255, 0, 0.685);
+  box-shadow: 4px 4px 0px rgba(218, 255, 0, 0.8),
+    -4px -4px 0px rgba(218, 255, 0, 0.8);
 }
+
 
 
 /* Checkbox estilizado */
@@ -1156,7 +1158,7 @@ span {
   font-size: 1.3rem;
   cursor: pointer;
   background: rgba(255, 255, 255, 0.08);
-  padding: 15px;
+  padding: 12px;
   border-radius: 8px;
   transition: background 0.3s, box-shadow 0.3s;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -1198,13 +1200,14 @@ span {
 
 .contact-content .contact-intro {
   font-size: 1.2rem;
-  margin-bottom: 1.5rem;
 }
 
 .contact-intro {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   text-align: center;
   margin-bottom: 1px;
+  margin-top: 1px;
+  margin-top: 0;
   max-width: 100%;
 }
 
