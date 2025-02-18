@@ -1082,20 +1082,22 @@ span {
 
 .contact-img {
   flex: 1;
-  max-width: 450px;
-  margin-top: 2rem;
+  max-width: 470px;
+  margin-top: 1rem;
 }
 
 .contact-img img {
   width: 100%;
   height: auto;
+  margin-left: 4rem;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .contact h2 {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   margin-top: 0;
+  margin-left: 3rem;
 }
 
 .contact .heading,
@@ -1125,14 +1127,73 @@ span {
 #contactForm {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  gap: 15px;
+  gap: 16px;
   max-width: 100%;
   margin: 0 auto;
-  padding: 25px;
+  padding: 44px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(217, 255, 0, 0.685);
+  box-shadow: 3px 5px 9px rgba(217, 255, 0, 0.685);
+}
+
+
+/* Checkbox estilizado */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 1px;
+}
+
+.checkbox-group label {
+  display: flex;
+  font-size: 1.3rem;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 15px;
+  border-radius: 8px;
+  transition: background 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.checkbox-group input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--main-color);
+  border-radius: 4px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+  background: var(--main-color);
+  border-color: var(--main-color);
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+  content: '\2713';
+  font-size: 14px;
+  color: var(--bg-color);
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Hover e interação */
+.checkbox-group label:hover {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 1px 4px var(--main-color);
 }
 
 .contact-content .contact-intro {
@@ -1143,7 +1204,7 @@ span {
 .contact-intro {
   font-size: 1.4rem;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 1px;
   max-width: 100%;
 }
 
@@ -1151,7 +1212,7 @@ span {
   max-width: 70rem;
   margin: 1rem auto;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1161,7 +1222,7 @@ span {
 
 .contact form .input-box {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -1192,7 +1253,7 @@ span {
 
 .contact form textarea {
   resize: none;
-  height: 150px;
+  height: 160px;
 }
 
 .contact form .btn {
@@ -1200,7 +1261,8 @@ span {
   color: var(--bg-color);
   border: none;
   padding: 12px 20px;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
   border-radius: 5px;
@@ -1234,7 +1296,7 @@ span {
 .contact-content p,
 #contactForm {
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .footer {
@@ -1759,6 +1821,21 @@ img {
   }
 
   .heading {
-    font-size: 3rem;
+    font-size: 2.5rem;
+  }
+
+  .contact-img img {
+    margin: 0;
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 }

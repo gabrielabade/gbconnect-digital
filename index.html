@@ -484,19 +484,30 @@
 
       </div>
       <form id="contactForm">
-          <p class="contact-intro">
-            Pronto para destacar seu negócio online? Preencha o formulário abaixo e receba uma proposta personalizada.
-          </p>
+        <p class="contact-intro">
+          Pronto para destacar seu negócio online? Preencha o formulário abaixo e receba uma proposta personalizada.
+        </p>
         <div class="input-box">
-          <input type="text" id="name" placeholder="Nome completo" required>
-          <input type="email" id="email" placeholder="Endereço de email" required>
+          <input type="text" id="name" placeholder="Seu nome completo" required>
         </div>
         <div class="input-box">
-          <input type="tel" id="phone" placeholder="Número de WhatsApp" required>
-          <input type="text" id="subject" placeholder="Assunto" required>
+          <input type="tel" id="phone" placeholder="Seu WhatsApp para contato" required>
+          <input type="email" id="email" placeholder="Seu melhor e-mail" required>
         </div>
-        <textarea id="message" cols="30" rows="10" placeholder="Escreva sobre sua empresa" required></textarea>
-        <button type="button" class="btn" onclick="sendToWhatsApp()">Enviar Mensagem</button>
+      <div class="checkbox-container">
+        <p class="contact-intro">Quais serviços você precisa?</p>
+      
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="service" value="site"> Site Profissional</label>
+          <label><input type="checkbox" name="service" value="google"> Google Meu Negócio</label>
+          <label><input type="checkbox" name="service" value="redes"> Gestão de Redes Sociais</label>
+        </div>
+      </div>
+
+        <textarea id="message" placeholder="Conte-nos um pouco sobre o seu negócio e suas necessidades..."
+          required></textarea>
+
+        <button type="button" class="btn" onclick="sendToWhatsApp()">Quero minha proposta!</button>
       </form>
     </section>
 
