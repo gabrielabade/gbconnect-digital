@@ -119,15 +119,41 @@ function sendToWhatsApp() {
     alert("Por favor, preencha todos os campos antes de enviar.");
     return;
   }
+
+  // Função para validar o número de telefone
+  function validatePhoneNumber(phone) {
+    // Regex para validar número de telefone brasileiro (com ou sem DDD e somente números)
+    const phoneRegex = /^(?:\+?55)?(?:\d{2})?(?:9\d{8})$/;
+    // Remove qualquer caractere não numérico e verifica se o telefone é válido
+    return phoneRegex.test(phone.replace(/\D/g, ''));
+  }
+
+  // Validar formato do número de telefone
+  if (!validatePhoneNumber(phone)) {
+    alert("Por favor, insira um número de telefone válido.");
+    return;
+  }
+
   // Validar formato do email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     alert("Por favor, insira um email válido.");
     return;
   }
-  // Montar a mensagem
-  const whatsappMessage = `Olá, meu nome é *${name}*! \n\nDados do Contato: \nEmpresa: *${company}* \nEmail: *${email}* \nTelefone: *${phone}* \nServiços: *${services || "Não especificado"}* \n\nMensagem: \n${message} \n\nGostaria de mais informações. Aguardo seu retorno!`;
 
+  // Montar a mensagem
+  const whatsappMessage = `Olá, meu nome é *${name}*!  
+───────────────  
+📋 *Dados do Contato*  
+• Empresa: *${company}*  
+• Email: *${email}*  
+• Telefone: *${phone}*  
+• Serviços: *${services || "Não especificado"}*  
+  
+💬 *Mensagem*  
+${message}  
+  
+Gostaria de mais informações. Aguardo seu retorno!`;
 
   // Preparar mensagem para o link
   const encodedMessage = encodeURIComponent(whatsappMessage);
