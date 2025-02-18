@@ -97,27 +97,42 @@ ScrollReveal().reveal('.home-content h1, .about-img img', { origin: 'left' });
 ScrollReveal().reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
 
 /* form envio dos dados para o whatsapp  */
+/* Função para envio dos dados para o whatsapp */
 function sendToWhatsApp() {
+  // Número que vai receber as mensagens
   const phoneNumber = "5548991056014";
 
-  // Obter os valores do formulário
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const phone = document.getElementById("phone").value;
-  const subject = document.getElementById("subject").value;
-  const message = document.getElementById("message").value;
+  // Pegar os valores do formulário
+  const name = document.getElementById("name").value.trim();
+  const company = document.getElementById("company").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-  // Construir a mensagem
-  const whatsappMessage = `Olá! Meu nome é ${name}.
-Email: ${email}
-Telefone: ${phone}
-Assunto: ${subject}
-Mensagem: ${message}`;
+  // Pegar serviços marcados
+  const services = Array.from(document.querySelectorAll('input[name="service"]:checked'))
+    .map(service => service.nextSibling.textContent.trim())
+    .join(", ");
 
-  // Codificar a mensagem para uso no link
+  // Verificar se preencheu tudo
+  if (!name || !company || !email || !phone || !message) {
+    alert("Por favor, preencha todos os campos antes de enviar.");
+    return;
+  }
+  // Validar formato do email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    alert("Por favor, insira um email válido.");
+    return;
+  }
+  // Montar a mensagem
+  const whatsappMessage = `Olá, meu nome é *${name}*! \n\nDados do Contato: \nEmpresa: *${company}* \nEmail: *${email}* \nTelefone: *${phone}* \nServiços: *${services || "Não especificado"}* \n\nMensagem: \n${message} \n\nGostaria de mais informações. Aguardo seu retorno!`;
+
+
+  // Preparar mensagem para o link
   const encodedMessage = encodeURIComponent(whatsappMessage);
 
-  // Redirecionar para o WhatsApp com a mensagem
+  // Abrir WhatsApp com a mensagem
   window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
 }
 
