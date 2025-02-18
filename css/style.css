@@ -61,15 +61,17 @@ body {
   display: flex;
   align-items: center;
   z-index: 100;
-  backdrop-filter: blur(10px);
-  background: var(--main-color);
+  background: rgba(218, 255, 0, 0.95);
+  backdrop-filter: blur(8px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  transition: all var(--transition-speed) ease;
+  transition: all 0.4s ease;
 }
 
 .header.sticky {
-  background: var(--bg-color);
-  box-shadow: 0 .1rem 1rem var(--shadow-color);
+  animation: headerFadeIn 0.4s ease forwards;
+  background: rgba(0, 13, 91, 0.95);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -83,21 +85,25 @@ body {
   position: relative;
   font-size: 1.6rem;
   color: var(--bg-color);
-  font-weight: 600;
+  font-weight: 500;
   margin-right: 3.5rem;
-  transition: color var(--transition-speed) ease;
+  transition: all 0.4s ease;
   text-align: center;
 }
 
 .navbar a::after {
   content: '';
   position: absolute;
+  bottom: -4px;
   left: 0;
-  bottom: -6px;
   width: 0;
   height: 2px;
-  background: var(--main-color);
-  transition: width var(--transition-speed) ease;
+  background: currentColor;
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover {
+  transform: translateY(-2px);
 }
 
 .navbar a:hover::after {
@@ -105,11 +111,24 @@ body {
 }
 
 .header.sticky .navbar a {
-  color: #8a8a8a;
+  color: var(--text-color);
+}
+
+.header.sticky .navbar a:hover {
+  color: var(--main-color);
 }
 
 .header.sticky .navbar a.active {
   color: var(--secundary-color);
+}
+
+.navbar a.active {
+  color: var(--secundary-color) !important;
+}
+
+.navbar a.active::after {
+  width: 100%;
+  background: var(--secundary-color);
 }
 
 .navbar a.active::before {
@@ -252,12 +271,33 @@ section .testimonial-container {
   font-size: 1.8rem;
   font-weight: 600;
   border-radius: 8px;
-  transition: transform 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(218, 255, 0, 0.2);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(218, 255, 1, 0.3);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent);
+  transition: 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
 }
 
 .btn-secondary {
@@ -352,6 +392,11 @@ section .testimonial-container {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
 }
 
 @keyframes professionRotate {
@@ -569,7 +614,7 @@ span {
 .services {
   min-height: auto;
   padding-bottom: 10rem;
-  color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .services h2 {
@@ -584,26 +629,26 @@ span {
 .services .services-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: space-between;
   flex-wrap: wrap;
   gap: 2rem;
 }
 
 .services-container .services-box {
   flex: 1 1 30rem;
-  background: var(--text-color);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
   padding: 3rem 2rem 4rem;
   border-radius: 2rem;
   box-shadow: 0 .1rem .5rem var(--shadow-color);
   text-align: center;
-  border-top: .6rem solid var(--secundary-color);
-  border-bottom: .6rem solid var(--secundary-color);
-  transition: .5s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .services-container .services-box:hover {
-  box-shadow: 0 .1rem 2rem var(--shadow-color);
-  transform: scale(1.02);
+  box-shadow: 0 15px 30px rgba(218, 255, 0, 0.1);
+  transform: translateY(-10px);
 }
 
 .services-box {
@@ -632,7 +677,7 @@ span {
 .services-box p {
   font-size: 1.6rem;
   margin: 1rem 0 3rem;
-  color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .portfolio {
@@ -955,12 +1000,31 @@ span {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background: var(--bg-color);
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
   border-radius: 2rem;
   box-shadow: 0 .1rem .5rem var(--shadow-color);
   padding: 3rem 5rem;
-  border-top: .8rem solid var(--secundary-color);
-  border-bottom: .8rem solid var(--secundary-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-slide:hover {
+  transform: scale(1.02);
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+  border-radius: 5px;
 }
 
 .testimonial-slide img {
@@ -1005,17 +1069,17 @@ span {
 
 .contact {
   display: flex;
+  text-align: center;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 100px;
+  justify-content: center;
+  gap: 2rem;
   flex-wrap: wrap;
-  padding-bottom: 1rem;
+  margin: 0;
 }
 
 .contact-img {
   flex: 1;
-  max-width: 400px;
+  max-width: 450px;
   margin-top: 2rem;
 }
 
@@ -1023,10 +1087,12 @@ span {
   width: 100%;
   height: auto;
   border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .contact h2 {
   margin-bottom: 2rem;
+  margin-top: 0;
 }
 
 .contact .heading,
@@ -1034,21 +1100,22 @@ span {
 #contactForm {
   flex: 2;
   max-width: 600px;
-  text-align: right;
+  text-align: center;
 }
 
 .contact-content {
-  flex: 2;
+  flex: 1;
   max-width: 600px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
+  align-items: center;
+  text-align: center;
 }
 
 .contact-content h2,
 .contact-content p {
-  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
   ;
 }
 
@@ -1057,11 +1124,23 @@ span {
   flex-direction: column;
   width: 100%;
   gap: 15px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(217, 255, 0, 0.685);
 }
 
 .contact-content .contact-intro {
-  font-size: 1.6rem;
-  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-intro {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
 .contact form {
@@ -1079,58 +1158,72 @@ span {
 .contact form .input-box {
   display: flex;
   gap: 10px;
-  justify-content: space-between;
   flex-wrap: wrap;
 }
 
 .contact form .input-box input,
 .contact form textarea {
-
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 15px;
-  color: var(--white);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+  transition: 0.3s;
 }
 
 .contact form .input-box input:focus,
 .contact form textarea:focus {
-  border-color: var(--neon-yellow);
-  box-shadow: 0 0 0 3px rgba(218, 255, 0, 0.1);
+  border-color: var(--main-color);
+  box-shadow: 0 0 5px rgba(255, 204, 0, 0.5);
   outline: none;
 }
 
 .contact form .input-box input {
-  width: 49%;
   flex: 1;
+  min-width: 48%;
   padding: 10px;
   border-radius: 5px;
 }
 
 .contact form textarea {
   resize: none;
+  height: 150px;
 }
 
 .contact form .btn {
-  margin-top: 2rem;
+  background: var(--main-color);
+  color: var(--bg-color);
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  text-transform: uppercase;
   cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.contact form .btn:hover {
+  background: transparent;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
 }
 
 .contact-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
-  text-align: left;
+  text-align: center;
   flex-direction: column;
   align-items: flex-start;
-  text-align: left;
 }
 
 .contact-img {
   order: 2;
+  text-align: center;
+  margin: auto;
 }
 
 .contact-content h2,
@@ -1308,6 +1401,7 @@ span {
   }
 
   .navbar a {
+    position: relative;
     display: block;
     font-size: 2rem;
     margin: 3rem 0;
@@ -1438,6 +1532,19 @@ span {
 
   .home-content h2 {
     font-size: 2rem;
+  }
+
+  .contact {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-img {
+    order: -1;
+  }
+
+  .contact form .input-box input {
+    min-width: 100%;
   }
 }
 

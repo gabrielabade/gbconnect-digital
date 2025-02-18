@@ -41,6 +41,15 @@ window.onscroll = () => {
     // A imagem original
   }
 
+  const scrollThreshold = 100; // Ajuste conforme necessário
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > scrollThreshold) {
+      header.classList.add('sticky');
+    } else {
+      header.classList.remove('sticky');
+    }
+  });
   /*========== remove menu icon navbar when click navbar link (scroll) ==========*/
   menuIcon.classList.remove('bx-x');
   navbar.classList.remove('active');
@@ -152,4 +161,23 @@ projectSwipers.forEach(swiperContainer => {
       loadPrevNextAmount: 2,
     },
   });
+});
+
+// animações de entrada
+
+const observerOptions = {
+  threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate-on-scroll');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.services-box, .about-content, .portfolio-item').forEach(el => {
+  observer.observe(el);
 });
