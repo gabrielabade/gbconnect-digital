@@ -203,3 +203,49 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.services-box, .about-content, .portfolio-item').forEach(el => {
   observer.observe(el);
 });
+
+// ========== Script de Prova Social ==========
+// Script para elementos de conversão
+document.addEventListener('DOMContentLoaded', function () {
+  // Função para mostrar notificações de prova social
+  function showSocialProof() {
+    const notification = document.getElementById('socialProofNotification');
+    const timeAgo = document.getElementById('timeAgo');
+    const times = ['há 2 minutos', 'há 5 minutos', 'há 8 minutos'];
+
+    setInterval(() => {
+      timeAgo.textContent = times[Math.floor(Math.random() * times.length)];
+      notification.classList.add('show');
+
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 5000);
+    }, 30000);
+  }
+
+  // Iniciar notificações
+  showSocialProof();
+
+  // Manipulador para fechar notificações
+  document.querySelector('.close-notification').addEventListener('click', function () {
+    document.getElementById('socialProofNotification').classList.remove('show');
+  });
+
+  // Pop-up de saída
+  let exitPopupShown = false;
+
+  document.addEventListener('mouseleave', function (e) {
+    if (e.clientY <= 0 && !exitPopupShown) {
+      document.getElementById('exitPopup').classList.add('show');
+      exitPopupShown = true;
+    }
+  });
+
+  // Fechar pop-up
+  const closeButtons = document.querySelectorAll('.close-popup, .btn-secondary');
+  closeButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      document.getElementById('exitPopup').classList.remove('show');
+    });
+  });
+});
