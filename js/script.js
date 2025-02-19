@@ -32,7 +32,7 @@ window.onscroll = () => {
 
   // Navbar fixa e troca de logo
   header.classList.toggle('sticky', window.scrollY > 100);
-  logo.src = window.scrollY > 100 ? './images/logo-nav.png' : './images/logocolor1.png';
+  logo.src = window.scrollY > 100 ? './images/logo-nav.webp' : './images/logocolor1.webp';
 
   // Fechar menu mobile ao rolar
   menuIcon.classList.remove('bx-x');

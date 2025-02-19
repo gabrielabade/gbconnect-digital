@@ -988,7 +988,7 @@ span {
   flex-direction: column;
   width: 100%;
   padding: 1rem;
-  background: url('../images/testimonial-background.png') no-repeat center center/cover;
+  background: url('../images/testimonial-background.webp') no-repeat center center/cover;
 }
 
 .testimonial-container .testimonial-wrapper {
