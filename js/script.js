@@ -1,91 +1,131 @@
-/*========== menu icon navbar ==========*/
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
+// ========== Variáveis Globais ==========
+const menuIcon = document.querySelector('#menu-icon');
+const navbar = document.querySelector('.navbar');
+const header = document.querySelector('.header');
+const logo = document.querySelector('.logo img');
 
+// ========== Menu e Navegação ==========
 menuIcon.onclick = () => {
   menuIcon.classList.toggle('bx-x');
   navbar.classList.toggle('active');
 };
 
-
-/*========== scroll sections active link ==========*/
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
-
+// ========== Scroll e Navegação Ativa ==========
 window.onscroll = () => {
+  // Ativar links do menu
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('header nav a');
+
   sections.forEach(sec => {
-    let top = window.scrollY;
-    let offset = sec.offsetTop - 150;
-    let height = sec.offsetHeight;
-    let id = sec.getAttribute('id');
+    const top = window.scrollY;
+    const offset = sec.offsetTop - 150;
+    const height = sec.offsetHeight;
+    const id = sec.getAttribute('id');
 
     if (top >= offset && top < offset + height) {
-      navLinks.forEach(links => {
-        links.classList.remove('active');
-        document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+      navLinks.forEach(link => {
+        link.classList.remove('active');
       });
-    };
-  });
-
-
-  /*========== sticky navbar ==========*/
-  let header = document.querySelector('.header');
-  let logo = document.querySelector('.logo img');
-  header.classList.toggle('sticky', window.scrollY > 100);
-  // Mudar logo quando a página rolar
-  if (window.scrollY > 100) {
-    logo.src = './images/logo-nav.png';
-    // A nova imagem para o estado sticky
-  } else {
-    logo.src = './images/logocolor1.png';
-    // A imagem original
-  }
-
-  const scrollThreshold = 100; // Ajuste conforme necessário
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > scrollThreshold) {
-      header.classList.add('sticky');
-    } else {
-      header.classList.remove('sticky');
+      document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
     }
   });
-  /*========== remove menu icon navbar when click navbar link (scroll) ==========*/
+
+  // Navbar fixa e troca de logo
+  header.classList.toggle('sticky', window.scrollY > 100);
+  logo.src = window.scrollY > 100 ? './images/logo-nav.png' : './images/logocolor1.png';
+
+  // Fechar menu mobile ao rolar
   menuIcon.classList.remove('bx-x');
   navbar.classList.remove('active');
-
 };
 
+// ========== FAQ Accordion ==========
+document.addEventListener('DOMContentLoaded', () => {
+  const accordionItems = document.querySelectorAll('.accordion-item');
 
-/*========== swiper ==========*/
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 1,
-  spaceBetween: 50,
-  loop: true,
-  grabCursor: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
+  accordionItems.forEach(item => {
+    const header = item.querySelector('.accordion-header');
+    const content = item.querySelector('.accordion-content');
+
+    if (header && content) {
+      header.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+
+        // Fecha todos os itens
+        accordionItems.forEach(otherItem => {
+          otherItem.classList.remove('active');
+          const otherContent = otherItem.querySelector('.accordion-content');
+          if (otherContent) {
+            otherContent.style.maxHeight = null;
+          }
+        });
+
+        // Abre o item atual se não estava ativo
+        if (!isActive) {
+          item.classList.add('active');
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+  });
 });
 
+// ========== Swiper Initialization ==========
+document.addEventListener('DOMContentLoaded', () => {
+  // Inicialização do Swiper para testimonials
+  new Swiper(".testimonial-box.mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 50,
+    loop: true,
+    grabCursor: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    }
+  });
 
-/*========== dark light mode ==========*/
-let darkModeIcon = document.querySelector('#darkMode-icon');
+  // Inicialização do Swiper para portfolio
+  const projectSwipers = document.querySelectorAll('.portfolio-box.mySwiper');
+  projectSwipers.forEach(swiperContainer => {
+    const slideCount = swiperContainer.querySelectorAll('.swiper-slide').length;
 
-darkModeIcon.onclick = () => {
-  darkModeIcon.classList.toggle('bx-sun');
-  document.body.classList.toggle('dark-mode');
-};
+    new Swiper(swiperContainer, {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: slideCount > 2,
+      grabCursor: true,
+      pagination: {
+        el: swiperContainer.querySelector('.swiper-pagination'),
+        clickable: true,
+      },
+      navigation: {
+        nextEl: swiperContainer.querySelector('.swiper-button-next'),
+        prevEl: swiperContainer.querySelector('.swiper-button-prev'),
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        }
+      },
+      lazy: {
+        loadPrevNext: true,
+        loadPrevNextAmount: 2,
+      }
+    });
+  });
+});
 
-
-/*========== scroll reveal ==========*/
+// ========== ScrollReveal Animations ==========
 ScrollReveal({
-  // reset: true,
   distance: '80px',
   duration: 2000,
   delay: 200
@@ -96,120 +136,61 @@ ScrollReveal().reveal('.home-img img, .services-container, .portfolio-box, .test
 ScrollReveal().reveal('.home-content h1, .about-img img', { origin: 'left' });
 ScrollReveal().reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
 
-/* form envio dos dados para o whatsapp  */
-/* Função para envio dos dados para o whatsapp */
+// ========== Formulário WhatsApp ==========
 function sendToWhatsApp() {
-  // Número que vai receber as mensagens
   const phoneNumber = "5548991056014";
+  const fields = {
+    name: document.getElementById("name").value.trim(),
+    company: document.getElementById("company").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    message: document.getElementById("message").value.trim()
+  };
 
-  // Pegar os valores do formulário
-  const name = document.getElementById("name").value.trim();
-  const company = document.getElementById("company").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const message = document.getElementById("message").value.trim();
-
-  // Pegar serviços marcados
-  const services = Array.from(document.querySelectorAll('input[name="service"]:checked'))
-    .map(service => service.nextSibling.textContent.trim())
-    .join(", ");
-
-  // Verificar se preencheu tudo
-  if (!name || !company || !email || !phone || !message) {
+  // Validação de campos vazios
+  if (Object.values(fields).some(field => !field)) {
     alert("Por favor, preencha todos os campos antes de enviar.");
     return;
   }
 
-  // Função para validar o número de telefone
-  function validatePhoneNumber(phone) {
-    // Regex para validar número de telefone brasileiro (com ou sem DDD e somente números)
-    const phoneRegex = /^(?:\+?55)?(?:\d{2})?(?:9\d{8})$/;
-    // Remove qualquer caractere não numérico e verifica se o telefone é válido
-    return phoneRegex.test(phone.replace(/\D/g, ''));
-  }
-
-  // Validar formato do número de telefone
-  if (!validatePhoneNumber(phone)) {
+  // Validação de telefone
+  const phoneRegex = /^(?:\+?55)?(?:\d{2})?(?:9\d{8})$/;
+  if (!phoneRegex.test(fields.phone.replace(/\D/g, ''))) {
     alert("Por favor, insira um número de telefone válido.");
     return;
   }
 
-  // Validar formato do email
+  // Validação de email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
+  if (!emailRegex.test(fields.email)) {
     alert("Por favor, insira um email válido.");
     return;
   }
 
-  // Montar a mensagem
-  const whatsappMessage = `Olá, meu nome é *${name}*!  
+  // Serviços selecionados
+  const services = Array.from(document.querySelectorAll('input[name="service"]:checked'))
+    .map(service => service.nextSibling.textContent.trim())
+    .join(", ");
+
+  // Montagem da mensagem
+  const whatsappMessage = `Olá, meu nome é *${fields.name}*!  
 ───────────────  
 📋 *Dados do Contato*  
-• Empresa: *${company}*  
-• Email: *${email}*  
-• Telefone: *${phone}*  
+• Empresa: *${fields.company}*  
+• Email: *${fields.email}*  
+• Telefone: *${fields.phone}*  
 • Serviços: *${services || "Não especificado"}*  
   
 💬 *Mensagem*  
-${message}  
+${fields.message}  
   
 Gostaria de mais informações. Aguardo seu retorno!`;
 
-  // Preparar mensagem para o link
-  const encodedMessage = encodeURIComponent(whatsappMessage);
-
-  // Abrir WhatsApp com a mensagem
-  window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
+  // Envio da mensagem
+  window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
 }
 
-/* ==== carrossel para cada categoria de projetos ====*/
-const projectSwipers = document.querySelectorAll('.portfolio-box.mySwiper');
-
-// Inicializa os carrosséis
-projectSwipers.forEach(swiperContainer => {
-  const pagination = swiperContainer.querySelector('.swiper-pagination');
-  const nextButton = swiperContainer.querySelector('.swiper-button-next');
-  const prevButton = swiperContainer.querySelector('.swiper-button-prev');
-
-  // Garante a configuração correta com base na quantidade de slides
-  const slideCount = swiperContainer.querySelectorAll('.swiper-slide').length;
-
-  new Swiper(swiperContainer, {
-    slidesPerView: slideCount > 1 ? 1 : slideCount, // Exibe no mínimo 1 slide
-    spaceBetween: 20,
-    loop: slideCount > 2, // Apenas ativa o loop se houver mais de 1 slide
-    grabCursor: true,
-    pagination: {
-      el: pagination,
-      clickable: true,
-    },
-    navigation: {
-      nextEl: nextButton,
-      prevEl: prevButton,
-    },
-    breakpoints: {
-      768: {
-        slidesPerView: 1,
-        spaceBetween: 20,
-      },
-      1024: {
-        slidesPerView: 3,
-        spaceBetween: 30,
-      },
-    },
-    lazy: {
-      loadPrevNext: true,
-      loadPrevNextAmount: 2,
-    },
-  });
-});
-
-// animações de entrada
-
-const observerOptions = {
-  threshold: 0.1
-};
-
+// ========== Animações de Entrada ==========
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -217,7 +198,7 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, observerOptions);
+}, { threshold: 0.1 });
 
 document.querySelectorAll('.services-box, .about-content, .portfolio-item').forEach(el => {
   observer.observe(el);
