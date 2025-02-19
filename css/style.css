@@ -1599,7 +1599,7 @@ span {
   }
 
   .home-content .social-media a {
-    margin: 2.5rem .75rem 3rem;
+    margin: 1rem .60rem 1rem;
   }
 
   .home .profession-container {
@@ -1654,6 +1654,7 @@ span {
   }
 
   .about {
+    margin-top: 5rem;
     flex-direction: column-reverse;
     text-align: center;
   }
@@ -1916,11 +1917,16 @@ img {
     background: var(--main-color);
   }
 
+  .faq {
+    margin-top: 12rem;
+    margin-bottom: 0;
+    padding: 2rem;
+  }
   .faq-container {
-    padding: 1rem;
+    padding: 2rem;
     min-width: 100%;
     padding: 0;
-    margin: 0 auto;
+    margin: 0;
   }
 
   .accordion-header {
@@ -1938,6 +1944,9 @@ img {
 
   .heading {
     font-size: 2.5rem;
+  }
+  .contact{
+    margin-top: 0;
   }
 
   .contact h2 {
