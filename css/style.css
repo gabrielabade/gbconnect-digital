@@ -1446,7 +1446,7 @@ span {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 4rem 2rem;
   text-align: center;
   background: var(--bg-color);
 }
@@ -1496,6 +1496,106 @@ span {
   color: var(--text-color);
   opacity: 0.8;
   line-height: 1.6;
+}
+
+.trust-section {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: var(--bg-color);
+}
+
+.trust-section h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--main-color);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.trust-section p {
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: var(--text-color);
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  padding: 2rem 0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--main-color);
+  transform: translateX(-50%);
+}
+
+.etapa {
+  background: var(--white-color);
+  padding: 1.5rem;
+  border-radius: 10px;
+  position: relative;
+  width: 45%;
+  text-align: left;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  transition: transform 0.3s ease;
+}
+
+.etapa:nth-child(even) {
+  align-self: flex-end;
+  text-align: right;
+}
+
+.etapa:hover {
+  transform: scale(1.05);
+}
+
+.etapa .numero {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -30px;
+  background: var(--secundary-color);
+  color: var(--text-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.etapa:nth-child(even) .numero {
+  left: auto;
+  right: -30px;
+}
+
+.etapa h3 {
+  font-size: 1.4rem;
+  color: var(--main-color);
+  margin-bottom: 0.5rem;
+}
+
+.etapa p {
+  font-size: 1rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  line-height: 1.5;
 }
 
 /* Notificação de Prova Social */
@@ -1635,6 +1735,20 @@ span {
 }
 
 @media (max-width: 768px) {
+
+  .timeline::before {
+    left: 10px;
+  }
+
+  .etapa {
+    width: 100%;
+    text-align: left;
+    padding-left: 3rem;
+  }
+
+  .etapa .numero {
+    left: -20px;
+  }
 
   .trust-section {
     padding: 4rem 5% 2rem;

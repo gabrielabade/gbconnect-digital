@@ -249,3 +249,29 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+
+// ========== Timeline Scroll Animation - Como Funciona ==========
+document.addEventListener("DOMContentLoaded", function () {
+  const timeline = document.querySelector(".timeline");
+  const etapas = document.querySelectorAll(".etapa");
+
+  window.addEventListener("scroll", function () {
+    const rect = timeline.getBoundingClientRect();
+    const trigger = window.innerHeight * 0.3;
+
+    if (rect.top < trigger) {
+      timeline.classList.add("scrolled");
+    } else {
+      timeline.classList.remove("scrolled");
+    }
+
+    etapas.forEach((etapa, index) => {
+      const etapaRect = etapa.getBoundingClientRect();
+      if (etapaRect.top < trigger) {
+        etapa.style.background = "#FF175F";
+      } else {
+        etapa.style.background = "var(--white-custom)";
+      }
+    });
+  });
+});
