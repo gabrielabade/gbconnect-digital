@@ -622,7 +622,6 @@ span {
   min-height: auto;
   padding-bottom: 10rem;
   color: var(--text-color);
-
 }
 
 .services h2 {
@@ -981,6 +980,89 @@ span {
   /* Exibe apenas no item com hover */
   opacity: 1;
 }
+
+
+.tipos-sites {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.tipos-sites h2 {
+  color: var(--main-color);
+  font-size: 2.5rem;
+  margin-top: 6rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.cards-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.card {
+  background: #0A1F70;
+  color: var(--text-color);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 280px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.card img {
+  max-width: 100px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: var(--secundary-color);
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.card p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #D1D1D1;
+}
+
+.card span {
+  display: block;
+  font-weight: bold;
+  color: var(--main-color);
+  margin-bottom: 15px;
+}
+
+.card button {
+  background: var(--main-color);
+  color: var(--bg-color);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.card button:hover {
+  background: var(--secundary-color);
+  color: var(--text-color);
+}
+
 
 .testimonial-container {
   display: flex;
