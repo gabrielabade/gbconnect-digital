@@ -1964,10 +1964,13 @@ span {
 
   .navbar {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top: 100%;
     left: 0;
-    width: 100%;
-    padding: 1rem 1%;
+    width: 100vw;
+    height: 100vh;
     background: var(--bg-color);
     border-top: .1rem solid rgba(0, 0, 0, .2);
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
@@ -1980,23 +1983,22 @@ span {
 
   .navbar a {
     position: relative;
+    justify-content: center;
+    align-items: center;
     display: block;
     font-size: 2rem;
-    margin: 3rem 0;
+    margin: 5rem 0;
     color: var(--text-color);
   }
 
-  .navbar a:nth-child(1),
-  .navbar a:nth-child(2) {
-    color: var(--text-color);
-  }
-
-  .navbar a.active {
-    color: var(--main-color);
-  }
-
-  .navbar a::before {
-    display: none;
+  .navbar a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0px;
+    background: transparent;
   }
 
   .home {
@@ -2232,6 +2234,14 @@ img {
 
 /* Mobile Styles */
 @media (max-width: 767px) {
+  .header.sticky {
+    position: fixed;
+    top: 2rem;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
   .home .avatar-home-img {
     display: none;
   }
