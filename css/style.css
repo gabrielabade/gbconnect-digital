@@ -2236,10 +2236,12 @@ img {
 @media (max-width: 767px) {
   .header.sticky {
     position: fixed;
-    top: 2rem;
+    top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
+    padding: 0rem 24%;
+    padding-top: 2.5rem;
   }
 
   .home .avatar-home-img {
