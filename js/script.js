@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
     etapas.forEach((etapa, index) => {
       const etapaRect = etapa.getBoundingClientRect();
       if (etapaRect.top < trigger) {
-        etapa.style.background = "#FF175F";
+        etapa.style.background = "var(--secundary-color)";
       } else {
         etapa.style.background = "var(--white-custom)";
       }
