@@ -18,9 +18,9 @@ html {
 }
 
 :root {
-  --bg-color: #000D5B;
-  --main-color: #DAFF00;
-  --secundary-color: #FF175F;
+  --bg-color: #051259;
+  --main-color: #D7f207;
+  --secundary-color: #F23078;
   --text-color: #F6F7F8;
   --shadow-color: rgba(192, 192, 192, 0.270);
 
@@ -1781,7 +1781,7 @@ span {
 .exit-popup .btn-secondary {
   background: none;
   border: none;
-  color: #FF175F;
+  color: var(--secundary-color);
   cursor: pointer;
   padding: 10px;
 }
