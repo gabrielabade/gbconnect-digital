@@ -121,60 +121,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Função para mostrar notificações de prova social
-  function showSocialProof() {
-    const notification = document.getElementById('socialProofNotification');
-    const timeAgo = document.getElementById('timeAgo');
-    const times = ['há 2 minutos', 'há 5 minutos', 'há 8 minutos'];
-
-    setInterval(() => {
-      timeAgo.textContent = times[Math.floor(Math.random() * times.length)];
-      notification.classList.add('show');
-
-      setTimeout(() => {
-        notification.classList.remove('show');
-      }, 5000);
-    }, 30000);
-  }
-
-  // Iniciar notificações
-  showSocialProof();
-
-  // Manipulador para fechar notificações
-  document.querySelector('.close-notification').addEventListener('click', function () {
-    document.getElementById('socialProofNotification').classList.remove('show');
+  // ========== ScrollReveal Animations ==========
+  const sr = ScrollReveal({
+    distance: '80px',
+    duration: 2000,
+    delay: 200
   });
 
-  // Pop-up de saída
-  let exitPopupShown = false;
+  sr.reveal('.home-content, .heading', { origin: 'top' });
+  sr.reveal('.home-img img, .services-container, .portfolio-box, .testimonial-wrapper, .contact form', { origin: 'bottom' });
+  sr.reveal('.home-content h1, .about-img img', { origin: 'left' });
+  sr.reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
 
-  document.addEventListener('mouseleave', function (e) {
-    if (e.clientY <= 0 && !exitPopupShown) {
-      document.getElementById('exitPopup').classList.add('show');
-      exitPopupShown = true;
-    }
-  });
-
-  // Fechar pop-up
-  const closeButtons = document.querySelectorAll('.close-popup, .btn-secondary');
-  closeButtons.forEach(button => {
-    button.addEventListener('click', function () {
-      document.getElementById('exitPopup').classList.remove('show');
+  // ========== Animações de Entrada ==========
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-on-scroll');
+        observer.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.services-box, .about-content, .portfolio-item').forEach(el => {
+    observer.observe(el);
   });
-});
 
-// ========== ScrollReveal Animations ==========
-const sr = ScrollReveal({
-  distance: '80px',
-  duration: 2000,
-  delay: 200
-});
+  // ========== Timeline Scroll Animation - Como Funciona ==========
+  const timeline = document.querySelector(".timeline");
+  const etapas = document.querySelectorAll(".etapa");
 
-sr.reveal('.home-content, .heading', { origin: 'top' });
-sr.reveal('.home-img img, .services-container, .portfolio-box, .testimonial-wrapper, .contact form', { origin: 'bottom' });
-sr.reveal('.home-content h1, .about-img img', { origin: 'left' });
-sr.reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
+  if (timeline && etapas.length > 0) {
+    window.addEventListener("scroll", function () {
+      const rect = timeline.getBoundingClientRect();
+      const trigger = window.innerHeight * 0.3;
+
+      if (rect.top < trigger) {
+        timeline.classList.add("scrolled");
+      } else {
+        timeline.classList.remove("scrolled");
+      }
+
+      etapas.forEach((etapa, index) => {
+        const etapaRect = etapa.getBoundingClientRect();
+        if (etapaRect.top < trigger) {
+          etapa.style.background = "var(--secundary-color)";
+        } else {
+          etapa.style.background = "var(--white-custom)";
+        }
+      });
+    });
+  }
+});
 
 // ========== Formulário WhatsApp ==========
 function sendToWhatsApp() {
@@ -229,43 +227,3 @@ Gostaria de mais informações. Aguardo seu retorno!`;
   // Envio da mensagem
   window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
 }
-
-// ========== Animações de Entrada ==========
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('animate-on-scroll');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.services-box, .about-content, .portfolio-item').forEach(el => {
-  observer.observe(el);
-});
-
-// ========== Timeline Scroll Animation - Como Funciona ==========
-document.addEventListener("DOMContentLoaded", function () {
-  const timeline = document.querySelector(".timeline");
-  const etapas = document.querySelectorAll(".etapa");
-
-  window.addEventListener("scroll", function () {
-    const rect = timeline.getBoundingClientRect();
-    const trigger = window.innerHeight * 0.3;
-
-    if (rect.top < trigger) {
-      timeline.classList.add("scrolled");
-    } else {
-      timeline.classList.remove("scrolled");
-    }
-
-    etapas.forEach((etapa, index) => {
-      const etapaRect = etapa.getBoundingClientRect();
-      if (etapaRect.top < trigger) {
-        etapa.style.background = "var(--secundary-color)";
-      } else {
-        etapa.style.background = "var(--white-custom)";
-      }
-    });
-  });
-});

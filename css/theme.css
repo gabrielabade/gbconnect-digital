@@ -1,0 +1,458 @@
+/* Variáveis CSS para modo claro/escuro */
+:root {
+  /* Tema escuro (padrão atual) */
+  --bg-color: #051259;
+  --main-color: #E2FF00;
+  --secundary-color: #F23078;
+  --text-color: #FFFFFF;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.15);
+  --header-bg: rgba(218, 255, 0, 0.95);
+  --header-sticky-bg: rgba(0, 13, 91, 0.95);
+  --nav-text: #051259;
+  --nav-text-sticky: #FFFFFF;
+  --section-bg: var(--bg-color);
+  --card-shadow: rgba(0, 0, 0, 0.2);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --form-border: rgba(255, 255, 255, 0.2);
+  --white-custom: #FFFFFF;
+}
+
+/* Tema claro */
+[data-theme="light"] {
+  --bg-color: #f5f7ff;
+  --main-color: #051259;
+  --secundary-color: #F23078;
+  --text-color: #051259;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(5, 18, 89, 0.15);
+  --header-bg: rgba(5, 18, 89, 0.95);
+  --header-sticky-bg: rgba(5, 18, 89, 0.95);
+  --nav-text: #FFFFFF;
+  --nav-text-sticky: #FFFFFF;
+  --section-bg: var(--bg-color);
+  --card-shadow: rgba(5, 18, 89, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --form-border: rgba(5, 18, 89, 0.2);
+  --white-custom: #FFFFFF;
+}
+
+/* Aplicação dos temas aos elementos */
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+/* Ajuste do Header */
+.header {
+  background: var(--header-bg);
+  transition: all 0.3s ease;
+}
+
+.header.sticky {
+  background: var(--header-sticky-bg);
+}
+
+.navbar a {
+  color: var(--nav-text);
+}
+
+.header.sticky .navbar a {
+  color: var(--nav-text-sticky);
+}
+
+/* Ajustes para cards e boxes */
+.services-container .services-box,
+.trust-card,
+.testimonial-slide,
+.accordion-item,
+.card {
+  background: var(--card-bg);
+  border-color: var(--card-border);
+  box-shadow: 0 10px 25px var(--card-shadow);
+}
+
+/* Formulários e inputs */
+.contact form .input-box input,
+.contact form textarea {
+  background: var(--input-bg);
+  border-color: var(--form-border);
+  color: var(--text-color);
+}
+
+/* Ajustar cores de texto específicas */
+.heading,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-color);
+}
+
+/* Estilo para o botão de alternância de tema no header */
+.theme-toggle {
+  background: rgba(242, 48, 120, 0.2);
+  color: var(--bg-color) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: transform 0.3s ease;
+  position: relative;
+  margin-left: 15px;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Ajuste para o header sticky */
+.header.sticky .theme-toggle {
+  color: white !important;
+}
+
+[data-theme="light"] .theme-toggle {
+  color: white !important;
+  background: rgba(215, 215, 215, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .theme-toggle {
+    position: absolute;
+    right: 70px;
+    /* Posicionar à esquerda do botão de menu */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+  }
+
+  .theme-toggle i {
+    font-size: 20px;
+  }
+
+  .theme-toggle:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
+}
+
+/* Transição suave para todos os elementos */
+*,
+*::before,
+*::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estilo específico para botões no tema claro */
+[data-theme="light"] .btn-primary {
+  background: var(--main-color);
+  color: white;
+}
+
+[data-theme="light"] .btn-secondary {
+  background: var(--secundary-color);
+  color: white;
+}
+
+/* Ajustes para o footer no tema claro */
+[data-theme="light"] .footer {
+  background: var(--main-color);
+  color: white;
+}
+
+[data-theme="light"] .footer-text p {
+  color: white;
+}
+
+/* Ajustes para conteúdo de fundo escuro especificamente */
+[data-theme="light"] .hero-description {
+  background: rgba(5, 18, 89, 0.1);
+  color: #051259 !important;
+  font-weight: 500 !important;
+}
+
+/* Ajustes para ícones */
+[data-theme="light"] .trust-item i,
+[data-theme="light"] .social-media a,
+[data-theme="light"] .services-box i {
+  color: var(--main-color);
+}
+
+/* Ajustes para o scrollbar */
+[data-theme="light"]::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+[data-theme="light"]::-webkit-scrollbar-thumb {
+  background: var(--main-color);
+}
+
+/* Correções específicas para a seção COMO FUNCIONA */
+.etapa {
+  background: var(--text-color) !important;
+  color: var(--bg-color) !important;
+  border: 1px solid var(--bg-color);
+  padding: 20px !important;
+  min-height: 120px !important;
+  transition: background-color 0.3s ease, transform 0.3s ease !important;
+}
+
+.etapa h3 {
+  color: var(--secundary-color) !important;
+  font-weight: bold !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  margin-bottom: 10px !important;
+  font-size: 1.2rem !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3) !important;
+}
+
+.etapa p {
+  color: var(--bg-color) !important;
+  opacity: 0.9;
+}
+
+/* Para o modo claro */
+[data-theme="light"] .etapa {
+  background: #051259 !important;
+  color: white !important;
+  border: 2px solid var(--main-color);
+}
+
+[data-theme="light"] .etapa h3 {
+  color: #E2FF00 !important;
+  /* Usar o amarelo neon no modo claro para contraste */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="light"] .etapa p {
+  color: white !important;
+}
+
+/* Garantir que os números nas etapas sejam legíveis */
+.etapa .numero {
+  background: var(--secundary-color) !important;
+  color: white !important;
+  font-weight: bold !important;
+  width: 40px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+  z-index: 10 !important;
+  box-shadow: 0 0 0 2px white;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -30px;
+  font-size: 1.5rem;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.etapa:nth-child(even) .numero {
+  left: auto;
+  right: -30px;
+}
+
+/* Ajuste para a timeline */
+.timeline::before {
+  background: var(--main-color);
+  transition: background-color 0.3s ease;
+}
+
+[data-theme="light"] .timeline::before {
+  background: var(--bg-color);
+}
+
+/* Adicionar um efeito sutil quando a etapa muda de cor */
+.etapa.scrolled-into-view {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustes específicos para diferentes temas */
+[data-theme="light"] .etapa.scrolled-into-view p {
+  color: white !important;
+}
+
+[data-theme="light"] .etapa.scrolled-into-view h3 {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.etapa.scrolled-into-view p {
+  color: white !important;
+}
+
+.etapa.scrolled-into-view h3 {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Correções específicas para o menu mobile no modo claro */
+@media (max-width: 768px) {
+  [data-theme="light"] .navbar {
+    background: rgba(5, 18, 89, 0.95) !important;
+    /* Fundo azul escuro */
+  }
+
+  [data-theme="light"] .navbar a {
+    color: white !important;
+    /* Texto branco para máximo contraste */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+    /* Sombra sutil para melhorar legibilidade */
+  }
+
+  /* Garantindo que o botão de fechar menu seja visível */
+  [data-theme="light"] #menu-icon {
+    color: #F23078 !important;
+    /* Cor magenta para destacar */
+  }
+
+  /* Ajuste do menu mobile */
+  .navbar.active {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding-top: 80px;
+    background: var(--bg-color);
+    z-index: 99;
+  }
+
+  /* Esconde o menu corretamente quando fechado */
+  .navbar:not(.active) {
+    display: none !important;
+  }
+
+  /* Ajuste no ícone de menu */
+  #menu-icon {
+    z-index: 101;
+    position: relative;
+  }
+}
+
+/* Correção para os cards de tipos de site */
+.card,
+.tipos-sites .card,
+[class*="site-card"],
+.card-container>div {
+  background: white !important;
+  border-radius: 10px !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Ajuste para os títulos dos cards */
+.card h3,
+.tipos-sites .card h3,
+[class*="site-card"] h3,
+.card-container>div h3,
+[data-theme="light"] .card h3,
+[data-theme="light"] .tipos-sites .card h3 {
+  color: var(--secundary-color) !important;
+  font-weight: bold !important;
+  font-size: 1.5rem !important;
+  margin-bottom: 10px !important;
+}
+
+/* Ajuste para os parágrafos dentro dos cards */
+.card p,
+.tipos-sites .card p,
+[class*="site-card"] p,
+.card-container>div p,
+[data-theme="light"] .card p,
+[data-theme="light"] .tipos-sites .card p {
+  color: #051259 !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Ajuste para spans (prazos) */
+.card span,
+.tipos-sites .card span,
+[class*="site-card"] span,
+.card-container>div span,
+[data-theme="light"] .card span,
+[data-theme="light"] .tipos-sites .card span {
+  color: var(--bg-color) !important;
+  font-weight: bold !important;
+  display: block !important;
+  margin: 10px 0 !important;
+}
+
+/* Ajuste para botões dentro dos cards */
+.card a.btn-solicitar,
+.tipos-sites .card a.btn-solicitar,
+[class*="site-card"] a,
+.card-container>div a,
+[data-theme="light"] .card a.btn-solicitar,
+[data-theme="light"] .tipos-sites .card a.btn-solicitar {
+  display: inline-block !important;
+  padding: 8px 16px !important;
+  background: var(--secundary-color) !important;
+  color: white !important;
+  border-radius: 5px !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  margin-top: 10px !important;
+}
+
+/* Efeito hover para os cards */
+.card:hover,
+.tipos-sites .card:hover,
+[class*="site-card"]:hover,
+.card-container>div:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Melhorar legibilidade da seção home no modo claro */
+[data-theme="light"] .home-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f5f7ff 0%, #e6ecff 100%);
+  opacity: 1;
+  z-index: 1;
+}
+
+[data-theme="light"] .home-img img {
+  display: none;
+  /* Removendo a imagem atual no modo light */
+}
+
+[data-theme="light"] .home-content h1,
+[data-theme="light"] .home-content h2 {
+  color: #051259 !important;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Correção para garantir que a logo tenha fundo transparente */
+.logo,
+.logo img {
+  background: transparent !important;
+}
+
+/* Remova qualquer definição de fundo para o elemento logo */
+.logo {
+  background: transparent !important;
+  font-weight: 600;
+  margin-right: auto;
+}

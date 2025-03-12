@@ -18,14 +18,39 @@ html {
 }
 
 :root {
+  /* Tema escuro (padrão atual) */
   --bg-color: #051259;
-  --main-color: #D7f207;
+  --main-color: #E2FF00;
   --secundary-color: #F23078;
-  --text-color: #F6F7F8;
-  --shadow-color: rgba(192, 192, 192, 0.270);
-  --transition-speed: 0.3s;
-  --border-radius: 1.2rem;
-  --spacing-unit: 1rem;
+  --text-color: #FFFFFF;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.15);
+  --header-bg: rgba(218, 255, 0, 0.95);
+  --header-sticky-bg: rgba(0, 13, 91, 0.95);
+  --nav-text: #051259;
+  --nav-text-sticky: #FFFFFF;
+  --section-bg: var(--bg-color);
+  --card-shadow: rgba(0, 0, 0, 0.2);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --form-border: rgba(255, 255, 255, 0.2);
+}
+
+/* Tema claro */
+[data-theme="light"] {
+  --bg-color: #f5f7ff;
+  --main-color: #051259;
+  --secundary-color: #F23078;
+  --text-color: #051259;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --card-border: rgba(5, 18, 89, 0.15);
+  --header-bg: rgba(5, 18, 89, 0.95);
+  --header-sticky-bg: rgba(5, 18, 89, 0.95);
+  --nav-text: #FFFFFF;
+  --nav-text-sticky: #FFFFFF;
+  --section-bg: var(--bg-color);
+  --card-shadow: rgba(5, 18, 89, 0.1);
+  --input-bg: rgba(255, 255, 255, 0.9);
+  --form-border: rgba(5, 18, 89, 0.2);
 }
 
 *::selection {
@@ -41,6 +66,7 @@ html {
 body {
   background: var(--bg-color);
   color: var(--text-color);
+  transition: all 0.3s ease;
 }
 
 /* Transição padrão para elementos interativos */
@@ -66,14 +92,14 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 7%;
-  background: rgba(218, 255, 0, 0.95);
+  padding: 1.8rem 7%;
+  background: var(--header-bg);
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   z-index: 100;
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .header.sticky {
@@ -86,15 +112,16 @@ body {
 .logo {
   font-size: 1rem;
   color: var(--main-color);
+  background: var(--header-sticky-bg);
   font-weight: 600;
   margin-right: auto;
 }
 
 .navbar a {
   position: relative;
-  font-size: 1.6rem;
-  color: var(--bg-color);
-  font-weight: 500;
+  font-size: 1.7rem;
+  color: var(--nav-text);
+  font-weight: 600;
   margin-right: 3.5rem;
   text-align: center;
 }
@@ -102,10 +129,11 @@ body {
 .navbar a::after {
   content: '';
   position: absolute;
-  bottom: -4px;
+  bottom: -6px;
   left: 0;
   width: 0;
-  height: 2px;
+  height: 3px;
+  border-radius: 2px;
   background: currentColor;
   transition: width 0.3s ease;
 }
@@ -119,7 +147,7 @@ body {
 }
 
 .header.sticky .navbar a {
-  color: var(--text-color);
+  color: var(--nav-text-sticky);
 }
 
 .header.sticky .navbar a:hover {
@@ -156,10 +184,22 @@ body {
   display: none;
 }
 
+.services-container .services-box,
+.trust-card,
+.testimonial-slide,
+.accordion-item,
+.card {
+  background: var(--card-bg);
+  border-color: var(--card-border);
+  box-shadow: 0 10px 25px var(--card-shadow);
+}
+
 /* ----- SECTION COMMON STYLES ----- */
 section {
   min-height: 100vh;
   padding: 10rem 7% 2rem;
+  margin-bottom: 6rem;
+  position: relative;
 }
 
 section .testimonial-container {
@@ -178,21 +218,24 @@ span {
 /* ----- BUTTONS ----- */
 .btn {
   display: inline-block;
-  padding: 1.2rem 2.8rem;
+  padding: 1.4rem 3rem;
   background: var(--secundary-color);
   border-radius: .6rem;
-  box-shadow: 0 .2rem .5rem var(--shadow-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   font-size: 1.6rem;
   color: var(--text-color);
-  letter-spacing: .1rem;
-  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-weight: 700;
   border: .2rem solid transparent;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
   background: transparent;
   color: var(--secundary-color);
   border-color: var(--secundary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 .btn-primary {
@@ -262,13 +305,15 @@ span {
 
 .home-content h1 {
   font-size: 5.6rem;
-  font-weight: 700;
   background: linear-gradient(45deg, var(--main-color), var(--secundary-color));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   margin-bottom: 2rem;
   animation: fadeInDown 1s ease;
+  text-shadow: 0 2px 4px rgba(214, 214, 214, 0.063);
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
 .home-content h2 {
@@ -283,7 +328,12 @@ span {
 
 .hero-description {
   font-size: 1.8rem;
-  line-height: 1.6;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  background: rgba(5, 18, 89, 0.7);
+  padding: 1.5rem;
+  border-radius: 8px;
   margin-bottom: 3rem;
 }
 
@@ -449,6 +499,11 @@ span {
   color: var(--secundary-color);
 }
 
+.services-container {
+  gap: 4rem;
+  padding: 2rem;
+}
+
 .services .services-container {
   display: flex;
   justify-content: center;
@@ -463,7 +518,8 @@ span {
   backdrop-filter: blur(10px);
   padding: 3rem 2rem 4rem;
   border-radius: 2rem;
-  box-shadow: 0 .1rem .5rem var(--shadow-color);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   text-align: center;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -471,6 +527,16 @@ span {
 .services-container .services-box:hover {
   box-shadow: 0 15px 30px rgba(218, 255, 0, 0.1);
   transform: translateY(-10px);
+}
+
+.services-container .services-box h3 {
+  font-size: 2.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.services-container .services-box p {
+  font-size: 1.7rem;
+  line-height: 1.6;
 }
 
 .services-box {
@@ -634,7 +700,7 @@ span {
   position: relative;
   max-width: 1200px;
   margin: auto;
-  padding: 0 10px;
+  padding: 2rem;
 }
 
 .portfolio-box.mySwiper {
@@ -658,7 +724,8 @@ span {
   border-radius: 10px;
   overflow: hidden;
   width: 350px;
-  height: 450px
+  height: 450px;
+  margin: 1rem;
 }
 
 .portfolio-item:hover {
@@ -822,6 +889,11 @@ span {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.testimonial-slide {
+  padding: 4rem 5rem;
+  margin: 2rem 0;
+}
+
 .testimonial-slide:hover {
   transform: scale(1.02);
 }
@@ -897,13 +969,13 @@ span {
   box-shadow: 0 .1rem .5rem var(--shadow-color);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: .5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   overflow: hidden;
 }
 
 .accordion-header {
   width: 100%;
-  padding: 1.5rem;
+  padding: 2rem;
   background: rgba(255, 255, 255, 0.09);
   backdrop-filter: blur(10px);
   color: var(--text-color);
@@ -936,7 +1008,7 @@ span {
 
 .accordion-content p {
   font-size: 1.5rem;
-  padding: 3rem;
+  padding: 3.5rem;
   margin: 0;
 }
 
@@ -1050,6 +1122,7 @@ span {
 
 .etapa {
   background: var(--text-color);
+  color: var(--bg-color);
   padding: 1.5rem;
   border-radius: 10px;
   position: relative;
@@ -1097,7 +1170,7 @@ span {
 
 .etapa p {
   font-size: 1rem;
-  color: var(--text-color);
+  color: var(--bg-color);
   opacity: 0.8;
   line-height: 1.5;
 }
@@ -1160,11 +1233,11 @@ span {
 #contactForm {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 2rem;
   max-width: 100%;
   margin: 0 auto;
   margin-top: 1.5rem;
-  padding: 40px;
+  padding: 4rem;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   box-shadow: 4px 4px 0px rgba(218, 255, 0, 0.8),
@@ -1254,8 +1327,9 @@ span {
 
 .contact form .input-box {
   display: flex;
-  gap: 12px;
+  gap: 2rem;
   flex-wrap: wrap;
+  margin-bottom: 1rem;
 }
 
 .contact form .input-box input,
@@ -1263,8 +1337,9 @@ span {
   width: 100%;
   padding: 12px;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  border-color: var(--form-border);
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--input-bg);
   color: var(--text-color);
 }
 
@@ -1540,9 +1615,25 @@ span {
 }
 
 @media (max-width: 768px) {
+  section {
+    padding: 10rem 5% 4rem;
+  }
+
   #menu-icon {
     display: block;
     color: var(--secundary-color);
+  }
+
+  .services-container {
+    gap: 3rem;
+  }
+
+  .accordion-header {
+    padding: 1.8rem;
+  }
+
+  #contactForm {
+    padding: 3rem 2rem;
   }
 
   .navbar {
