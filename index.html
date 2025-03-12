@@ -24,11 +24,6 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
-  <!-- Preload de recursos críticos -->
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" as="style">
-  <link rel="preload" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" as="style">
-  <link rel="preload" href="css/style.css" as="style">
-
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -102,7 +97,6 @@
         </div>
       </div>
 
-
       <div class="home-img">
         <img src="https://gbconnect.br-se1.magaluobjects.com/bg.gif" alt="GB Connect - Transformação Digital"
           loading="lazy">
@@ -128,7 +122,7 @@
           <li>✓ Suporte técnico contínuo</li>
         </ul>
         <a href="#contact" class="btn">Solicitar Proposta</a>
-
+      </div>
     </section>
 
     <!-- services section design -->
@@ -136,7 +130,6 @@
       <h2 class="heading">Soluções <span>Completas</span></h2>
 
       <div class="services-container">
-
         <div class="services-box">
           <i class='bx bx-code-alt'></i>
           <h3>Site Profissional</h3>
@@ -184,51 +177,51 @@
       <div id="tipos-de-sites" class="tipos-sites">
         <h2>Escolha o Tipo de Site Ideal para Você</h2>
         <div class="cards-container">
+          <!-- Card items com estrutura repetida - poderia ser gerado por JS em uma aplicação mais complexa -->
           <div class="card">
             <img src="img/multi-page.png" alt="Site Multi Page">
             <h3>Site Multi Page</h3>
             <p>As informações são dividas por páginas específicas para cada produto/serviço, assim como as demais
-              páginas que se
-              fizerem necessárias.</p>
+              páginas que se fizerem necessárias.</p>
             <span>Prazo: 60 dias</span>
-            <button>Solicitar Orçamento</button>
+            <a href="#contact" class="btn-solicitar">Solicitar Orçamento</a>
           </div>
+
           <div class="card">
             <img src="img/one-page.png" alt="Site One Page">
             <h3>Site One Page</h3>
             <p>As informações são agrupadas em uma única página, com categorias divididas por seções. Ao clicar no menu,
-              o site rola
-              para a seção correspondente.</p>
+              o site rola para a seção correspondente.</p>
             <span>Prazo: 30 dias</span>
-            <button>Solicitar Orçamento</button>
+            <a href="#contact" class="btn-solicitar">Solicitar Orçamento</a>
           </div>
+
           <div class="card">
             <img src="img/landing-page.png" alt="Landing Page">
             <h3>Landing Page</h3>
             <p>As informações são agrupadas em uma única página, planejada e desenvolvida de acordo com o objetivo das
-              campanhas de
-              anúncios.</p>
+              campanhas de anúncios.</p>
             <span>Prazo: 20 dias</span>
-            <button>Solicitar Orçamento</button>
+            <a href="#contact" class="btn-solicitar">Solicitar Orçamento</a>
           </div>
+
           <div class="card">
             <img src="img/site-expresso.png" alt="Site Expresso">
             <h3>Site Expresso</h3>
             <p>Usamos um template de Site pré-pronto, adaptado com as informações, fotos, logo e cores do cliente.
               Personalizado com sua identidade visual.</p>
             <span>Prazo: 10 dias</span>
-            <button>Solicitar Orçamento</button>
+            <a href="#contact" class="btn-solicitar">Solicitar Orçamento</a>
           </div>
         </div>
-        </div>
+      </div>
     </section>
 
-    <!-- trust section design Nossas Garantias-->
+    <!-- trust section design -->
     <section class="trust-section" id="trust">
       <h2>Como Funciona</h2>
       <p>O processo todo para criarmos seu site, desde a primeira conversa até o site entrar no ar, acontecerá em 4
-        etapas,
-        com prazo máximo de 30 dias!</p>
+        etapas, com prazo máximo de 30 dias!</p>
 
       <div class="timeline">
         <div class="etapa">
@@ -241,24 +234,23 @@
           <span class="numero">2</span>
           <h3>Coleta de informações e pesquisa de mercado</h3>
           <p>Com a proposta aprovada, começaremos a preparar o material necessário para o desenvolvimento, como
-            logotipo,
-            cores da marca, informações da empresa, produtos/serviços, imagens/fotos e análise de concorrentes.</p>
+            logotipo, cores da marca, informações da empresa, produtos/serviços, imagens/fotos e análise de
+            concorrentes.</p>
         </div>
         <div class="etapa">
           <span class="numero">3</span>
           <h3>Planejamento e desenvolvimento do site</h3>
           <p>Vamos organizar e criar uma estrutura adequada para as informações coletadas. Em seguida, montaremos o
-            layout do
-            site e vamos apresentando e ajustando até a aprovação final e publicação.</p>
+            layout do site e vamos apresentando e ajustando até a aprovação final e publicação.</p>
         </div>
         <div class="etapa">
           <span class="numero">4</span>
           <h3>Cadastro e configuração das ferramentas do Google</h3>
           <p>Após a publicação, incluiremos o site no Google Search Console (buscas do Google) e no Google Meu Negócio,
-            que
-            exibe a empresa no Google Maps.</p>
+            que exibe a empresa no Google Maps.</p>
         </div>
       </div>
+
       <div class="trust-container">
         <div class="trust-grid">
           <div class="trust-card">
@@ -297,8 +289,7 @@
       </div>
     </section>
 
-
-    <!-- design de seção de portfólio projetos -->
+    <!-- Portfolio section -->
     <section class="portfolio" id="portfolio">
       <h2 class="heading">Alguns de <span>Nossos Trabalhos</span></h2>
       <!-- Landing Pages & Websites -->
@@ -314,9 +305,7 @@
                   <div class="portfolio-layer">
                     <h4>Floricultura Bloom</h4>
                     <p>Site interativo para explorar produtos, depoimentos e localização de uma
-                      floricultura, com
-                      mapa
-                      integrado.</p>
+                      floricultura, com mapa integrado.</p>
                     <div class="tech-stack">
                       <span>HTML</span>
                       <span>CSS</span>
@@ -329,6 +318,7 @@
                 </div>
               </div>
 
+              <!-- Outros itens do portfolio continuam aqui... -->
               <!-- Ciclista -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
@@ -336,10 +326,7 @@
                   <div class="portfolio-layer">
                     <h4>Ciclista</h4>
                     <p>Página interativa que apresenta serviços, formulário para orçamento,
-                      informações
-                      sobre a
-                      empresa
-                      e um catálogo dinâmico dos principais modelos de bicicletas.</p>
+                      informações sobre a empresa e um catálogo dinâmico dos principais modelos de bicicletas.</p>
                     <div class="tech-stack">
                       <span>HTML</span>
                       <span>CSS</span>
@@ -359,8 +346,7 @@
                   <div class="portfolio-layer">
                     <h4>Studio Dani Bade</h4>
                     <p>Site para apresentação de serviços estéticos, com agendamento fácil e
-                      integração
-                      com WhatsApp.</p>
+                      integração com WhatsApp.</p>
                     <div class="tech-stack">
                       <span>HTML</span>
                       <span>CSS</span>
@@ -400,11 +386,7 @@
                   <div class="portfolio-layer">
                     <h4>Lift Detox Black</h4>
                     <p>Página de produto com design responsivo e alternância entre modos claro e
-                      escuro,
-                      com
-                      links
-                      para
-                      compra e contato.</p>
+                      escuro, com links para compra e contato.</p>
                     <div class="tech-stack">
                       <span>HTML</span>
                       <span>CSS</span>
@@ -424,9 +406,7 @@
                   <div class="portfolio-layer">
                     <h4>Cafeteria</h4>
                     <p>O Dev Café é um site criado para representar uma cafeteria moderna, com
-                      design
-                      responsivo e
-                      funcionalidades interativas.</p>
+                      design responsivo e funcionalidades interativas.</p>
                     <div class="tech-stack">
                       <span>HTML</span>
                       <span>CSS</span>
@@ -446,10 +426,7 @@
                   <div class="portfolio-layer">
                     <h4>Loja de Bicicletas</h4>
                     <p>Página interativa que apresenta serviços, marcas e um formulário para
-                      orçamento,
-                      com
-                      design
-                      responsivo e mapa integrado.</p>
+                      orçamento, com design responsivo e mapa integrado.</p>
                     <div class="tech-stack">
                       <span>HTML</span>
                       <span>CSS</span>
@@ -469,8 +446,7 @@
                   <div class="portfolio-layer">
                     <h4>Business Card</h4>
                     <p>Agregador de links online, funcionando como um cartão de visitas digital com
-                      informações e
-                      contatos rápidos.</p>
+                      informações e contatos rápidos.</p>
                     <div class="tech-stack">
                       <span>HTML</span>
                       <span>CSS</span>
@@ -491,10 +467,9 @@
           </div>
         </div>
       </div> <!-- Fim da seção Landing Pages & Websites -->
-
     </section>
 
-    <!-- design de depoimento -->
+    <!-- Testimonials section -->
     <section class="testimonial-container" id="testimonials" style="min-height: 30vh;">
       <h2 class="heading">Clientes <span>Satisfeitos</span></h2>
 
@@ -507,37 +482,32 @@
               <blockquote>
                 "Contratei o serviço para criar o site da minha loja, e o resultado superou minhas
                 expectativas! Agora tenho um site completo com formulário para orçamentos, apresentação
-                da
-                empresa e um catálogo dinâmico dos principais produtos, com encaminhamento direto para o
+                da empresa e um catálogo dinâmico dos principais produtos, com encaminhamento direto para o
                 WhatsApp. Além disso, minha loja foi colocada no Google com aumento significativo de
-                cliques
-                e recebi um suporte incrível para as redes sociais, com posts e stories personalizados.
+                cliques e recebi um suporte incrível para as redes sociais, com posts e stories personalizados.
                 Fiquei extremamente satisfeito!"
               </blockquote>
             </div>
+
             <div class="testimonial-slide swiper-slide">
               <img src="images/testimonial2.webp" alt="" loading="lazy">
               <h3>Daniela<br><span><small>Salão de Beleza</small></span></h3>
               <blockquote>
                 "Estou muito feliz com o site do meu salão! Ele apresenta todos os serviços de forma
                 profissional e ainda conta com a funcionalidade de agendamento direto pelo WhatsApp.
-                Minha
-                presença no Google foi configurada, e ainda recebi um suporte completo nas redes
-                sociais,
-                com posts, stories, capas para destaques e descrições incríveis. Tudo ficou exatamente
-                como
-                eu queria!"
+                Minha presença no Google foi configurada, e ainda recebi um suporte completo nas redes
+                sociais, com posts, stories, capas para destaques e descrições incríveis. Tudo ficou exatamente
+                como eu queria!"
               </blockquote>
             </div>
+
             <div class="testimonial-slide swiper-slide">
               <img src="images/testimonial3.webp" alt="" loading="lazy">
               <h3>Alessandra<br><span><small>Representante Lift Detox</small></span></h3>
               <blockquote>
                 "Preciso dizer que estou encantada com o trabalho! Solicitei criação da minha logo,
-                capas para destaques
-                e uma página de apresentação do meu produto que ficou incrível. A página tem links
-                diretos
-                para compra e redes sociais, o que facilitou muito para os meus clientes. Recomendo
+                capas para destaques e uma página de apresentação do meu produto que ficou incrível. A página tem links
+                diretos para compra e redes sociais, o que facilitou muito para os meus clientes. Recomendo
                 demais!"
               </blockquote>
             </div>
@@ -576,8 +546,7 @@
             <div class="accordion-content">
               <p>O prazo médio é de 15 a 30 dias, dependendo da complexidade do projeto. Sites mais simples podem ser
                 entregues em menos tempo, enquanto projetos mais elaborados podem exigir um período maior para garantir
-                a
-                qualidade.</p>
+                a qualidade.</p>
             </div>
           </div>
 
@@ -589,8 +558,7 @@
             <div class="accordion-content">
               <p>Nosso serviço inclui criação de conteúdo personalizado, posts regulares, stories, design de capas para
                 destaques, otimização de descrições e bio, além de suporte contínuo para manter suas redes sociais
-                sempre
-                atualizadas e engajadas.</p>
+                sempre atualizadas e engajadas.</p>
             </div>
           </div>
 
@@ -602,8 +570,7 @@
             <div class="accordion-content">
               <p>Realizamos o cadastro completo do seu negócio no Google Maps, otimizamos o perfil com informações
                 detalhadas, fotos profissionais, horários de funcionamento e serviços oferecidos. Isso ajuda sua empresa
-                a
-                aparecer nas buscas locais e aumenta a visibilidade online.</p>
+                a aparecer nas buscas locais e aumenta a visibilidade online.</p>
             </div>
           </div>
 
@@ -614,7 +581,7 @@
             </button>
             <div class="accordion-content">
               <p>• Texto de breve apresentação da empresa. Com esse texto vamos entender melhor a proposta de atuação
-                de sua empresa, e ajustar de acordo com as melhores ‘palavras-chave’, deixando o site eficiente para os
+                de sua empresa, e ajustar de acordo com as melhores 'palavras-chave', deixando o site eficiente para os
                 mecanismos de busca (SEO) como o Google.<br>
                 • Descrição dos Produtos/Serviços. Essa informação é extremamente importante para o SEO e para
                 estruturação do site.<br>
@@ -636,19 +603,18 @@
               <p>Para colocar qualquer site no ar, independente do desenvolvedor que você for contratar, é preciso dois
                 serviços:
                 <br>
-                • Registro de um domínio (o ‘nome’ do seu site, ex: suaempresa.com.br). Esse domínio pode ser feito
-                diretamente com o
-                registro.br, entidade que regula os domínios no Brasil, e o valor para registrar um domínio é de R$40,00
+                • Registro de um domínio (o 'nome' do seu site, ex: suaempresa.com.br). Esse domínio pode ser feito
+                diretamente com o registro.br, entidade que regula os domínios no Brasil, e o valor para registrar um
+                domínio é de R$40,00
                 por ano.
                 <br>
                 • Outra necessidade é a hospedagem, o local onde os arquivos do seu site precisam estar, para que fiquem
-                disponíveis na
-                internet 24hs por dia / 7 dias por semana. O valor mensal de uma hospedagem fica em torno de R$24,90
+                disponíveis na internet 24hs por dia / 7 dias por semana. O valor mensal de uma hospedagem fica em torno
+                de R$24,90
                 mensais.
               </p>
             </div>
           </div>
-
 
           <div class="accordion-item">
             <button class="accordion-header">
@@ -657,8 +623,8 @@
             </button>
             <div class="accordion-content">
               <p>Neste tipo de site, as informações são condensadas em uma única página, com categorias divididas por
-                seções. Ao clicar
-                no menu, o site rola para a seção correspondente. Por isso tende a ser mais rápido que um site com
+                seções. Ao clicar no menu, o site rola para a seção correspondente. Por isso tende a ser mais rápido que
+                um site com
                 páginas (multi page).
                 <br>
                 Algumas vantagens do site One Page:
@@ -670,21 +636,17 @@
                 • Menor custo e entrega mais rápida<br>
 
                 Resumindo: Se você precisa de velocidade de carregamento, um site que facilite a navegação do usuário,
-                quer que os
-                visitantes absorvam um conteúdo prático e completo do seu produto ou serviço e além disso tenha um
-                investimento menor?
-                Então um Site One Page é a opção ideal para sua empresa.
+                quer que os visitantes absorvam um conteúdo prático e completo do seu produto ou serviço e além disso
+                tenha um
+                investimento menor? Então um Site One Page é a opção ideal para sua empresa.
               </p>
             </div>
           </div>
-
-
         </div>
       </div>
     </section>
 
-
-    <!-- Design da seção de contato -->
+    <!-- Contact Section -->
     <section class="contact" id="contact">
       <div>
         <h2 class="heading">Comece Sua <span>Transformação Digital</span></h2>
@@ -692,8 +654,8 @@
         <div class="contact-img">
           <img src="./images/about.webp" alt="GB Connect - Transformação Digital" loading="lazy">
         </div>
-
       </div>
+
       <form id="contactForm">
         <p class="contact-intro">
           Pronto para destacar seu negócio online?<br> Preencha o formulário abaixo e receba uma proposta personalizada.
@@ -723,8 +685,7 @@
       </form>
     </section>
 
-
-    <!-- design de rodapé -->
+    <!-- Footer Section -->
     <footer class="footer">
       <div class="footer-text">
         <p>© GB Connect. Todos os direitos reservados.</p>
@@ -735,8 +696,7 @@
       </div>
     </footer>
 
-
-    <!-- design de notificação de prova social -->
+    <!-- Conversion Elements -->
     <div class="conversion-elements">
       <!-- Notificação de Prova Social -->
       <div class="social-proof-notification" id="socialProofNotification">
@@ -769,12 +729,9 @@
       </div>
     </div>
 
-    <!-- Carregando o JavaScript no final para melhorar o desempenho -->
-    <!-- scroll reveal -->
+    <!-- Scripts Section -->
     <script src="https://unpkg.com/scrollreveal"></script>
-    <!-- swiper js -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <!-- custom js -->
     <script src="js/script.js"></script>
   </main>
 </body>

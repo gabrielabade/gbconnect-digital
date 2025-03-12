@@ -39,8 +39,9 @@ window.onscroll = () => {
   navbar.classList.remove('active');
 };
 
-// ========== FAQ Accordion ==========
+// ========== Carregamento da Página ==========
 document.addEventListener('DOMContentLoaded', () => {
+  // Inicialização do FAQ Accordion
   const accordionItems = document.querySelectorAll('.accordion-item');
 
   accordionItems.forEach(item => {
@@ -68,10 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   });
-});
 
-// ========== Swiper Initialization ==========
-document.addEventListener('DOMContentLoaded', () => {
   // Inicialização do Swiper para testimonials
   new Swiper(".testimonial-box.mySwiper", {
     slidesPerView: 1,
@@ -122,91 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-});
 
-// ========== ScrollReveal Animations ==========
-ScrollReveal({
-  distance: '80px',
-  duration: 2000,
-  delay: 200
-});
-
-ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
-ScrollReveal().reveal('.home-img img, .services-container, .portfolio-box, .testimonial-wrapper, .contact form', { origin: 'bottom' });
-ScrollReveal().reveal('.home-content h1, .about-img img', { origin: 'left' });
-ScrollReveal().reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
-
-// ========== Formulário WhatsApp ==========
-function sendToWhatsApp() {
-  const phoneNumber = "5548991056014";
-  const fields = {
-    name: document.getElementById("name").value.trim(),
-    company: document.getElementById("company").value.trim(),
-    email: document.getElementById("email").value.trim(),
-    phone: document.getElementById("phone").value.trim(),
-    message: document.getElementById("message").value.trim()
-  };
-
-  // Validação de campos vazios
-  if (Object.values(fields).some(field => !field)) {
-    alert("Por favor, preencha todos os campos antes de enviar.");
-    return;
-  }
-
-  // Validação de telefone
-  const phoneRegex = /^(?:\+?55)?(?:\d{2})?(?:9\d{8})$/;
-  if (!phoneRegex.test(fields.phone.replace(/\D/g, ''))) {
-    alert("Por favor, insira um número de telefone válido.");
-    return;
-  }
-
-  // Validação de email
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(fields.email)) {
-    alert("Por favor, insira um email válido.");
-    return;
-  }
-
-  // Serviços selecionados
-  const services = Array.from(document.querySelectorAll('input[name="service"]:checked'))
-    .map(service => service.nextSibling.textContent.trim())
-    .join(", ");
-
-  // Montagem da mensagem
-  const whatsappMessage = `Olá, meu nome é *${fields.name}*!  
-───────────────  
-📋 *Dados do Contato*  
-• Empresa: *${fields.company}*  
-• Email: *${fields.email}*  
-• Telefone: *${fields.phone}*  
-• Serviços: *${services || "Não especificado"}*  
-  
-💬 *Mensagem*  
-${fields.message}  
-  
-Gostaria de mais informações. Aguardo seu retorno!`;
-
-  // Envio da mensagem
-  window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
-}
-
-// ========== Animações de Entrada ==========
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('animate-on-scroll');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.services-box, .about-content, .portfolio-item').forEach(el => {
-  observer.observe(el);
-});
-
-// ========== Script de Prova Social ==========
-// Script para elementos de conversão
-document.addEventListener('DOMContentLoaded', function () {
   // Função para mostrar notificações de prova social
   function showSocialProof() {
     const notification = document.getElementById('socialProofNotification');
@@ -248,6 +162,86 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('exitPopup').classList.remove('show');
     });
   });
+});
+
+// ========== ScrollReveal Animations ==========
+const sr = ScrollReveal({
+  distance: '80px',
+  duration: 2000,
+  delay: 200
+});
+
+sr.reveal('.home-content, .heading', { origin: 'top' });
+sr.reveal('.home-img img, .services-container, .portfolio-box, .testimonial-wrapper, .contact form', { origin: 'bottom' });
+sr.reveal('.home-content h1, .about-img img', { origin: 'left' });
+sr.reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
+
+// ========== Formulário WhatsApp ==========
+function sendToWhatsApp() {
+  const phoneNumber = "5548991056014";
+  const fields = {
+    name: document.getElementById("name").value.trim(),
+    company: document.getElementById("company").value.trim(),
+    email: document.getElementById("email").value.trim(),
+    phone: document.getElementById("phone").value.trim(),
+    message: document.getElementById("message").value.trim()
+  };
+
+  // Validação de campos vazios
+  if (Object.values(fields).some(field => !field)) {
+    alert("Por favor, preencha todos os campos antes de enviar.");
+    return;
+  }
+
+  // Validação de telefone
+  const phoneRegex = /^(?:\+?55)?(?:\d{2})?(?:9\d{8})$/;
+  if (!phoneRegex.test(fields.phone.replace(/\D/g, ''))) {
+    alert("Por favor, insira um número de telefone válido.");
+    return;
+  }
+
+  // Validação de email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(fields.email)) {
+    alert("Por favor, insira um email válido.");
+    return;
+  }
+
+  // Serviços selecionados
+  const services = Array.from(document.querySelectorAll('input[name="service"]:checked'))
+    .map(service => service.nextSibling.textContent.trim())
+    .join(", ");
+
+  // Montagem da mensagem
+  const whatsappMessage = `Olá, meu nome é *${fields.name}*!  
+───────────────  
+📋 *Dados do Contato*  
+- Empresa: *${fields.company}*  
+- Email: *${fields.email}*  
+- Telefone: *${fields.phone}*  
+- Serviços: *${services || "Não especificado"}*  
+  
+💬 *Mensagem*  
+${fields.message}  
+  
+Gostaria de mais informações. Aguardo seu retorno!`;
+
+  // Envio da mensagem
+  window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+}
+
+// ========== Animações de Entrada ==========
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate-on-scroll');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.services-box, .about-content, .portfolio-item').forEach(el => {
+  observer.observe(el);
 });
 
 // ========== Timeline Scroll Animation - Como Funciona ==========
