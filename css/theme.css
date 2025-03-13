@@ -125,6 +125,111 @@ h6 {
   background: rgba(215, 215, 215, 0.3);
 }
 
+[data-theme="light"] {
+  /* Definições gerais para texto no modo claro */
+  --text-dark: #051259;
+  --text-medium: #112277;
+}
+
+/* ===== Correções da Hero Description ===== */
+[data-theme="light"] .hero-description {
+  background: rgba(230, 235, 255, 0.7) !important;
+  border-left: 4px solid var(--secundary-color) !important;
+  color: var(--text-dark) !important;
+  box-shadow: 0 4px 10px rgba(5, 18, 89, 0.05);
+}
+
+[data-theme="light"] .hero-description strong {
+  color: #051259;
+  font-weight: 700;
+}
+
+/* ===== Correções para os Cards de Serviço no Modo Claro ===== */
+[data-theme="light"] .service-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .service-card h3 {
+  color: var(--secundary-color) !important;
+}
+
+[data-theme="light"] .service-card p {
+  color: var(--text-medium) !important;
+}
+
+[data-theme="light"] .service-card i {
+  color: var(--main-color) !important;
+}
+
+/* ===== Correções para WhatsApp e Botões de Redes Sociais ===== */
+/* WhatsApp Float - fixo em verde padrão com ícone branco em qualquer tema */
+.whatsapp-float,
+[data-theme="light"] .whatsapp-float {
+  background-color: var(--main-color) !important;
+  border-radius: 50%;
+  color: var(--white-custom) !important;
+}
+.whatsapp-float,
+[data-theme="dark"] .whatsapp-float {
+  background-color: var(--main-color) !important;
+  border-radius: 50%;
+  color: var(--secundary-color) !important;
+}
+
+/* Outros botões de redes sociais no modo claro */
+[data-theme="light"] .social-media a {
+  background: rgba(5, 18, 89, 0.1);
+  color: var(--text-dark);
+}
+
+[data-theme="light"] .social-media a:hover {
+  background: var(--main-color);
+  color: white;
+}
+
+/* Destaque especial para o botão de WhatsApp na lista de redes sociais */
+
+
+[data-theme="light"] .whatsapp-button i {
+  color: var(--main-color) !important;
+}
+
+/* ===== Melhorias nos CTAs para Modo Claro ===== */
+[data-theme="light"] .btn-primary {
+  background: #051259 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(5, 18, 89, 0.2);
+}
+
+[data-theme="light"] .btn-secondary {
+  background: transparent !important;
+  color: #051259 !important;
+  border: 2px solid #051259 !important;
+}
+
+[data-theme="light"] .btn-primary:hover {
+  background: #0a237a !important;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(5, 18, 89, 0.3);
+}
+
+/* ===== Ajustes nos Trust Indicators para Modo Claro ===== */
+[data-theme="light"] .trust-item {
+  background: rgba(5, 18, 89, 0.05);
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+}
+
+[data-theme="light"] .trust-item i {
+  color: var(--main-color) !important;
+}
+
+[data-theme="light"] .trust-item span {
+  color: var(--text-dark) !important;
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .theme-toggle {

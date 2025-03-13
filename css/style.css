@@ -104,7 +104,7 @@ body {
 
 .header.sticky {
   animation: headerFadeIn 0.4s ease forwards;
-  background: rgba(0, 13, 91, 0.95);
+  background: var(--header-sticky-bg);
   backdrop-filter: blur(8px);
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
@@ -112,9 +112,21 @@ body {
 .logo {
   font-size: 1rem;
   color: var(--main-color);
-  background: var(--header-sticky-bg);
   font-weight: 600;
   margin-right: auto;
+}
+
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo img {
+  height: 60px;
+  width: auto;
+  background: transparent !important;
 }
 
 .navbar a {
@@ -180,8 +192,13 @@ body {
 
 #menu-icon {
   font-size: 3.6rem;
-  color: var(--text-color);
+  color: var(--nav-text);
+  cursor: pointer;
   display: none;
+}
+
+.header.sticky #menu-icon {
+  color: var(--nav-text-sticky);
 }
 
 .services-container .services-box,
@@ -294,65 +311,164 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  padding-top: 8rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  padding: 0 20px;
   text-align: center;
 }
 
-.home .home-content {
-  position: relative;
-  z-index: 1;
-  padding: 2rem;
-}
-
 .home-content h1 {
-  font-size: 5.6rem;
+  font-size: 5.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 2rem;
   background: linear-gradient(45deg, var(--main-color), var(--secundary-color));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  margin-bottom: 2rem;
   animation: fadeInDown 1s ease;
-  text-shadow: 0 2px 4px rgba(214, 214, 214, 0.063);
-  font-weight: 800;
-  letter-spacing: -0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .home-content h2 {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   color: var(--text-color);
-  margin-bottom: 2rem;
+  margin-bottom: 2.4rem;
+  line-height: 1.4;
 }
 
 .home-content p {
   font-size: 1.6rem;
 }
 
+.home-content h1,
+.home-content h2 {
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .hero-description {
-  font-size: 1.8rem;
-  line-height: 1.7;
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto 3rem;
+  padding: 1.5rem 2rem;
+  border-left: 4px solid var(--secundary-color);
   background: rgba(5, 18, 89, 0.7);
-  padding: 1.5rem;
   border-radius: 8px;
+  text-align: left;
+  font-size: 1.7rem;
+  line-height: 1.5;
+}
+
+.services-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
   margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.solution-statement {
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.solution-statement p {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.solution-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.feature i {
+  font-size: 2.4rem;
+  color: var(--main-color);
+}
+
+.feature span {
+  font-size: 1.8rem;
+  color: var(--text-color);
+}
+
+.service-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border-color: var(--main-color);
+}
+
+.service-card i {
+  font-size: 4rem;
+  color: var(--main-color);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  color: var(--secundary-color);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-card p {
+  font-size: 1.4rem;
+  color: var(--text-color);
 }
 
 .cta-buttons {
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   gap: 2rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
+  width: 100%;
 }
 
 .trust-indicators {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  text-align: center;
   gap: 3rem;
   margin-bottom: 3rem;
+  width: 100%;
 }
 
 .trust-item {
@@ -371,6 +487,18 @@ span {
   color: var(--text-color);
 }
 
+.home-content .social-media {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-media {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0 auto 2rem;
+}
+
 .home-content .social-media a {
   display: inline-flex;
   justify-content: center;
@@ -380,15 +508,16 @@ span {
   background: transparent;
   border: .2rem solid var(--main-color);
   border-radius: 50%;
-  box-shadow: 0 .2rem .5rem var(--shadow-color);
+  box-shadow: 0 .2rem .5rem rgba(0, 0, 0, 0.1);
   font-size: 2rem;
   color: var(--main-color);
-  margin: 2.5rem 1.5rem 3rem 0;
+  transition: all 0.3s ease;
 }
 
 .home-content .social-media a:hover {
   background: var(--main-color);
   color: var(--bg-color);
+  transform: translateY(-3px);
 }
 
 .home-img {
@@ -397,7 +526,7 @@ span {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -418,8 +547,20 @@ span {
   width: 100%;
   height: 100%;
   background: var(--bg-color);
-  opacity: 0.5;
+  opacity: 0.6;
   z-index: 1;
+}
+
+@keyframes headerFadeIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* ----- ABOUT SECTION ----- */
@@ -1447,14 +1588,15 @@ span {
 
 /* Botão do WhatsApp */
 .whatsapp-float {
-  display: flex;
-  align-items: center;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  border-radius: 50%;
+  padding: 15px;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
   background: var(--main-color);
-  color: var(--secundary-color);
-  padding: 12px 20px;
-  border-radius: 50px;
-  text-decoration: none;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  color: var(--secundary-color) !important
 }
 
 .whatsapp-float:hover {
@@ -1568,6 +1710,14 @@ span {
   html {
     font-size: 55%;
   }
+
+  .home-content h1 {
+    font-size: 4.5rem;
+  }
+
+  .home-content h2 {
+    font-size: 2.2rem;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -1594,6 +1744,18 @@ span {
     background: var(--main-color);
     opacity: .7;
   }
+
+  .header {
+    padding: 1.5rem 5%;
+  }
+
+  .nav-links {
+    gap: 2rem;
+  }
+
+  .home-content {
+    padding: 2rem;
+  }
 }
 
 @media (max-width: 896px) {
@@ -1616,12 +1778,8 @@ span {
 
 @media (max-width: 768px) {
   section {
-    padding: 10rem 5% 4rem;
-  }
-
-  #menu-icon {
-    display: block;
-    color: var(--secundary-color);
+    padding: 8rem 3% 2rem !important;
+    margin-bottom: 2rem;
   }
 
   .services-container {
@@ -1656,13 +1814,22 @@ span {
   }
 
   .navbar a {
-    position: relative;
-    justify-content: center;
-    align-items: center;
     display: block;
+    margin: 3rem 0;
+    text-align: center;
     font-size: 2rem;
-    margin: 5rem 0;
-    color: var(--text-color);
+    color: var(--text-color) !important;
+  }
+
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .navbar a::after,
+  .navbar a::before {
+    display: none;
   }
 
   .navbar a::after {
@@ -1675,17 +1842,319 @@ span {
     background: transparent;
   }
 
-  .home-content h3 {
-    font-size: 2.6rem;
+  .navbar-container {
+    display: flex;
+    align-items: center;
   }
 
-  .home-content h1 {
-    font-size: 5rem;
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 3.5rem;
   }
 
-  .home-content .social-media a {
-    margin: 1rem .60rem 1rem;
+  .nav-links li {
+    position: relative;
   }
+
+  .nav-links a {
+    position: relative;
+    font-size: 1.7rem;
+    color: var(--nav-text);
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.4s ease;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    transform: translateY(-2px);
+  }
+
+  .nav-links a:hover::after {
+    width: 100%;
+  }
+
+  .header.sticky .nav-links a {
+    color: var(--nav-text-sticky);
+  }
+
+  .header.sticky .nav-links a:hover {
+    color: var(--main-color);
+  }
+
+  .nav-links a.active {
+    color: var(--secundary-color) !important;
+  }
+
+  .nav-links a.active::after {
+    width: 100%;
+    background: var(--secundary-color);
+  }
+
+  .navbar-header,
+  .navbar-social,
+  .close-menu {
+    display: none;
+  }
+
+  .header {
+    padding: 1.2rem 5%;
+  }
+
+  #menu-icon {
+    display: block;
+    color: var(--secundary-color);
+  }
+
+  .navbar {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 4%;
+    background: var(--bg-color);
+    border-top: .1rem solid rgba(0, 0, 0, .2);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    transition: all 0.3s ease;
+    display: block;
+    max-height: 0;
+    overflow-y: hidden;
+  }
+
+  .navbar.active {
+    top: 100%;
+    max-height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 4rem;
+  }
+
+  .navbar-container {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+  }
+
+  .navbar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .close-menu {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 3rem;
+    color: var(--text-color);
+    cursor: pointer;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    margin: 3rem 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 1.5rem 0;
+    font-size: 2rem;
+    color: var(--text-color) !important;
+  }
+
+  .navbar-social {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .navbar-social a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.5rem;
+    height: 4.5rem;
+    background: transparent;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    font-size: 2.2rem;
+    color: var(--main-color);
+  }
+
+  .home-content {
+    text-align: center;
+    max-width: 100%;
+    padding: 0 5% !important;
+  }
+
+  section:not(:first-child) {
+    margin-top: 3rem;
+  }
+
+  .home h1 {
+    font-size: 2.8rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .home h2 {
+    font-size: 1.8rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 2rem !important;
+  }
+
+  h1 {
+    font-size: 2.8rem !important;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 2.4rem !important;
+    margin-bottom: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.8rem !important;
+  }
+
+  .solution-features {
+    align-items: center;
+  }
+
+  .service-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 2.5rem !important;
+    border-radius: 15px !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-card i {
+    font-size: 5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  .service-card h3 {
+    font-size: 1.8rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .service-card p {
+    font-size: 1.5rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .btn-primary,
+  a.btn-primary {
+    font-size: 1.6rem !important;
+    padding: 1.2rem 2.5rem !important;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(226, 255, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .btn-primary:hover,
+  a.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(226, 255, 0, 0.3);
+  }
+
+  /* Botões CTA */
+  .cta-buttons {
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    width: 90% !important;
+    margin: 0 auto 2.5rem !important;
+  }
+
+  .cta-buttons a {
+    width: 100% !important;
+    padding: 1.2rem 1rem !important;
+    font-size: 1.5rem !important;
+    text-align: center !important;
+  }
+
+  .trust-indicators {
+    margin-bottom: 2rem !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    margin-top: 3rem !important;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.4rem !important;
+  }
+
+  .trust-item i {
+    font-size: 2.5rem;
+  }
+
+  .trust-item span {
+    font-size: 1.6rem;
+  }
+
+  .hero-description {
+    padding: 1.5rem !important;
+    margin-bottom: 2.5rem !important;
+    font-size: 1.5rem !important;
+  }
+
+  .social-media {
+    justify-content: center;
+  }
+
+  .trust-indicators {
+    flex-direction: column !important;
+    gap: 1.2rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .trust-item {
+    font-size: 1.4rem !important;
+  }
+
+  /* Adicionar mais espaço na parte inferior */
+  .home-content {
+    padding-bottom: 3rem !important;
+  }
+
+  /* Garantir que o texto caiba na tela */
+  .home-content,
+  .service-card,
+  .hero-description {
+    width: 90% !important;
+    max-width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
 
   .about {
     margin-top: 5rem;
@@ -1695,6 +2164,16 @@ span {
 
   .about-content h2 {
     text-align: center;
+  }
+
+  .about-content ul {
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .about-content ul li {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
   }
 
   .about-img img {
@@ -1716,11 +2195,6 @@ span {
 
   .cta-buttons {
     flex-direction: column;
-  }
-
-  .trust-indicators {
-    flex-direction: column;
-    gap: 1.5rem;
   }
 
   .home-content h1 {
@@ -1778,16 +2252,94 @@ span {
     display: none;
   }
 
+  .hero-description {
+    padding: 1.8rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  .hero-description p {
+    font-size: 1.6rem !important;
+    line-height: 1.5;
+  }
+
   .whatsapp-float {
-    width: 50px;
-    height: 50px;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
     border-radius: 50%;
-    padding: 0;
+    padding: 15px;
     justify-content: center;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
   }
 
   .whatsapp-float i {
+    font-size: 2.5rem;
     margin: 0;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: block;
+  }
+
+  .portfolio-carousel .swiper-pagination {
+    display: none;
+  }
+
+  .contact {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: right;
+  }
+
+  .contact-content {
+    align-items: flex-start;
+    text-align: right;
+    max-width: 600px;
+  }
+
+  .contact-img {
+    order: 2;
+    text-align: right;
+  }
+
+  .contact .heading {
+    text-align: right;
+    margin-right: 8rem;
+  }
+
+  .services-highlights {
+    flex-direction: column !important;
+    gap: 2.5rem !important;
+  }
+
+  .services-container {
+    gap: 3rem !important;
+  }
+
+  .services-box {
+    padding: 3rem 2rem !important;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .home-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .home-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-description {
+    font-size: 1.6rem;
+    padding: 1.5rem;
+  }
+
+  .feature span {
+    font-size: 1.6rem;
   }
 }
 
@@ -1832,40 +2384,20 @@ span {
   }
 }
 
-img {
-  border-radius: 20px;
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
-@media (min-width: 768px) {
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    display: block;
+@keyframes headerFadeIn {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
   }
 
-  .portfolio-carousel .swiper-pagination {
-    display: none;
-  }
-
-  .contact {
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: right;
-  }
-
-  .contact-content {
-    align-items: flex-start;
-    text-align: right;
-    max-width: 600px;
-  }
-
-  .contact-img {
-    order: 2;
-    text-align: right;
-  }
-
-  .contact .heading {
-    text-align: right;
-    margin-right: 8rem;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

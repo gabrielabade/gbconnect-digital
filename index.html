@@ -39,8 +39,11 @@
 </head>
 
 <body>
+  Header Corrigido (Estrutura Original)
+
+  <!-- Header Corrigido - Mantendo a Estrutura Original -->
   <header class="header">
-    <a href="#" class="logo"><img src="./images/logocolor1.webp"></a>
+    <a href="#" class="logo"><img src="./images/logocolor1.webp" alt="GB Connect"></a>
 
     <nav class="navbar">
       <a href="#home" class="active">Início</a>
@@ -56,674 +59,709 @@
     <div class="bx bx-menu" id="menu-icon"></div>
   </header>
 
-  <main>
-    <section class="home" id="home">
-      <div class="home-content">
-        <h1>Sua Empresa no Digital de Forma Profissional</h1>
-        <h2>Site + Presença Digital = Mais Clientes</h2>
-        <p class="hero-description">
-          Tenha um site profissional e uma presença digital completa por um preço acessível.<br>
-          Ideal para pequenas empresas e empreendedores que querem crescer online.
-        </p>
+  <!-- Home Section Refatorada -->
+  <!-- Seção Home Simplificada -->
+  <section class="home" id="home">
+    <div class="home-content" style="text-align: center; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+      <h1>Perdendo Clientes por Falta de Presença Digital?</h1>
+      <h2>Seu negócio merece ser encontrado por quem realmente precisa dele</h2>
 
-        <div class="cta-buttons">
-          <a href="#contact" class="btn btn-primary">Solicitar Orçamento Grátis</a>
-          <a href="#services" class="btn btn-secondary">Conhecer Serviços</a>
+      <!-- Descrição principal simplificada com borda lateral -->
+      <div class="hero-description"
+        style="max-width: 800px; margin: 0 auto 3rem; padding: 1.5rem; border-left: 4px solid var(--secundary-color); background: rgba(5, 18, 89, 0.7); border-radius: 8px; text-align: left;">
+        <p>Enquanto você lê isso, potenciais clientes estão procurando por seus serviços online, mas encontrando seus
+          concorrentes. <strong>86% dos consumidores</strong> pesquisam na internet antes de comprar.</p>
+      </div>
+
+      <!-- Serviços simplificados em formato de cards -->
+      <div class="services-highlights"
+        style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap;">
+        <div class="service-card"
+          style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 10px; flex: 1; min-width: 200px; max-width: 300px; text-align: center;">
+          <i class='bx bx-globe'
+            style="font-size: 4rem; color: var(--main-color); display: block; margin-bottom: 1rem;"></i>
+          <h3 style="color: var(--secundary-color); margin-bottom: 0.5rem;">Site Profissional</h3>
+          <p style="font-size: 1.4rem;">Responsivo e otimizado para seus clientes</p>
         </div>
 
-        <div class="trust-indicators">
-          <div class="trust-item">
-            <i class='bx bx-rocket'></i>
-            <span>Pacotes Acessíveis</span>
-          </div>
-          <div class="trust-item">
-            <i class='bx bx-check-shield'></i>
-            <span>Suporte Personalizado</span>
-          </div>
-          <div class="trust-item">
-            <i class='bx bx-star'></i>
-            <span>100% de Satisfação</span>
-          </div>
+        <div class="service-card"
+          style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 10px; flex: 1; min-width: 200px; max-width: 300px; text-align: center;">
+          <i class='bx bx-map-pin'
+            style="font-size: 4rem; color: var(--main-color); display: block; margin-bottom: 1rem;"></i>
+          <h3 style="color: var(--secundary-color); margin-bottom: 0.5rem;">Presença no Google</h3>
+          <p style="font-size: 1.4rem;">Seja encontrado nas buscas locais</p>
         </div>
 
-        <div class="social-media">
-          <a href="https://www.instagram.com/gbconnect.digital" target="_blank" title="Siga-nos no Instagram">
-            <i class='bx bxl-instagram'></i>
-          </a>
-          <a href="mailto:gabriela.bade@hotmail.com" target="_blank" title="Fale conosco por Email">
-            <i class='bx bx-envelope'></i>
-          </a>
-          <a href="https://wa.me/5548991056014" target="_blank" title="Fale conosco no WhatsApp"
-            class="whatsapp-button">
-            <i class='bx bxl-whatsapp'></i>
-          </a>
+        <div class="service-card"
+          style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 10px; flex: 1; min-width: 200px; max-width: 300px; text-align: center;">
+          <i class='bx bx-camera'
+            style="font-size: 4rem; color: var(--main-color); display: block; margin-bottom: 1rem;"></i>
+          <h3 style="color: var(--secundary-color); margin-bottom: 0.5rem;">Redes Sociais</h3>
+          <p style="font-size: 1.4rem;">Conteúdo atrativo para Instagram e Facebook</p>
         </div>
       </div>
 
-      <div class="home-img">
-        <img src="https://gbconnect.br-se1.magaluobjects.com/bg.gif" alt="GB Connect - Transformação Digital"
-          loading="lazy">
-      </div>
-    </section>
-
-    <section class="about" id="about">
-      <div class="about-img">
-        <img src="images/img.svg" alt="" loading="lazy" width="20%">
+      <!-- Botões de CTA lado a lado -->
+      <div class="cta-buttons"
+        style="display: flex; flex-direction: row; justify-content: center; gap: 2rem; margin-bottom: 3rem;">
+        <a href="#contact" class="btn btn-primary">Solicitar Orçamento Grátis</a>
+        <a href="#services" class="btn btn-secondary">Ver Serviços Completos</a>
       </div>
 
-      <div class="about-content">
-        <h2 class="heading">Por Que Escolher a <span>GB Connect</span> ?</h2>
-        <p>
-          Entendemos as necessidades dos pequenos negócios e oferecemos soluções digitais completas e acessíveis.</br>
-          Nossa missão é ajudar empreendedores a crescerem online com:
-        </p>
-        <ul>
-          <li>✓ Sites otimizados para conversão</li>
-          <li>✓ Hospedagem e domínio inclusos</li>
-          <li>✓ Presença profissional no Google</li>
-          <li>✓ Gestão de redes sociais personalizada</li>
-          <li>✓ Suporte técnico contínuo</li>
-        </ul>
-        <a href="#contact" class="btn">Solicitar Proposta</a>
-      </div>
-    </section>
-
-    <!-- services section design -->
-    <section class="services" id="services">
-      <h2 class="heading">Soluções <span>Completas</span></h2>
-
-      <div class="services-container">
-        <div class="services-box">
-          <i class='bx bx-code-alt'></i>
-          <h3>Site Profissional</h3>
-          <p>
-            • Design responsivo e moderno<br>
-            • Hospedagem inclusa<br>
-            • Domínio personalizado<br>
-            • Otimizado para Google<br>
-            • Integração com WhatsApp<br>
-            • Integração com redes sociais<br>
-            • Suporte técnico contínuo
-          </p>
-          <a href="#contact" class="btn">Solicitar Orçamento</a>
+      <!-- Indicadores de confiança lado a lado -->
+      <div class="trust-indicators"
+        style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 3rem; margin-bottom: 3rem;">
+        <div class="trust-item">
+          <i class='bx bx-rocket'></i>
+          <span>Pacotes Acessíveis</span>
         </div>
-
-        <div class="services-box">
-          <i class='bx bx-map'></i>
-          <h3>Google Meu Negócio</h3>
-          <p>
-            • Cadastro completo no Maps<br>
-            • Otimização do perfil<br>
-            • Inclusão de serviços<br>
-            • Inclusão de Fotos<br>
-            • Configuração de horários<br>
-          </p>
-          <a href="#contact" class="btn">Solicitar Orçamento</a>
+        <div class="trust-item">
+          <i class='bx bx-check-shield'></i>
+          <span>Suporte Personalizado</span>
         </div>
-
-        <div class="services-box">
-          <i class='bx bx-store'></i>
-          <h3>Gestão de Redes Sociais</h3>
-          <p>
-            • Criação de conteúdo<br>
-            • Posts personalizados<br>
-            • Stories personalizados<br>
-            • Identidade visual<br>
-            • Capas para destaques<br>
-            • Descrições otimizadas<br>
-            • Suporte contínuo<br>
-          </p>
-          <a href="#contact" class="btn">Solicitar Orçamento</a>
+        <div class="trust-item">
+          <i class='bx bx-star'></i>
+          <span>100% de Satisfação</span>
         </div>
       </div>
 
-      <div id="tipos-de-sites" class="tipos-sites">
-        <h2>Escolha o Tipo de Site Ideal para Você</h2>
-        <div class="cards-container">
-          <!-- Card items com estrutura repetida - poderia ser gerado por JS em uma aplicação mais complexa -->
-          <div class="card">
-            <img src="img/multi-page.png" alt="Site Multi Page">
-            <h3>Site Multi Page</h3>
-            <p>As informações são dividas por páginas específicas para cada produto/serviço, assim como as demais
-              páginas que se fizerem necessárias.</p>
-            <span>Prazo: 60 dias</span>
-            <a href="#contact" class="btn-solicitar">Solicitar Orçamento</a>
-          </div>
-
-          <div class="card">
-            <img src="img/one-page.png" alt="Site One Page">
-            <h3>Site One Page</h3>
-            <p>As informações são agrupadas em uma única página, com categorias divididas por seções. Ao clicar no menu,
-              o site rola para a seção correspondente.</p>
-            <span>Prazo: 30 dias</span>
-            <a href="#contact" class="btn-solicitar">Solicitar Orçamento</a>
-          </div>
-
-          <div class="card">
-            <img src="img/landing-page.png" alt="Landing Page">
-            <h3>Landing Page</h3>
-            <p>As informações são agrupadas em uma única página, planejada e desenvolvida de acordo com o objetivo das
-              campanhas de anúncios.</p>
-            <span>Prazo: 20 dias</span>
-            <a href="#contact" class="btn-solicitar">Solicitar Orçamento</a>
-          </div>
-
-          <div class="card">
-            <img src="img/site-expresso.png" alt="Site Expresso">
-            <h3>Site Expresso</h3>
-            <p>Usamos um template de Site pré-pronto, adaptado com as informações, fotos, logo e cores do cliente.
-              Personalizado com sua identidade visual.</p>
-            <span>Prazo: 10 dias</span>
-            <a href="#contact" class="btn-solicitar">Solicitar Orçamento</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- trust section design -->
-    <section class="trust-section" id="trust">
-      <h2>Como Funciona</h2>
-      <p>O processo todo para criarmos seu site, desde a primeira conversa até o site entrar no ar, acontecerá em 4
-        etapas, com prazo máximo de 30 dias!</p>
-
-      <div class="timeline">
-        <div class="etapa">
-          <span class="numero">1</span>
-          <h3>Briefing e Apresentação da proposta</h3>
-          <p>Faremos algumas perguntas, por e-mail, WhatsApp ou reunião online (como preferir), para conhecer melhor sua
-            empresa e seus objetivos e então apresentarmos uma proposta.</p>
-        </div>
-        <div class="etapa">
-          <span class="numero">2</span>
-          <h3>Coleta de informações e pesquisa de mercado</h3>
-          <p>Com a proposta aprovada, começaremos a preparar o material necessário para o desenvolvimento, como
-            logotipo, cores da marca, informações da empresa, produtos/serviços, imagens/fotos e análise de
-            concorrentes.</p>
-        </div>
-        <div class="etapa">
-          <span class="numero">3</span>
-          <h3>Planejamento e desenvolvimento do site</h3>
-          <p>Vamos organizar e criar uma estrutura adequada para as informações coletadas. Em seguida, montaremos o
-            layout do site e vamos apresentando e ajustando até a aprovação final e publicação.</p>
-        </div>
-        <div class="etapa">
-          <span class="numero">4</span>
-          <h3>Cadastro e configuração das ferramentas do Google</h3>
-          <p>Após a publicação, incluiremos o site no Google Search Console (buscas do Google) e no Google Meu Negócio,
-            que exibe a empresa no Google Maps.</p>
-        </div>
-      </div>
-
-      <div class="trust-container">
-        <div class="trust-grid">
-          <div class="trust-card">
-            <div class="trust-icon">
-              <i class='bx bx-check-shield'></i>
-            </div>
-            <h3>Satisfação Garantida</h3>
-            <p>Se você não estiver satisfeito com nosso trabalho, devolvemos seu dinheiro em até 7 dias após a entrega.
-            </p>
-          </div>
-
-          <div class="trust-card">
-            <div class="trust-icon">
-              <i class='bx bx-time-five'></i>
-            </div>
-            <h3>Compromisso com Prazo</h3>
-            <p>Entregamos seu projeto no prazo combinado ou você recebe desconto por dia de atraso.</p>
-          </div>
-
-          <div class="trust-card">
-            <div class="trust-icon">
-              <i class='bx bx-support'></i>
-            </div>
-            <h3>Suporte Personalizado</h3>
-            <p>Atendimento rápido e personalizado via WhatsApp para tirar todas suas dúvidas durante o projeto.</p>
-          </div>
-
-          <div class="trust-card">
-            <div class="trust-icon">
-              <i class='bx bx-lock-alt'></i>
-            </div>
-            <h3>Site Seguro</h3>
-            <p>Seu site entregue com certificado de segurança SSL e backup inclusos, garantindo proteção total.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio section -->
-    <section class="portfolio" id="portfolio">
-      <h2 class="heading">Alguns de <span>Nossos Trabalhos</span></h2>
-      <!-- Landing Pages & Websites -->
-      <div class="category-section">
-        <h3 class="category-title">Landing Pages & <span>Websites</span></h3>
-        <div class="portfolio-wrapper">
-          <div class="portfolio-box mySwiper portfolio-carousel">
-            <div class="portfolio-content swiper-wrapper">
-              <!-- Floricultura -->
-              <div class="swiper-slide">
-                <div class="portfolio-item">
-                  <img src="images/floricultura.jpg" alt="Floricultura" loading="lazy">
-                  <div class="portfolio-layer">
-                    <h4>Floricultura Bloom</h4>
-                    <p>Site interativo para explorar produtos, depoimentos e localização de uma
-                      floricultura, com mapa integrado.</p>
-                    <div class="tech-stack">
-                      <span>HTML</span>
-                      <span>CSS</span>
-                      <span>JavaScript</span>
-                    </div>
-                    <a href="https://gabrielabade.github.io/floricultura/" target="_blank">
-                      <i class='bx bx-link-external'></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Outros itens do portfolio continuam aqui... -->
-              <!-- Ciclista -->
-              <div class="swiper-slide">
-                <div class="portfolio-item">
-                  <img src="images/ciclista-tio-pinguinho.jpg" alt="Loja de Bicicletas" loading="lazy">
-                  <div class="portfolio-layer">
-                    <h4>Ciclista</h4>
-                    <p>Página interativa que apresenta serviços, formulário para orçamento,
-                      informações sobre a empresa e um catálogo dinâmico dos principais modelos de bicicletas.</p>
-                    <div class="tech-stack">
-                      <span>HTML</span>
-                      <span>CSS</span>
-                      <span>JavaScript</span>
-                    </div>
-                    <a href="https://ciclistatiopinguinho.netlify.app/" target="_blank">
-                      <i class='bx bx-link-external'></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Studio Dani Bade -->
-              <div class="swiper-slide">
-                <div class="portfolio-item">
-                  <img src="images/studio-dani-bade.jpg" alt="Studio Dani Bade" loading="lazy">
-                  <div class="portfolio-layer">
-                    <h4>Studio Dani Bade</h4>
-                    <p>Site para apresentação de serviços estéticos, com agendamento fácil e
-                      integração com WhatsApp.</p>
-                    <div class="tech-stack">
-                      <span>HTML</span>
-                      <span>CSS</span>
-                      <span>JavaScript</span>
-                    </div>
-                    <a href="https://gabrielabade.github.io/studio-dani-bade/" target="_blank">
-                      <i class='bx bx-link-external'></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Personal Trainer -->
-              <div class="swiper-slide">
-                <div class="portfolio-item">
-                  <img src="images/personal-trainer.jpg" alt="Personal Trainer" loading="lazy">
-                  <div class="portfolio-layer">
-                    <h4>Personal Trainer</h4>
-                    <p>Landing page responsiva para consultoria online, com formulário de contato e
-                      integração com WhatsApp.</p>
-                    <div class="tech-stack">
-                      <span>HTML</span>
-                      <span>CSS</span>
-                      <span>JavaScript</span>
-                    </div>
-                    <a href="https://gabrielabade.github.io/personal-trainer/index.html" target="_blank">
-                      <i class='bx bx-link-external'></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Lift Detox -->
-              <div class="swiper-slide">
-                <div class="portfolio-item">
-                  <img src="images/lift-detox.jpg" alt="Lift Detox Black" loading="lazy">
-                  <div class="portfolio-layer">
-                    <h4>Lift Detox Black</h4>
-                    <p>Página de produto com design responsivo e alternância entre modos claro e
-                      escuro, com links para compra e contato.</p>
-                    <div class="tech-stack">
-                      <span>HTML</span>
-                      <span>CSS</span>
-                      <span>JavaScript</span>
-                    </div>
-                    <a href="https://gabrielabade.github.io/lift-detox-card/" target="_blank">
-                      <i class='bx bx-link-external'></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Cafeteria -->
-              <div class="swiper-slide">
-                <div class="portfolio-item">
-                  <img src="images/cafeteria.jpg" alt="Cafeteria" loading="lazy">
-                  <div class="portfolio-layer">
-                    <h4>Cafeteria</h4>
-                    <p>O Dev Café é um site criado para representar uma cafeteria moderna, com
-                      design responsivo e funcionalidades interativas.</p>
-                    <div class="tech-stack">
-                      <span>HTML</span>
-                      <span>CSS</span>
-                      <span>JavaScript</span>
-                    </div>
-                    <a href="https://gabrielabade.github.io/cafeteria/" target="_blank">
-                      <i class='bx bx-link-external'></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Landing Pages ciclista -->
-              <div class="swiper-slide">
-                <div class="portfolio-item">
-                  <img src="images/ciclista.jpg" alt="Loja de Bicicletas" loading="lazy">
-                  <div class="portfolio-layer">
-                    <h4>Loja de Bicicletas</h4>
-                    <p>Página interativa que apresenta serviços, marcas e um formulário para
-                      orçamento, com design responsivo e mapa integrado.</p>
-                    <div class="tech-stack">
-                      <span>HTML</span>
-                      <span>CSS</span>
-                      <span>JavaScript</span>
-                    </div>
-                    <a href="https://gabrielabade.github.io/ciclista/#" target="_blank">
-                      <i class='bx bx-link-external'></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Business Card -->
-              <div class="swiper-slide">
-                <div class="portfolio-item">
-                  <img src="images/business-card.jpg" alt="Business Card" loading="lazy">
-                  <div class="portfolio-layer">
-                    <h4>Business Card</h4>
-                    <p>Agregador de links online, funcionando como um cartão de visitas digital com
-                      informações e contatos rápidos.</p>
-                    <div class="tech-stack">
-                      <span>HTML</span>
-                      <span>CSS</span>
-                      <span>JavaScript</span>
-                    </div>
-                    <a href="https://gabrielabade.github.io/business-card/" target="_blank">
-                      <i class='bx bx-link-external'></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-            </div> <!-- Fim da swiper-wrapper -->
-
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-          </div>
-        </div>
-      </div> <!-- Fim da seção Landing Pages & Websites -->
-    </section>
-
-    <!-- Testimonials section -->
-    <section class="testimonial-container" id="testimonials" style="min-height: 30vh;">
-      <h2 class="heading">Clientes <span>Satisfeitos</span></h2>
-
-      <div class="testimonial-wrapper">
-        <div class="testimonial-box mySwiper">
-          <div class="testimonial-content swiper-wrapper">
-            <div class="testimonial-slide swiper-slide">
-              <img src="images/testimonial1.webp" alt="" loading="lazy">
-              <h3>João<br><span><small>Loja de Bicicletas</small></span></h3>
-              <blockquote>
-                "Contratei o serviço para criar o site da minha loja, e o resultado superou minhas
-                expectativas! Agora tenho um site completo com formulário para orçamentos, apresentação
-                da empresa e um catálogo dinâmico dos principais produtos, com encaminhamento direto para o
-                WhatsApp. Além disso, minha loja foi colocada no Google com aumento significativo de
-                cliques e recebi um suporte incrível para as redes sociais, com posts e stories personalizados.
-                Fiquei extremamente satisfeito!"
-              </blockquote>
-            </div>
-
-            <div class="testimonial-slide swiper-slide">
-              <img src="images/testimonial2.webp" alt="" loading="lazy">
-              <h3>Daniela<br><span><small>Salão de Beleza</small></span></h3>
-              <blockquote>
-                "Estou muito feliz com o site do meu salão! Ele apresenta todos os serviços de forma
-                profissional e ainda conta com a funcionalidade de agendamento direto pelo WhatsApp.
-                Minha presença no Google foi configurada, e ainda recebi um suporte completo nas redes
-                sociais, com posts, stories, capas para destaques e descrições incríveis. Tudo ficou exatamente
-                como eu queria!"
-              </blockquote>
-            </div>
-
-            <div class="testimonial-slide swiper-slide">
-              <img src="images/testimonial3.webp" alt="" loading="lazy">
-              <h3>Alessandra<br><span><small>Representante Lift Detox</small></span></h3>
-              <blockquote>
-                "Preciso dizer que estou encantada com o trabalho! Solicitei criação da minha logo,
-                capas para destaques e uma página de apresentação do meu produto que ficou incrível. A página tem links
-                diretos para compra e redes sociais, o que facilitou muito para os meus clientes. Recomendo
-                demais!"
-              </blockquote>
-            </div>
-          </div>
-
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-pagination"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq" id="faq">
-      <h2 class="heading">Perguntas <span>Frequentes</span></h2>
-
-      <div class="faq-container">
-        <div class="accordion">
-          <div class="accordion-item">
-            <button class="accordion-header">
-              Quanto custa para criar um site profissional?
-              <i class='bx bx-plus'></i>
-            </button>
-            <div class="accordion-content">
-              <p>Os valores variam de acordo com as necessidades do seu negócio. Oferecemos pacotes que incluem domínio,
-                hospedagem, design responsivo e otimização para o Google. Entre em contato para receber uma proposta
-                personalizada que se adeque ao seu orçamento.</p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-header">
-              Quanto tempo leva para criar um site?
-              <i class='bx bx-plus'></i>
-            </button>
-            <div class="accordion-content">
-              <p>O prazo médio é de 15 a 30 dias, dependendo da complexidade do projeto. Sites mais simples podem ser
-                entregues em menos tempo, enquanto projetos mais elaborados podem exigir um período maior para garantir
-                a qualidade.</p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-header">
-              O que está incluso no serviço de Gestão de Redes Sociais?
-              <i class='bx bx-plus'></i>
-            </button>
-            <div class="accordion-content">
-              <p>Nosso serviço inclui criação de conteúdo personalizado, posts regulares, stories, design de capas para
-                destaques, otimização de descrições e bio, além de suporte contínuo para manter suas redes sociais
-                sempre atualizadas e engajadas.</p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-header">
-              Como funciona o serviço de Google Meu Negócio?
-              <i class='bx bx-plus'></i>
-            </button>
-            <div class="accordion-content">
-              <p>Realizamos o cadastro completo do seu negócio no Google Maps, otimizamos o perfil com informações
-                detalhadas, fotos profissionais, horários de funcionamento e serviços oferecidos. Isso ajuda sua empresa
-                a aparecer nas buscas locais e aumenta a visibilidade online.</p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-header">
-              Quais informações preciso enviar para desenvolverem meu site?
-              <i class='bx bx-plus'></i>
-            </button>
-            <div class="accordion-content">
-              <p>• Texto de breve apresentação da empresa. Com esse texto vamos entender melhor a proposta de atuação
-                de sua empresa, e ajustar de acordo com as melhores 'palavras-chave', deixando o site eficiente para os
-                mecanismos de busca (SEO) como o Google.<br>
-                • Descrição dos Produtos/Serviços. Essa informação é extremamente importante para o SEO e para
-                estruturação do site.<br>
-                • Informações de contato: telefones, e-mail, endereço, etc<br>
-                • Link para os perfis de Redes Sociais que usa (Facebook, Instagram, Twitter, etc)<br>
-                • Logotipo, de preferência, com fundo transparente<br>
-                • Algumas imagens de alta definição, para Banners usados no site, e imagens de seus produtos/serviços.
-                Caso não tenha, não se preocupe! Oferecemos suporte na produção e otimização desse conteúdo caso você
-                não tenha todo o material pronto.</p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-header">
-              O que mais é preciso para ter um site?
-              <i class='bx bx-plus'></i>
-            </button>
-            <div class="accordion-content">
-              <p>Para colocar qualquer site no ar, independente do desenvolvedor que você for contratar, é preciso dois
-                serviços:
-                <br>
-                • Registro de um domínio (o 'nome' do seu site, ex: suaempresa.com.br). Esse domínio pode ser feito
-                diretamente com o registro.br, entidade que regula os domínios no Brasil, e o valor para registrar um
-                domínio é de R$40,00
-                por ano.
-                <br>
-                • Outra necessidade é a hospedagem, o local onde os arquivos do seu site precisam estar, para que fiquem
-                disponíveis na internet 24hs por dia / 7 dias por semana. O valor mensal de uma hospedagem fica em torno
-                de R$24,90
-                mensais.
-              </p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-header">
-              Um site One Page serve para minha empresa?
-              <i class='bx bx-plus'></i>
-            </button>
-            <div class="accordion-content">
-              <p>Neste tipo de site, as informações são condensadas em uma única página, com categorias divididas por
-                seções. Ao clicar no menu, o site rola para a seção correspondente. Por isso tende a ser mais rápido que
-                um site com
-                páginas (multi page).
-                <br>
-                Algumas vantagens do site One Page:
-                <br>
-                • Maior velocidade de carregamento<br>
-                • Facilidade de navegação<br>
-                • Conteúdo objetivo<br>
-                • Maior praticidade para navegação em celulares<br>
-                • Menor custo e entrega mais rápida<br>
-
-                Resumindo: Se você precisa de velocidade de carregamento, um site que facilite a navegação do usuário,
-                quer que os visitantes absorvam um conteúdo prático e completo do seu produto ou serviço e além disso
-                tenha um
-                investimento menor? Então um Site One Page é a opção ideal para sua empresa.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-      <div>
-        <h2 class="heading">Comece Sua <span>Transformação Digital</span></h2>
-
-        <div class="contact-img">
-          <img src="./images/about.webp" alt="GB Connect - Transformação Digital" loading="lazy">
-        </div>
-      </div>
-
-      <form id="contactForm">
-        <p class="contact-intro">
-          Pronto para destacar seu negócio online?<br> Preencha o formulário abaixo e receba uma proposta personalizada.
-        </p>
-        <div class="input-box">
-          <input type="text" id="name" placeholder="Seu nome completo" required>
-          <input type="text" id="company" placeholder="Nome da empresa" required>
-        </div>
-        <div class="input-box">
-          <input type="tel" id="phone" placeholder="Seu WhatsApp para contato" required>
-          <input type="email" id="email" placeholder="Seu melhor e-mail" required>
-        </div>
-        <div class="checkbox-container">
-          <p class="contact-intro">Quais serviços você precisa?</p><br>
-
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="service" value="site"> Site Profissional</label>
-            <label><input type="checkbox" name="service" value="google"> Google Meu Negócio</label>
-            <label><input type="checkbox" name="service" value="redes"> Gestão de Redes Sociais</label>
-          </div>
-        </div>
-
-        <textarea id="message" placeholder="Conte-nos um pouco sobre o seu negócio e suas necessidades..."
-          required></textarea>
-
-        <button type="button" class="btn" onclick="sendToWhatsApp()">Quero minha proposta!</button>
-      </form>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="footer">
-      <div class="footer-text">
-        <p>© GB Connect. Todos os direitos reservados.</p>
-      </div>
-
-      <div class="footer-iconTop">
-        <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
-      </div>
-    </footer>
-
-      <!-- Botão do WhatsApp -->
-      <a href="https://wa.me/5548991056014" target="_blank" class="whatsapp-float">
-        <i class='bx bxl-whatsapp'></i>
-        <span class="whatsapp-text">Fale conosco no WhatsApp</span>
-      </a>
-
-      <!-- Pop-up de Saída -->
-      <div class="exit-popup" id="exitPopup">
-        <div class="exit-popup-content">
-          <button class="close-popup">
-            <i class='bx bx-x'></i>
-          </button>
-          <h3>Oferta Especial! 🎉</h3>
-          <p>Solicite seu orçamento agora e ganhe 15% de desconto no primeiro mês de serviços!</p>
-          <a href="#contact" class="btn-primary">Quero Aproveitar!</a>
-          <button class="btn-secondary">Agora não</button>
-        </div>
+      <!-- Links sociais -->
+      <div class="social-media" style="display: flex; justify-content: center; gap: 1.5rem; margin: 0 auto;">
+        <a href="https://www.instagram.com/gbconnect.digital" target="_blank" title="Siga-nos no Instagram">
+          <i class='bx bxl-instagram'></i>
+        </a>
+        <a href="mailto:gabriela.bade@hotmail.com" target="_blank" title="Fale conosco por Email">
+          <i class='bx bx-envelope'></i>
+        </a>
+        <a href="https://wa.me/5548991056014" target="_blank" title="Fale conosco no WhatsApp" class="whatsapp-button">
+          <i class='bx bxl-whatsapp'></i>
+        </a>
       </div>
     </div>
 
-    <!-- Scripts Section -->
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/theme.js"></script>
+    <div class="home-img">
+      <img src="https://gbconnect.br-se1.magaluobjects.com/bg.gif" alt="GB Connect - Transformação Digital"
+        loading="lazy">
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-img">
+      <img src="images/img.svg" alt="" loading="lazy" width="20%">
+    </div>
+
+    <div class="about-content">
+      <h2 class="heading">Por Que Escolher a <span>GB Connect</span> ?</h2>
+      <p>
+        Entendemos as necessidades dos pequenos negócios e oferecemos soluções digitais completas e acessíveis.</br>
+        Nossa missão é ajudar empreendedores a crescerem online com:
+      </p>
+      <ul>
+        <li>✓ Sites otimizados para conversão</li>
+        <li>✓ Hospedagem e domínio inclusos</li>
+        <li>✓ Presença profissional no Google</li>
+        <li>✓ Gestão de redes sociais personalizada</li>
+        <li>✓ Suporte técnico contínuo</li>
+      </ul>
+      <a href="#contact" class="btn">Solicitar Proposta</a>
+    </div>
+  </section>
+
+  <!-- services section design -->
+  <section class="services" id="services">
+    <h2 class="heading">Soluções <span>Completas</span></h2>
+
+    <div class="services-container">
+      <div class="services-box">
+        <i class='bx bx-code-alt'></i>
+        <h3>Site Profissional</h3>
+        <p>
+          • Design responsivo e moderno<br>
+          • Hospedagem inclusa<br>
+          • Domínio personalizado<br>
+          • Otimizado para Google<br>
+          • Integração com WhatsApp<br>
+          • Integração com redes sociais<br>
+          • Suporte técnico contínuo
+        </p>
+        <a href="#contact" class="btn">Solicitar Orçamento</a>
+      </div>
+
+      <div class="services-box">
+        <i class='bx bx-map'></i>
+        <h3>Google Meu Negócio</h3>
+        <p>
+          • Cadastro completo no Maps<br>
+          • Otimização do perfil<br>
+          • Inclusão de serviços<br>
+          • Inclusão de Fotos<br>
+          • Configuração de horários<br>
+        </p>
+        <a href="#contact" class="btn">Solicitar Orçamento</a>
+      </div>
+
+      <div class="services-box">
+        <i class='bx bx-store'></i>
+        <h3>Gestão de Redes Sociais</h3>
+        <p>
+          • Criação de conteúdo<br>
+          • Posts personalizados<br>
+          • Stories personalizados<br>
+          • Identidade visual<br>
+          • Capas para destaques<br>
+          • Descrições otimizadas<br>
+          • Suporte contínuo<br>
+        </p>
+        <a href="#contact" class="btn">Solicitar Orçamento</a>
+      </div>
+    </div>
+
+    <div id="tipos-de-sites" class="tipos-sites">
+      <h2>Escolha o Tipo de Site Ideal para Você</h2>
+      <div class="cards-container">
+        <!-- Card items com estrutura repetida - poderia ser gerado por JS em uma aplicação mais complexa -->
+        <div class="card">
+          <img src="img/multi-page.png" alt="Site Multi Page">
+          <h3>Site Multi Page</h3>
+          <p>As informações são dividas por páginas específicas para cada produto/serviço, assim como as demais
+            páginas que se fizerem necessárias.</p>
+          <span>Prazo: 60 dias</span>
+          <a href="#contact" class="btn-solicitar">Solicitar Orçamento</a>
+        </div>
+
+        <div class="card">
+          <img src="img/one-page.png" alt="Site One Page">
+          <h3>Site One Page</h3>
+          <p>As informações são agrupadas em uma única página, com categorias divididas por seções. Ao clicar no menu,
+            o site rola para a seção correspondente.</p>
+          <span>Prazo: 30 dias</span>
+          <a href="#contact" class="btn-solicitar">Solicitar Orçamento</a>
+        </div>
+
+        <div class="card">
+          <img src="img/landing-page.png" alt="Landing Page">
+          <h3>Landing Page</h3>
+          <p>As informações são agrupadas em uma única página, planejada e desenvolvida de acordo com o objetivo das
+            campanhas de anúncios.</p>
+          <span>Prazo: 20 dias</span>
+          <a href="#contact" class="btn-solicitar">Solicitar Orçamento</a>
+        </div>
+
+        <div class="card">
+          <img src="img/site-expresso.png" alt="Site Expresso">
+          <h3>Site Expresso</h3>
+          <p>Usamos um template de Site pré-pronto, adaptado com as informações, fotos, logo e cores do cliente.
+            Personalizado com sua identidade visual.</p>
+          <span>Prazo: 10 dias</span>
+          <a href="#contact" class="btn-solicitar">Solicitar Orçamento</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- trust section design -->
+  <section class="trust-section" id="trust">
+    <h2>Como Funciona</h2>
+    <p>O processo todo para criarmos seu site, desde a primeira conversa até o site entrar no ar, acontecerá em 4
+      etapas, com prazo máximo de 30 dias!</p>
+
+    <div class="timeline">
+      <div class="etapa">
+        <span class="numero">1</span>
+        <h3>Briefing e Apresentação da proposta</h3>
+        <p>Faremos algumas perguntas, por e-mail, WhatsApp ou reunião online (como preferir), para conhecer melhor sua
+          empresa e seus objetivos e então apresentarmos uma proposta.</p>
+      </div>
+      <div class="etapa">
+        <span class="numero">2</span>
+        <h3>Coleta de informações e pesquisa de mercado</h3>
+        <p>Com a proposta aprovada, começaremos a preparar o material necessário para o desenvolvimento, como
+          logotipo, cores da marca, informações da empresa, produtos/serviços, imagens/fotos e análise de
+          concorrentes.</p>
+      </div>
+      <div class="etapa">
+        <span class="numero">3</span>
+        <h3>Planejamento e desenvolvimento do site</h3>
+        <p>Vamos organizar e criar uma estrutura adequada para as informações coletadas. Em seguida, montaremos o
+          layout do site e vamos apresentando e ajustando até a aprovação final e publicação.</p>
+      </div>
+      <div class="etapa">
+        <span class="numero">4</span>
+        <h3>Cadastro e configuração das ferramentas do Google</h3>
+        <p>Após a publicação, incluiremos o site no Google Search Console (buscas do Google) e no Google Meu Negócio,
+          que exibe a empresa no Google Maps.</p>
+      </div>
+    </div>
+
+    <div class="trust-container">
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-icon">
+            <i class='bx bx-check-shield'></i>
+          </div>
+          <h3>Satisfação Garantida</h3>
+          <p>Se você não estiver satisfeito com nosso trabalho, devolvemos seu dinheiro em até 7 dias após a entrega.
+          </p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">
+            <i class='bx bx-time-five'></i>
+          </div>
+          <h3>Compromisso com Prazo</h3>
+          <p>Entregamos seu projeto no prazo combinado ou você recebe desconto por dia de atraso.</p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">
+            <i class='bx bx-support'></i>
+          </div>
+          <h3>Suporte Personalizado</h3>
+          <p>Atendimento rápido e personalizado via WhatsApp para tirar todas suas dúvidas durante o projeto.</p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">
+            <i class='bx bx-lock-alt'></i>
+          </div>
+          <h3>Site Seguro</h3>
+          <p>Seu site entregue com certificado de segurança SSL e backup inclusos, garantindo proteção total.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio section -->
+  <section class="portfolio" id="portfolio">
+    <h2 class="heading">Alguns de <span>Nossos Trabalhos</span></h2>
+    <!-- Landing Pages & Websites -->
+    <div class="category-section">
+      <h3 class="category-title">Landing Pages & <span>Websites</span></h3>
+      <div class="portfolio-wrapper">
+        <div class="portfolio-box mySwiper portfolio-carousel">
+          <div class="portfolio-content swiper-wrapper">
+            <!-- Floricultura -->
+            <div class="swiper-slide">
+              <div class="portfolio-item">
+                <img src="images/floricultura.jpg" alt="Floricultura" loading="lazy">
+                <div class="portfolio-layer">
+                  <h4>Floricultura Bloom</h4>
+                  <p>Site interativo para explorar produtos, depoimentos e localização de uma
+                    floricultura, com mapa integrado.</p>
+                  <div class="tech-stack">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                  </div>
+                  <a href="https://gabrielabade.github.io/floricultura/" target="_blank">
+                    <i class='bx bx-link-external'></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Outros itens do portfolio continuam aqui... -->
+            <!-- Ciclista -->
+            <div class="swiper-slide">
+              <div class="portfolio-item">
+                <img src="images/ciclista-tio-pinguinho.jpg" alt="Loja de Bicicletas" loading="lazy">
+                <div class="portfolio-layer">
+                  <h4>Ciclista</h4>
+                  <p>Página interativa que apresenta serviços, formulário para orçamento,
+                    informações sobre a empresa e um catálogo dinâmico dos principais modelos de bicicletas.</p>
+                  <div class="tech-stack">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                  </div>
+                  <a href="https://ciclistatiopinguinho.netlify.app/" target="_blank">
+                    <i class='bx bx-link-external'></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Studio Dani Bade -->
+            <div class="swiper-slide">
+              <div class="portfolio-item">
+                <img src="images/studio-dani-bade.jpg" alt="Studio Dani Bade" loading="lazy">
+                <div class="portfolio-layer">
+                  <h4>Studio Dani Bade</h4>
+                  <p>Site para apresentação de serviços estéticos, com agendamento fácil e
+                    integração com WhatsApp.</p>
+                  <div class="tech-stack">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                  </div>
+                  <a href="https://gabrielabade.github.io/studio-dani-bade/" target="_blank">
+                    <i class='bx bx-link-external'></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Personal Trainer -->
+            <div class="swiper-slide">
+              <div class="portfolio-item">
+                <img src="images/personal-trainer.jpg" alt="Personal Trainer" loading="lazy">
+                <div class="portfolio-layer">
+                  <h4>Personal Trainer</h4>
+                  <p>Landing page responsiva para consultoria online, com formulário de contato e
+                    integração com WhatsApp.</p>
+                  <div class="tech-stack">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                  </div>
+                  <a href="https://gabrielabade.github.io/personal-trainer/index.html" target="_blank">
+                    <i class='bx bx-link-external'></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lift Detox -->
+            <div class="swiper-slide">
+              <div class="portfolio-item">
+                <img src="images/lift-detox.jpg" alt="Lift Detox Black" loading="lazy">
+                <div class="portfolio-layer">
+                  <h4>Lift Detox Black</h4>
+                  <p>Página de produto com design responsivo e alternância entre modos claro e
+                    escuro, com links para compra e contato.</p>
+                  <div class="tech-stack">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                  </div>
+                  <a href="https://gabrielabade.github.io/lift-detox-card/" target="_blank">
+                    <i class='bx bx-link-external'></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cafeteria -->
+            <div class="swiper-slide">
+              <div class="portfolio-item">
+                <img src="images/cafeteria.jpg" alt="Cafeteria" loading="lazy">
+                <div class="portfolio-layer">
+                  <h4>Cafeteria</h4>
+                  <p>O Dev Café é um site criado para representar uma cafeteria moderna, com
+                    design responsivo e funcionalidades interativas.</p>
+                  <div class="tech-stack">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                  </div>
+                  <a href="https://gabrielabade.github.io/cafeteria/" target="_blank">
+                    <i class='bx bx-link-external'></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Landing Pages ciclista -->
+            <div class="swiper-slide">
+              <div class="portfolio-item">
+                <img src="images/ciclista.jpg" alt="Loja de Bicicletas" loading="lazy">
+                <div class="portfolio-layer">
+                  <h4>Loja de Bicicletas</h4>
+                  <p>Página interativa que apresenta serviços, marcas e um formulário para
+                    orçamento, com design responsivo e mapa integrado.</p>
+                  <div class="tech-stack">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                  </div>
+                  <a href="https://gabrielabade.github.io/ciclista/#" target="_blank">
+                    <i class='bx bx-link-external'></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Business Card -->
+            <div class="swiper-slide">
+              <div class="portfolio-item">
+                <img src="images/business-card.jpg" alt="Business Card" loading="lazy">
+                <div class="portfolio-layer">
+                  <h4>Business Card</h4>
+                  <p>Agregador de links online, funcionando como um cartão de visitas digital com
+                    informações e contatos rápidos.</p>
+                  <div class="tech-stack">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                  </div>
+                  <a href="https://gabrielabade.github.io/business-card/" target="_blank">
+                    <i class='bx bx-link-external'></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- Fim da swiper-wrapper -->
+
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        </div>
+      </div>
+    </div> <!-- Fim da seção Landing Pages & Websites -->
+  </section>
+
+  <!-- Testimonials section -->
+  <section class="testimonial-container" id="testimonials" style="min-height: 30vh;">
+    <h2 class="heading">Clientes <span>Satisfeitos</span></h2>
+
+    <div class="testimonial-wrapper">
+      <div class="testimonial-box mySwiper">
+        <div class="testimonial-content swiper-wrapper">
+          <div class="testimonial-slide swiper-slide">
+            <img src="images/testimonial1.webp" alt="" loading="lazy">
+            <h3>João<br><span><small>Loja de Bicicletas</small></span></h3>
+            <blockquote>
+              "Contratei o serviço para criar o site da minha loja, e o resultado superou minhas
+              expectativas! Agora tenho um site completo com formulário para orçamentos, apresentação
+              da empresa e um catálogo dinâmico dos principais produtos, com encaminhamento direto para o
+              WhatsApp. Além disso, minha loja foi colocada no Google com aumento significativo de
+              cliques e recebi um suporte incrível para as redes sociais, com posts e stories personalizados.
+              Fiquei extremamente satisfeito!"
+            </blockquote>
+          </div>
+
+          <div class="testimonial-slide swiper-slide">
+            <img src="images/testimonial2.webp" alt="" loading="lazy">
+            <h3>Daniela<br><span><small>Salão de Beleza</small></span></h3>
+            <blockquote>
+              "Estou muito feliz com o site do meu salão! Ele apresenta todos os serviços de forma
+              profissional e ainda conta com a funcionalidade de agendamento direto pelo WhatsApp.
+              Minha presença no Google foi configurada, e ainda recebi um suporte completo nas redes
+              sociais, com posts, stories, capas para destaques e descrições incríveis. Tudo ficou exatamente
+              como eu queria!"
+            </blockquote>
+          </div>
+
+          <div class="testimonial-slide swiper-slide">
+            <img src="images/testimonial3.webp" alt="" loading="lazy">
+            <h3>Alessandra<br><span><small>Representante Lift Detox</small></span></h3>
+            <blockquote>
+              "Preciso dizer que estou encantada com o trabalho! Solicitei criação da minha logo,
+              capas para destaques e uma página de apresentação do meu produto que ficou incrível. A página tem links
+              diretos para compra e redes sociais, o que facilitou muito para os meus clientes. Recomendo
+              demais!"
+            </blockquote>
+          </div>
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <h2 class="heading">Perguntas <span>Frequentes</span></h2>
+
+    <div class="faq-container">
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Quanto custa para criar um site profissional?
+            <i class='bx bx-plus'></i>
+          </button>
+          <div class="accordion-content">
+            <p>Os valores variam de acordo com as necessidades do seu negócio. Oferecemos pacotes que incluem domínio,
+              hospedagem, design responsivo e otimização para o Google. Entre em contato para receber uma proposta
+              personalizada que se adeque ao seu orçamento.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Quanto tempo leva para criar um site?
+            <i class='bx bx-plus'></i>
+          </button>
+          <div class="accordion-content">
+            <p>O prazo médio é de 15 a 30 dias, dependendo da complexidade do projeto. Sites mais simples podem ser
+              entregues em menos tempo, enquanto projetos mais elaborados podem exigir um período maior para garantir
+              a qualidade.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            O que está incluso no serviço de Gestão de Redes Sociais?
+            <i class='bx bx-plus'></i>
+          </button>
+          <div class="accordion-content">
+            <p>Nosso serviço inclui criação de conteúdo personalizado, posts regulares, stories, design de capas para
+              destaques, otimização de descrições e bio, além de suporte contínuo para manter suas redes sociais
+              sempre atualizadas e engajadas.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Como funciona o serviço de Google Meu Negócio?
+            <i class='bx bx-plus'></i>
+          </button>
+          <div class="accordion-content">
+            <p>Realizamos o cadastro completo do seu negócio no Google Maps, otimizamos o perfil com informações
+              detalhadas, fotos profissionais, horários de funcionamento e serviços oferecidos. Isso ajuda sua empresa
+              a aparecer nas buscas locais e aumenta a visibilidade online.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Quais informações preciso enviar para desenvolverem meu site?
+            <i class='bx bx-plus'></i>
+          </button>
+          <div class="accordion-content">
+            <p>• Texto de breve apresentação da empresa. Com esse texto vamos entender melhor a proposta de atuação
+              de sua empresa, e ajustar de acordo com as melhores 'palavras-chave', deixando o site eficiente para os
+              mecanismos de busca (SEO) como o Google.<br>
+              • Descrição dos Produtos/Serviços. Essa informação é extremamente importante para o SEO e para
+              estruturação do site.<br>
+              • Informações de contato: telefones, e-mail, endereço, etc<br>
+              • Link para os perfis de Redes Sociais que usa (Facebook, Instagram, Twitter, etc)<br>
+              • Logotipo, de preferência, com fundo transparente<br>
+              • Algumas imagens de alta definição, para Banners usados no site, e imagens de seus produtos/serviços.
+              Caso não tenha, não se preocupe! Oferecemos suporte na produção e otimização desse conteúdo caso você
+              não tenha todo o material pronto.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            O que mais é preciso para ter um site?
+            <i class='bx bx-plus'></i>
+          </button>
+          <div class="accordion-content">
+            <p>Para colocar qualquer site no ar, independente do desenvolvedor que você for contratar, é preciso dois
+              serviços:
+              <br>
+              • Registro de um domínio (o 'nome' do seu site, ex: suaempresa.com.br). Esse domínio pode ser feito
+              diretamente com o registro.br, entidade que regula os domínios no Brasil, e o valor para registrar um
+              domínio é de R$40,00
+              por ano.
+              <br>
+              • Outra necessidade é a hospedagem, o local onde os arquivos do seu site precisam estar, para que fiquem
+              disponíveis na internet 24hs por dia / 7 dias por semana. O valor mensal de uma hospedagem fica em torno
+              de R$24,90
+              mensais.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-header">
+            Um site One Page serve para minha empresa?
+            <i class='bx bx-plus'></i>
+          </button>
+          <div class="accordion-content">
+            <p>Neste tipo de site, as informações são condensadas em uma única página, com categorias divididas por
+              seções. Ao clicar no menu, o site rola para a seção correspondente. Por isso tende a ser mais rápido que
+              um site com
+              páginas (multi page).
+              <br>
+              Algumas vantagens do site One Page:
+              <br>
+              • Maior velocidade de carregamento<br>
+              • Facilidade de navegação<br>
+              • Conteúdo objetivo<br>
+              • Maior praticidade para navegação em celulares<br>
+              • Menor custo e entrega mais rápida<br>
+
+              Resumindo: Se você precisa de velocidade de carregamento, um site que facilite a navegação do usuário,
+              quer que os visitantes absorvam um conteúdo prático e completo do seu produto ou serviço e além disso
+              tenha um
+              investimento menor? Então um Site One Page é a opção ideal para sua empresa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <div>
+      <h2 class="heading">Comece Sua <span>Transformação Digital</span></h2>
+
+      <div class="contact-img">
+        <img src="./images/about.webp" alt="GB Connect - Transformação Digital" loading="lazy">
+      </div>
+    </div>
+
+    <form id="contactForm">
+      <p class="contact-intro">
+        Pronto para destacar seu negócio online?<br> Preencha o formulário abaixo e receba uma proposta personalizada.
+      </p>
+      <div class="input-box">
+        <input type="text" id="name" placeholder="Seu nome completo" required>
+        <input type="text" id="company" placeholder="Nome da empresa" required>
+      </div>
+      <div class="input-box">
+        <input type="tel" id="phone" placeholder="Seu WhatsApp para contato" required>
+        <input type="email" id="email" placeholder="Seu melhor e-mail" required>
+      </div>
+      <div class="checkbox-container">
+        <p class="contact-intro">Quais serviços você precisa?</p><br>
+
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="service" value="site"> Site Profissional</label>
+          <label><input type="checkbox" name="service" value="google"> Google Meu Negócio</label>
+          <label><input type="checkbox" name="service" value="redes"> Gestão de Redes Sociais</label>
+        </div>
+      </div>
+
+      <textarea id="message" placeholder="Conte-nos um pouco sobre o seu negócio e suas necessidades..."
+        required></textarea>
+
+      <button type="button" class="btn" onclick="sendToWhatsApp()">Quero minha proposta!</button>
+    </form>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-text">
+      <p>© GB Connect. Todos os direitos reservados.</p>
+    </div>
+
+    <div class="footer-iconTop">
+      <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+    </div>
+  </footer>
+
+  <!-- Botão do WhatsApp -->
+  <a href="https://wa.me/5548991056014" target="_blank" class="whatsapp-float">
+    <i class='bx bxl-whatsapp'></i>
+  </a>
+
+  <!-- Pop-up de Saída -->
+  <div class="exit-popup" id="exitPopup">
+    <div class="exit-popup-content">
+      <button class="close-popup">
+        <i class='bx bx-x'></i>
+      </button>
+      <h3>Oferta Especial! 🎉</h3>
+      <p>Solicite seu orçamento agora e ganhe 15% de desconto no primeiro mês de serviços!</p>
+      <a href="#contact" class="btn-primary">Quero Aproveitar!</a>
+      <button class="btn-secondary">Agora não</button>
+    </div>
+  </div>
+  </div>
+
+  <!-- Scripts Section -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/theme.js"></script>
   </main>
 </body>
 
