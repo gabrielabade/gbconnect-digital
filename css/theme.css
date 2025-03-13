@@ -187,15 +187,11 @@ h6 {
 
 [data-theme="light"] .social-media a:hover {
   background: var(--main-color);
-  color: white;
+  color: white!important;
 }
 
 /* Destaque especial para o botão de WhatsApp na lista de redes sociais */
 
-
-[data-theme="light"] .whatsapp-button i {
-  color: var(--main-color) !important;
-}
 
 /* ===== Melhorias nos CTAs para Modo Claro ===== */
 [data-theme="light"] .btn-primary {
