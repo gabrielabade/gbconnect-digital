@@ -623,3 +623,65 @@ h6 {
   font-weight: 600;
   margin-right: auto;
 }
+
+/* Estilo do card no tema claro */
+[data-theme="light"] .services-box {
+  background: white;
+  border: 1px solid rgba(5, 18, 89, 0.1);
+  box-shadow: 0 10px 25px rgba(5, 18, 89, 0.08);
+}
+
+[data-theme="light"] .services-box:hover {
+  box-shadow: 0 15px 35px rgba(5, 18, 89, 0.12);
+}
+
+/* Cabeçalho no tema claro */
+[data-theme="light"] .services-box .card-header {
+  background: rgba(5, 18, 89, 0.03);
+  border-bottom: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+/* Ícones no tema claro */
+[data-theme="light"] .services-box i {
+  color: var(--main-color);
+}
+
+/* Títulos no tema claro */
+[data-theme="light"] .services-box h3 {
+  color: var(--main-color);
+}
+
+/* Linha de resultado no tema claro */
+[data-theme="light"] .services-box .result-line {
+  background: linear-gradient(to right, var(--bg-color), var(--bg-color));
+  color: #5b5782;
+  border-top: 1px solid rgba(5, 18, 89, 0.1);
+  border-bottom: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+/* O que você ganha no tema claro */
+[data-theme="light"] .services-box h4 {
+  color: var(--secundary-color);
+}
+
+/* Benefícios no tema claro */
+[data-theme="light"] .services-box .benefit-title {
+  color: var(--main-color);
+}
+
+[data-theme="light"] .services-box .benefit-desc {
+  color: var(--secundary-color);
+}
+
+/* Botão no tema claro */
+[data-theme="light"] .services-box .btn {
+  background: var(--secundary-color);
+  color: white;
+  border: 2px solid var(--secundary-color);
+}
+
+[data-theme="light"] .services-box .btn:hover {
+  background: var(--main-color);
+  color: white;
+  border-color: var(--bg-color);
+}
