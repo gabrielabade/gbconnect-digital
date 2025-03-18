@@ -683,6 +683,14 @@ section .testimonial-container {
   justify-content: center;
 }
 
+.about-img-content {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  display: block;
+  object-fit: contain;
+}
+
 .about-img img {
   width: 100%;
   height: auto;
@@ -691,23 +699,6 @@ section .testimonial-container {
   object-fit: contain;
 }
 
-/* Gestão de imagens para temas diferentes */
-.theme-dark-img,
-.theme-light-img {
-  max-width: 100%;
-  height: auto;
-  transition: opacity 0.3s ease;
-}
-
-/* Esconde/mostra imagem baseado no tema */
-.theme-light-img {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-}
 
 .about .container {
   max-width: 1200px;

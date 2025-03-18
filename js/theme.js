@@ -9,19 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
       './images/logocolor1.webp'
     ];
 
-    // Localiza as imagens de tema claro/escuro na seção about
-    const darkImg = document.querySelector('.theme-dark-img');
-    const lightImg = document.querySelector('.theme-light-img');
-
-    // Adiciona os caminhos das imagens de tema ao array, se existirem
-    if (darkImg && darkImg.getAttribute('src')) {
-      imagesToPreload.push(darkImg.getAttribute('src'));
-    }
-
-    if (lightImg && lightImg.getAttribute('src')) {
-      imagesToPreload.push(lightImg.getAttribute('src'));
-    }
-
     // Pré-carrega todas as imagens
     imagesToPreload.forEach(src => {
       const img = new Image();
@@ -51,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     updateToggleIcon(theme);
-    updateAboutImages(theme); // Atualiza as imagens da seção About
   }
 
   // Atualizar ícone de alternância
@@ -60,23 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
       themeToggle.innerHTML = '<i class="bx bx-moon"></i>';
     } else {
       themeToggle.innerHTML = '<i class="bx bx-sun"></i>';
-    }
-  }
-
-  // Atualizar imagens da seção About - otimizado
-  function updateAboutImages(theme) {
-    const darkImg = document.querySelector('.theme-dark-img');
-    const lightImg = document.querySelector('.theme-light-img');
-
-    if (!darkImg || !lightImg) return; // Sai da função se as imagens não forem encontradas
-
-    // Aplica a mudança diretamente com CSS para melhor performance
-    if (theme === 'light') {
-      darkImg.style.display = 'none';
-      lightImg.style.display = 'block';
-    } else {
-      darkImg.style.display = 'block';
-      lightImg.style.display = 'none';
     }
   }
 
@@ -133,8 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (mutation.attributeName === 'data-theme') {
         requestAnimationFrame(() => {
           updateLogo();
-          const currentTheme = document.documentElement.getAttribute('data-theme');
-          updateAboutImages(currentTheme);
         });
       }
     });
@@ -147,10 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(updateLogo);
   });
 
-  // Inicializar logo e imagens do About na carga da página
+  // Inicializar logo na carga da página
   updateLogo();
-  const initialTheme = document.documentElement.getAttribute('data-theme');
-  updateAboutImages(initialTheme);
 });
 
 // Adicionar CSS diretamente para a transição mais suave
@@ -164,25 +129,6 @@ styleElement.textContent = `
   /* Classe específica para quando o tema está mudando */
   body.theme-transitioning {
     transition: background-color 0.8s ease;
-  }
-  
-  /* Otimiza as transições para imagens específicas */
-  .theme-dark-img, .theme-light-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    opacity: 1;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-  }
-  
-  /* Corrige o posicionamento da imagem ativa */
-  .theme-dark-img[style*="display: block"],
-  .theme-light-img[style*="display: block"] {
-    position: relative;
-    pointer-events: auto;
   }
 `;
 document.head.appendChild(styleElement);
