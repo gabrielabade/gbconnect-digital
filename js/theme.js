@@ -1,5 +1,37 @@
-// ========== Theme Toggle System ==========
+// ========== Theme Toggle System - Otimizado ==========
 document.addEventListener('DOMContentLoaded', () => {
+  // Pré-carregamento de imagens
+  function preloadImages() {
+    // Cria um array com os caminhos de todas as imagens que precisam ser pré-carregadas
+    const imagesToPreload = [
+      './images/logo-white.webp',
+      './images/logo-nav.webp',
+      './images/logocolor1.webp'
+    ];
+
+    // Localiza as imagens de tema claro/escuro na seção about
+    const darkImg = document.querySelector('.theme-dark-img');
+    const lightImg = document.querySelector('.theme-light-img');
+
+    // Adiciona os caminhos das imagens de tema ao array, se existirem
+    if (darkImg && darkImg.getAttribute('src')) {
+      imagesToPreload.push(darkImg.getAttribute('src'));
+    }
+
+    if (lightImg && lightImg.getAttribute('src')) {
+      imagesToPreload.push(lightImg.getAttribute('src'));
+    }
+
+    // Pré-carrega todas as imagens
+    imagesToPreload.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  }
+
+  // Chamar o pré-carregamento assim que o DOM estiver pronto
+  preloadImages();
+
   // Criar o botão de alternância de tema
   const themeToggle = document.createElement('button');
   themeToggle.className = 'theme-toggle';
@@ -19,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     updateToggleIcon(theme);
-    updateAboutImages(theme); // Adicionado: atualiza as imagens da seção About
+    updateAboutImages(theme); // Atualiza as imagens da seção About
   }
 
   // Atualizar ícone de alternância
@@ -31,19 +63,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Atualizar imagens da seção About - nova função
+  // Atualizar imagens da seção About - otimizado
   function updateAboutImages(theme) {
     const darkImg = document.querySelector('.theme-dark-img');
     const lightImg = document.querySelector('.theme-light-img');
 
     if (!darkImg || !lightImg) return; // Sai da função se as imagens não forem encontradas
 
+    // Aplica a mudança diretamente com CSS para melhor performance
     if (theme === 'light') {
       darkImg.style.display = 'none';
       lightImg.style.display = 'block';
     } else {
       darkImg.style.display = 'block';
       lightImg.style.display = 'none';
+    }
+  }
+
+  // Atualização de logo - otimizada
+  function updateLogo() {
+    const logo = document.querySelector('.logo img');
+    if (!logo) return; // Evita erro se não encontrar a logo
+
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const isSticky = document.querySelector('.header').classList.contains('sticky');
+
+    // Evita carregar a mesma imagem se já estiver carregada
+    const newSrc = currentTheme === 'light'
+      ? './images/logo-white.webp'
+      : (isSticky ? './images/logo-nav.webp' : './images/logocolor1.webp');
+
+    if (logo.src !== newSrc) {
+      logo.src = newSrc;
     }
   }
 
@@ -59,37 +110,32 @@ document.addEventListener('DOMContentLoaded', () => {
     setTheme('light');
   }
 
-  // Alternar tema ao clicar no botão
+  // Alternar tema ao clicar no botão - com feedback visual durante a mudança
   themeToggle.addEventListener('click', () => {
+    // Adiciona classe de transição ao body
+    document.body.classList.add('theme-transitioning');
+
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    // Executa a troca de tema
     setTheme(newTheme);
+
+    // Remove a classe de transição após a conclusão
+    setTimeout(() => {
+      document.body.classList.remove('theme-transitioning');
+    }, 800); // Ajuste conforme necessário para corresponder à duração da transição
   });
 
-  // Atualização de logo baseada no tema
-  function updateLogo() {
-    const logo = document.querySelector('.logo img');
-    if (!logo) return; // Evita erro se não encontrar a logo
-
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const isSticky = document.querySelector('.header').classList.contains('sticky');
-
-    // Use apenas os arquivos de logo que você já tem certeza que existem
-    if (currentTheme === 'light') {
-      logo.src = isSticky ? './images/logo-white.webp' : './images/logo-white.webp';
-    } else {
-      logo.src = isSticky ? './images/logo-nav.webp' : './images/logocolor1.webp';
-    }
-  }
-
-  // Observador para mudanças no atributo data-theme
+  // Observador para mudanças no atributo data-theme - otimizado
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.attributeName === 'data-theme') {
-        updateLogo();
-        // Adicionado: atualiza as imagens quando o tema muda
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        updateAboutImages(currentTheme);
+        requestAnimationFrame(() => {
+          updateLogo();
+          const currentTheme = document.documentElement.getAttribute('data-theme');
+          updateAboutImages(currentTheme);
+        });
       }
     });
   });
@@ -98,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Atualizar logo também quando o header ficar sticky
   window.addEventListener('scroll', () => {
-    updateLogo();
+    requestAnimationFrame(updateLogo);
   });
 
   // Inicializar logo e imagens do About na carga da página
@@ -107,7 +153,41 @@ document.addEventListener('DOMContentLoaded', () => {
   updateAboutImages(initialTheme);
 });
 
+// Adicionar CSS diretamente para a transição mais suave
+const styleElement = document.createElement('style');
+styleElement.textContent = `
+  /* Estilo para transição de tema suave */
+  *, *::before, *::after {
+    transition: background-color 0.5s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Classe específica para quando o tema está mudando */
+  body.theme-transitioning {
+    transition: background-color 0.8s ease;
+  }
+  
+  /* Otimiza as transições para imagens específicas */
+  .theme-dark-img, .theme-light-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+  
+  /* Corrige o posicionamento da imagem ativa */
+  .theme-dark-img[style*="display: block"],
+  .theme-light-img[style*="display: block"] {
+    position: relative;
+    pointer-events: auto;
+  }
+`;
+document.head.appendChild(styleElement);
 
+// O resto do código (etapas da timeline) permanece igual
 document.addEventListener('DOMContentLoaded', function () {
   const timeline = document.querySelector(".timeline");
   const etapas = document.querySelectorAll(".etapa");
