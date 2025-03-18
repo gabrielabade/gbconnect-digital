@@ -1,0 +1,266 @@
+/* Estilos para a tabela de preços no FAQ */
+.price-section {
+  margin: 1.5rem 0;
+}
+
+.price-section h4 {
+  font-size: 1.8rem;
+  color: #E2FF00;
+  /* Amarelo neon - funciona bem em ambos os temas */
+  margin: 2rem 0 1rem;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.8rem;
+}
+
+.price-table {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.1);
+  /* Fundo mais claro para melhor contraste */
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  flex-wrap: wrap;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.price-row:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.price-service {
+  flex: 1;
+  min-width: 200px;
+}
+
+.price-service strong {
+  font-size: 1.5rem;
+  color: #051259;
+  /* Magenta - alta visibilidade em ambos os temas */
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.delivery-time,
+.service-includes {
+  display: block;
+  font-size: 1.3rem;
+  color: #FFFFFF;
+  /* Branco puro para melhor legibilidade */
+  margin-top: 0.5rem;
+}
+
+.price-range {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-width: 250px;
+}
+
+.price-tag {
+  display: flex;
+  flex-direction: column;
+  background: rgba(5, 18, 89, 0.5);
+  /* Azul escuro semi-transparente */
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  text-align: right;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.price-tag.special {
+  background: rgba(242, 48, 120, 0.25);
+  /* Fundo rosa escuro para promocional */
+  border-left: 3px solid #F23078;
+}
+
+.price-label {
+  font-size: 1.2rem;
+  color: #FFFFFF;
+  margin-bottom: 0.3rem;
+}
+
+.price-value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #E2FF00;
+  /* Amarelo neon para o valor */
+}
+
+.price-note {
+  background: rgba(242, 48, 120, 0.15);
+  border-left: 3px solid #F23078;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin: 2rem 0;
+}
+
+.price-note p {
+  margin-bottom: 0.8rem;
+  font-size: 1.4rem;
+  color: #FFFFFF;
+}
+
+.cta-price {
+  background: rgba(5, 18, 89, 0.3);
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 2rem;
+  border: 1px solid rgba(226, 255, 0, 0.2);
+}
+
+.cta-price p {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #FFFFFF;
+}
+
+.cta-price .btn {
+  display: inline-block;
+  background: #E2FF00;
+  color: #051259;
+  font-weight: 600;
+  padding: 1.2rem 2.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.cta-price .btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background: #F23078;
+  color: #FFFFFF;
+}
+
+/* Tema claro - ajustes de contraste */
+[data-theme="light"] .price-section h4 {
+  color: #051259;
+  /* Azul escuro para o título no tema claro */
+  border-bottom: 1px solid rgba(5, 18, 89, 0.2);
+}
+
+[data-theme="light"] .price-row {
+  background: #FFFFFF;
+  /* Fundo branco sólido */
+  border: 1px solid rgba(5, 18, 89, 0.2);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .price-row:hover {
+  background: #F5F7FF;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .price-service strong {
+  color: #F23078;
+  /* Manter magenta para destaque */
+}
+
+[data-theme="light"] .delivery-time,
+[data-theme="light"] .service-includes {
+  color: #051259;
+  /* Azul escuro para texto no modo claro */
+}
+
+[data-theme="light"] .price-tag {
+  background: #EAEEFF;
+  /* Azul muito claro */
+  border: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .price-tag.special {
+  background: #FFE6F0;
+  /* Rosa muito claro */
+  border-left: 3px solid #F23078;
+}
+
+[data-theme="light"] .price-label {
+  color: #051259;
+}
+
+[data-theme="light"] .price-value {
+  color: #051259;
+  /* Azul escuro para valor no tema claro */
+  font-weight: 700;
+}
+
+[data-theme="light"] .price-tag.special .price-value {
+  color: #F23078;
+  /* Magenta para valores promocionais no tema claro */
+}
+
+[data-theme="light"] .price-note {
+  background: #FFE6F0;
+  border-left: 3px solid #F23078;
+}
+
+[data-theme="light"] .price-note p {
+  color: #051259;
+}
+
+[data-theme="light"] .cta-price {
+  background: #F5F7FF;
+  border: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .cta-price p {
+  color: #051259;
+}
+
+[data-theme="light"] .cta-price .btn {
+  background: #051259;
+  color: #FFFFFF;
+}
+
+[data-theme="light"] .cta-price .btn:hover {
+  background: #F23078;
+  color: #FFFFFF;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .price-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .price-service {
+    margin-bottom: 1rem;
+  }
+
+  .price-range {
+    width: 100%;
+  }
+
+  .price-tag {
+    text-align: left;
+  }
+
+  .price-section h4 {
+    font-size: 1.6rem;
+  }
+
+  .price-service strong {
+    font-size: 1.4rem;
+  }
+
+  .price-value {
+    font-size: 1.4rem;
+  }
+
+  .price-note p {
+    font-size: 1.3rem;
+  }
+}
