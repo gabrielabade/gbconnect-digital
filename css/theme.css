@@ -685,3 +685,26 @@ h6 {
   color: white;
   border-color: var(--bg-color);
 }
+
+[data-theme="light"] .about {
+  background-color: var(--bg-color);
+}
+
+[data-theme="light"] .section-title,
+[data-theme="light"] .about-content p,
+[data-theme="light"] .benefits-list li {
+  color: var(--text-color);
+}
+
+[data-theme="light"] .check-icon {
+  color: var(--secundary-color);
+}
+
+[data-theme="light"] .theme-dark-img {
+  display: none;
+}
+
+[data-theme="light"] .theme-light-img {
+  display: block;
+  position: static;
+}
