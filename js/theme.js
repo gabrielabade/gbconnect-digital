@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
     updateToggleIcon(theme);
+    updateAboutImages(theme); // Adicionado: atualiza as imagens da seção About
   }
 
   // Atualizar ícone de alternância
@@ -27,6 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
       themeToggle.innerHTML = '<i class="bx bx-moon"></i>';
     } else {
       themeToggle.innerHTML = '<i class="bx bx-sun"></i>';
+    }
+  }
+
+  // Atualizar imagens da seção About - nova função
+  function updateAboutImages(theme) {
+    const darkImg = document.querySelector('.theme-dark-img');
+    const lightImg = document.querySelector('.theme-light-img');
+
+    if (!darkImg || !lightImg) return; // Sai da função se as imagens não forem encontradas
+
+    if (theme === 'light') {
+      darkImg.style.display = 'none';
+      lightImg.style.display = 'block';
+    } else {
+      darkImg.style.display = 'block';
+      lightImg.style.display = 'none';
     }
   }
 
@@ -70,6 +87,9 @@ document.addEventListener('DOMContentLoaded', () => {
     mutations.forEach((mutation) => {
       if (mutation.attributeName === 'data-theme') {
         updateLogo();
+        // Adicionado: atualiza as imagens quando o tema muda
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        updateAboutImages(currentTheme);
       }
     });
   });
@@ -81,8 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateLogo();
   });
 
-  // Inicializar logo na carga da página
+  // Inicializar logo e imagens do About na carga da página
   updateLogo();
+  const initialTheme = document.documentElement.getAttribute('data-theme');
+  updateAboutImages(initialTheme);
 });
 
 

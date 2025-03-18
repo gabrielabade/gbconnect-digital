@@ -715,6 +715,7 @@ span {
 
 .about-wrapper {
   display: flex;
+  align-items: flex-start;
   align-items: center;
   justify-content: space-between;
   gap: 4rem;
@@ -809,6 +810,7 @@ span {
   margin-top: 2rem;
   text-align: center;
   margin: 2.5rem 0 1rem;
+  text-align: left;
 }
 
 .about .btn {
