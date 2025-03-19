@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             if (tituloEtapa) {
-              tituloEtapa.style.setProperty('color', '#E2FF00', 'important');
+              tituloEtapa.style.setProperty('color', 'var(--main-color)', 'important');
             }
           } else {
             etapa.style.setProperty('background-color', 'var(--text-color)', 'important');
