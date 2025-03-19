@@ -61,6 +61,7 @@ body {
 .header.sticky .navbar a {
   color: var(--nav-text-sticky);
 }
+
 .header.sticky .navbar a:hover {
   color: var(--white-custom);
 }
@@ -394,12 +395,6 @@ h6 {
 }
 
 /* Para o modo claro */
-[data-theme="light"] .etapa {
-  background: #051259 !important;
-  color: white !important;
-  border: 2px solid var(--main-color);
-}
-
 [data-theme="light"] .etapa h3 {
   color: #E2FF00 !important;
   /* Usar o amarelo neon no modo claro para contraste */
@@ -441,7 +436,8 @@ h6 {
 }
 
 [data-theme="light"] .timeline::before {
-  background: var(--bg-color);
+  background: linear-gradient(to bottom, #F23078, #051259);
+  opacity: 1;
 }
 
 /* Adicionar um efeito sutil quando a etapa muda de cor */
@@ -769,4 +765,62 @@ h6 {
 [data-theme="light"] .services-box .btn:hover {
   color: var(--main-color);
   border-color: var(--main-color);
+}
+
+[data-theme="light"] .timeline .etapa h3 {
+  color: var(--secundary-color) !important;
+}
+
+[data-theme="light"] .etapa {
+  background: #051259;
+  border: 1px solid rgba(5, 18, 89, 0.1);
+  box-shadow: 0 8px 25px rgba(5, 18, 89, 0.08);
+}
+
+[data-theme="light"] .etapa h3 {
+  color: var(--secundary-color);
+}
+
+[data-theme="light"] .trust-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .etapa:nth-child(1) {
+  background: linear-gradient(to right, #051259, #0a237a);
+}
+
+[data-theme="light"] .etapa:nth-child(2) {
+  background: linear-gradient(to left, #051259, #0a237a);
+}
+
+[data-theme="light"] .etapa:nth-child(3) {
+  background: linear-gradient(to right, #051259, #0a237a);
+}
+
+[data-theme="light"] .etapa:nth-child(4) {
+  background: linear-gradient(to left, #051259, #0a237a);
+}
+
+[data-theme="light"] .etapa .numero {
+  background: #F23078 !important;
+  color: white !important;
+  box-shadow: 0 0 0 4px #f5f7ff, 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.etapa h3,
+.etapa p {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+[data-theme="light"] .etapa h3::after {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .etapa p,
+[data-theme="light"] .etapa h3 {
+  color: white !important;
+  opacity: 1;
+  visibility: visible;
 }

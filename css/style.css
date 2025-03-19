@@ -1803,30 +1803,41 @@ section .testimonial-container {
 
 /* ----- TRUST SECTION & TIMELINE ----- */
 .trust-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem 2rem;
-  text-align: center;
+  position: relative;
+  padding: 8rem 5% 6rem;
   background: var(--bg-color);
+  overflow: hidden;
+}
+
+.trust-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 90% 10%, rgba(226, 255, 0, 0.08), transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(242, 48, 120, 0.08), transparent 40%);
+  pointer-events: none;
 }
 
 .trust-section h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-size: 3.5rem;
   color: var(--main-color);
-  margin-bottom: 1rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  position: relative;
   text-transform: uppercase;
 }
 
-.trust-section p {
-  font-size: 1.2rem;
+.trust-section>p {
+  font-size: 1.8rem;
   max-width: 800px;
-  margin: 0 auto 2rem;
-  color: var(--text-color);
-  opacity: 0.9;
+  margin: 0 auto 4rem;
+  text-align: center;
   line-height: 1.6;
+  color: var(--text-color);
 }
 
 .trust-container {
@@ -1837,118 +1848,241 @@ section .testimonial-container {
 
 .trust-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2rem;
 }
 
 .trust-card {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 3rem 2rem;
+  border-radius: 15px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+.trust-card.visible {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .trust-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border-color: var(--main-color);
 }
 
-.trust-icon {
-  font-size: 4rem;
+.trust-card .trust-icon {
+  font-size: 4.5rem;
   color: var(--main-color);
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  transition: transform 0.5s ease;
+  display: inline-block;
+}
+
+.trust-card:hover .trust-icon {
+  transform: scale(1.2) rotate(5deg);
+  color: var(--secundary-color);
 }
 
 .trust-card h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: var(--text-color);
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--secundary-color);
+  position: relative;
+  padding-bottom: 1.5rem;
 }
 
 .trust-card p {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--text-color);
   opacity: 0.8;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .timeline {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  position: relative;
   padding: 2rem 0;
-  max-width: 900px;
-  margin: 0 auto;
+  margin: 0 auto 4rem;
+  max-width: 1200px;
+}
+
+.timeline.scrolled {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .timeline::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 50%;
   top: 0;
   width: 4px;
   height: 100%;
-  background: var(--main-color);
+  background: linear-gradient(to bottom, #E2FF00, #F23078);
   transform: translateX(-50%);
+  z-index: 1;
 }
 
 .etapa {
-  background: var(--text-color);
-  color: var(--bg-color);
-  padding: 1.5rem;
-  border-radius: 10px;
   position: relative;
+  background: #F23078;
+  color: white;
+  border-radius: 12px;
   width: 45%;
-  text-align: left;
-  box-shadow: 0 4px 10px var(--shadow-color);
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+
+.timeline .etapa {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.timeline .etapa:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+.etapa:nth-child(odd) {
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+.etapa.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 .etapa:nth-child(even) {
   align-self: flex-end;
   text-align: right;
+  margin-left: auto;
+  padding: 2.5rem 3rem 2.5rem 2rem;
 }
 
 .etapa:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+  border-color: var(--main-color);
 }
 
 .etapa .numero {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: -30px;
-  background: var(--secundary-color);
-  color: var(--text-color);
-  font-size: 1.5rem;
-  font-weight: bold;
   width: 50px;
   height: 50px;
-  line-height: 50px;
-  text-align: center;
   border-radius: 50%;
-  box-shadow: 0 4px 10px var(--shadow-color);
+  background: #E2FF00;
+  color: var(--bg-color) !important;
+  font-size: 1.8rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: none;
+  box-shadow: 0 0 0 4px var(--bg-color), 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 3;
+}
+
+.etapa:nth-child(odd) .numero {
+  right: -25px;
 }
 
 .etapa:nth-child(even) .numero {
-  left: auto;
-  right: -30px;
+  left: -25px;
+  right: -25px;
 }
 
 .etapa h3 {
-  font-size: 1.4rem;
-  color: var(--main-color);
-  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  font-weight: 700;
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: inline-block;
+}
+
+.etapa h3,
+.etapa p {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.etapa h3::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.etapa:nth-child(even) h3::after {
+  right: 0;
+  left: auto;
+}
+
+.etapa:nth-child(2) h3 {
+  color: white !important;
+  /* Branco para contraste com qualquer fundo */
+}
+
+.etapa:nth-child(2) p {
+  color: white !important;
+}
+
+/* Estilo para o terceiro card */
+.etapa:nth-child(3) h3 {
+  color: white !important;
+}
+
+.etapa:nth-child(3) p {
+  color: white !important;
+}
+
+/* Estilo para o quarto card */
+.etapa:nth-child(4) h3 {
+  color: white !important;
+}
+
+.etapa:nth-child(4) p {
+  color: white !important;
 }
 
 .etapa p {
-  font-size: 1rem;
-  color: var(--bg-color);
-  opacity: 0.8;
-  line-height: 1.5;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: white !important;
+  opacity: 0.9;
+}
+
+.etapa:nth-child(1) {
+  background: linear-gradient(to right, #F23078, #ff5a9d);
+}
+
+.etapa:nth-child(2) {
+  background: linear-gradient(to left, #F23078, #ff5a9d);
+}
+
+.etapa:nth-child(3) {
+  background: linear-gradient(to right, #F23078, #ff5a9d);
+}
+
+.etapa:nth-child(4) {
+  background: linear-gradient(to left, #F23078, #ff5a9d);
 }
 
 /* ----- CONTACT SECTION ----- */
@@ -2409,6 +2543,40 @@ section .testimonial-container {
     width: 100%;
     max-width: 300px;
     min-height: 380px;
+  }
+
+  .trust-section h2 {
+    font-size: 3rem;
+  }
+
+  .trust-section>p {
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .etapa {
+    width: calc(100% - 40px);
+    margin-left: 40px !important;
+    text-align: left !important;
+  }
+
+  .etapa:nth-child(even) {
+    align-self: flex-start;
+  }
+
+  .etapa:nth-child(odd) .numero,
+  .etapa:nth-child(even) .numero {
+    left: -40px;
+    right: auto;
+  }
+
+  .etapa:nth-child(even) h3::after {
+    left: 0;
+    right: auto;
   }
 }
 
@@ -2990,18 +3158,6 @@ section .testimonial-container {
     padding: 4rem 5% 2rem;
   }
 
-  .trust-card {
-    padding: 1.5rem;
-  }
-
-  .trust-card h3 {
-    font-size: 1.4rem;
-  }
-
-  .trust-card p {
-    font-size: 1rem;
-  }
-
   .whatsapp-text {
     display: none;
   }
@@ -3201,6 +3357,35 @@ section .testimonial-container {
   .card {
     z-index: 1;
   }
+
+  .etapa,
+  .etapa:nth-child(even) {
+    width: calc(100% - 50px);
+    margin-left: 50px;
+    text-align: left;
+    padding: 2rem;
+  }
+
+  .etapa .numero,
+  .etapa:nth-child(even) .numero {
+    left: -25px;
+    right: auto;
+  }
+
+  .etapa h3::after,
+  .etapa:nth-child(even) h3::after {
+    left: 0;
+    right: auto;
+  }
+
+  .trust-grid {
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+
+  .trust-card {
+    padding: 2.5rem 1.5rem;
+  }
 }
 
 
@@ -3250,6 +3435,46 @@ section .testimonial-container {
 
   .whatsapp-float {
     z-index: 99;
+  }
+
+  .trust-section h2 {
+    font-size: 2.5rem;
+  }
+
+  .trust-section>p {
+    font-size: 1.4rem;
+  }
+
+  .etapa,
+  .etapa:nth-child(even) {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .etapa {
+    padding: 1.5rem;
+  }
+
+  .etapa .numero {
+    width: 35px;
+    height: 35px;
+    font-size: 1.4rem;
+    left: -30px !important;
+  }
+
+  .etapa h3 {
+    font-size: 1.6rem;
+  }
+
+  .etapa p {
+    font-size: 1.4rem;
+  }
+
+  .trust-card h3 {
+    font-size: 1.8rem;
+  }
+
+  .trust-card p {
+    font-size: 1.4rem;
   }
 }
 

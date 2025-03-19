@@ -148,70 +148,107 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ========== Timeline Scroll Animation - Como Funciona ==========
-  const timeline = document.querySelector(".timeline");
-  const etapas = document.querySelectorAll(".etapa");
+  // Aprimoramento da animação do timeline
+  document.addEventListener("DOMContentLoaded", function () {
+    const timeline = document.querySelector(".timeline");
+    const etapas = document.querySelectorAll(".etapa");
+    const trustCards = document.querySelectorAll(".trust-card");
 
-  if (timeline && etapas.length > 0) {
-    window.addEventListener("scroll", function () {
-      const rect = timeline.getBoundingClientRect();
-      const trigger = window.innerHeight * 0.3;
+    // Função para verificar se um elemento está visível na tela
+    function isElementInViewport(el, offset = 0) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) - offset &&
+        rect.bottom >= 0
+      );
+    }
 
-      if (rect.top < trigger) {
-        timeline.classList.add("scrolled");
-      } else {
-        timeline.classList.remove("scrolled");
+    // Função para animar elementos quando entram na viewport
+    // Aprimoramento da animação do timeline
+    document.addEventListener("DOMContentLoaded", function () {
+      const timeline = document.querySelector(".timeline");
+      const etapas = document.querySelectorAll(".etapa");
+      const trustCards = document.querySelectorAll(".trust-card");
+
+      // Função para verificar se um elemento está visível na tela
+      function isElementInViewport(el, offset = 0) {
+        const rect = el.getBoundingClientRect();
+        return (
+          rect.top <= (window.innerHeight || document.documentElement.clientHeight) - offset &&
+          rect.bottom >= 0
+        );
       }
 
-      etapas.forEach((etapa, index) => {
-        const etapaRect = etapa.getBoundingClientRect();
-        if (etapaRect.top < trigger) {
-          etapa.style.background = "var(--secundary-color)";
-        } else {
-          etapa.style.background = "var(--white-custom)";
-        }
-      });
+      // Função para animar elementos quando entram na viewport
+      function animateOnScroll() {
+        // Animar as etapas
+        etapas.forEach((etapa, index) => {
+          if (isElementInViewport(etapa, 150)) {
+            // Adicionar delay progressivo para cada etapa
+            setTimeout(() => {
+              etapa.classList.add("visible");
+              etapa.style.opacity = "1";
+              etapa.style.transform = "translateX(0)";
+            }, 200 * index);
+          }
+        });
+
+        // Animar os cards de confiança
+        trustCards.forEach((card, index) => {
+          if (isElementInViewport(card, 150)) {
+            setTimeout(() => {
+              card.style.opacity = "1";
+              card.style.transform = "translateY(0)";
+            }, 200 * index);
+          }
+        });
+      }
+
+      // Inicializar animações
+      window.addEventListener("scroll", animateOnScroll);
+      window.addEventListener("load", animateOnScroll);
+
+      // Trigger inicial para garantir que os elementos já visíveis sejam animados
+      animateOnScroll();
     });
-  }
-});
+    // ========== Formulário WhatsApp ==========
+    function sendToWhatsApp() {
+      const phoneNumber = "5548991056014";
+      const fields = {
+        name: document.getElementById("name").value.trim(),
+        company: document.getElementById("company").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        message: document.getElementById("message").value.trim()
+      };
 
-// ========== Formulário WhatsApp ==========
-function sendToWhatsApp() {
-  const phoneNumber = "5548991056014";
-  const fields = {
-    name: document.getElementById("name").value.trim(),
-    company: document.getElementById("company").value.trim(),
-    email: document.getElementById("email").value.trim(),
-    phone: document.getElementById("phone").value.trim(),
-    message: document.getElementById("message").value.trim()
-  };
+      // Validação de campos vazios
+      if (Object.values(fields).some(field => !field)) {
+        alert("Por favor, preencha todos os campos antes de enviar.");
+        return;
+      }
 
-  // Validação de campos vazios
-  if (Object.values(fields).some(field => !field)) {
-    alert("Por favor, preencha todos os campos antes de enviar.");
-    return;
-  }
+      // Validação de telefone
+      const phoneRegex = /^(?:\+?55)?(?:\d{2})?(?:9\d{8})$/;
+      if (!phoneRegex.test(fields.phone.replace(/\D/g, ''))) {
+        alert("Por favor, insira um número de telefone válido.");
+        return;
+      }
 
-  // Validação de telefone
-  const phoneRegex = /^(?:\+?55)?(?:\d{2})?(?:9\d{8})$/;
-  if (!phoneRegex.test(fields.phone.replace(/\D/g, ''))) {
-    alert("Por favor, insira um número de telefone válido.");
-    return;
-  }
+      // Validação de email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(fields.email)) {
+        alert("Por favor, insira um email válido.");
+        return;
+      }
 
-  // Validação de email
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(fields.email)) {
-    alert("Por favor, insira um email válido.");
-    return;
-  }
+      // Serviços selecionados
+      const services = Array.from(document.querySelectorAll('input[name="service"]:checked'))
+        .map(service => service.nextSibling.textContent.trim())
+        .join(", ");
 
-  // Serviços selecionados
-  const services = Array.from(document.querySelectorAll('input[name="service"]:checked'))
-    .map(service => service.nextSibling.textContent.trim())
-    .join(", ");
-
-  // Montagem da mensagem
-  const whatsappMessage = `Olá, meu nome é *${fields.name}*!  
+      // Montagem da mensagem
+      const whatsappMessage = `Olá, meu nome é *${fields.name}*!  
 ───────────────  
 📋 *Dados do Contato*  
 - Empresa: *${fields.company}*  
@@ -224,6 +261,7 @@ ${fields.message}
   
 Gostaria de mais informações. Aguardo seu retorno!`;
 
-  // Envio da mensagem
-  window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
-}
+      // Envio da mensagem
+      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+    }
+  })})
