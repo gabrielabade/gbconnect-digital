@@ -2908,10 +2908,6 @@ section .testimonial-container {
     padding: 4rem 1.5rem;
   }
 
-  .about-wrapper {
-    flex-direction: column-reverse;
-  }
-
   .about-img {
     max-width: 100%;
     margin-bottom: 2rem;
@@ -3242,4 +3238,402 @@ body {
 
 [data-theme="light"] .trust-item span {
   color: var(--text-dark);
+}
+
+/* Melhorias para a seção About em dispositivos móveis */
+
+/* Ajustes gerais da seção para mobile */
+@media (max-width: 768px) {
+  .about {
+    padding: 4rem 1.5rem !important;
+    margin: 0 !important;
+  }
+
+  .about-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Título principal com melhor espaçamento */
+  .section-title,
+  .about h2.section-title {
+    font-size: 2.2rem !important;
+    margin-bottom: 2rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Ajustes na imagem */
+  .about-img {
+    max-width: 80% !important;
+    margin: 0 auto 1rem !important;
+    order: -1 !important;
+    /* Coloca a imagem no topo em dispositivos móveis */
+  }
+
+  .about-img img {
+    max-width: 200px !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  /* Ajustes no conteúdo textual */
+  .about-content {
+    max-width: 100% !important;
+    text-align: left !important;
+    padding: 0 !important;
+  }
+
+  .about-intro {
+    font-size: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+  }
+
+  .about-content p {
+    font-size: 1.4rem !important;
+    margin-bottom: 1.5rem !important;
+    line-height: 1.5 !important;
+    text-align: left !important;
+  }
+
+  /* Lista de benefícios com melhores espaçamentos */
+  .benefits-list {
+    margin: 1.5rem 0 !important;
+  }
+
+  .benefits-list li {
+    margin-bottom: 1rem !important;
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 8px !important;
+    padding: 0.8rem !important;
+  }
+
+  .check-icon {
+    font-size: 1.6rem !important;
+    margin-right: 0.8rem !important;
+    color: var(--main-color) !important;
+  }
+
+  .benefit-text {
+    font-size: 1.4rem !important;
+    line-height: 1.4 !important;
+  }
+
+  /* CTA na parte inferior */
+  .about-cta-text {
+    font-size: 1.5rem !important;
+    margin: 2rem 0 1rem !important;
+    text-align: center !important;
+    font-weight: 600 !important;
+  }
+
+  .cta-container {
+    text-align: center !important;
+    margin: 1.5rem 0 !important;
+  }
+
+  .about .btn {
+    width: 100% !important;
+    padding: 1.2rem !important;
+    font-size: 1.5rem !important;
+  }
+}
+
+/* Ajustes específicos para telas muito pequenas */
+@media (max-width: 375px) {
+
+  .section-title,
+  .about h2.section-title {
+    font-size: 2rem !important;
+  }
+
+  .about-img {
+    max-width: 90% !important;
+  }
+
+  .about-intro {
+    font-size: 1.4rem !important;
+  }
+
+  .about-content p {
+    font-size: 1.3rem !important;
+  }
+
+  .benefit-text {
+    font-size: 1.3rem !important;
+  }
+}
+
+/* Ajustes para tema claro */
+@media (max-width: 768px) {
+  [data-theme="light"] .benefits-list li {
+    background-color: rgba(5, 18, 89, 0.05) !important;
+  }
+
+  [data-theme="light"] .check-icon {
+    color: var(--main-color) !important;
+  }
+
+  [data-theme="light"] .benefit-text {
+    color: var(--text-dark) !important;
+  }
+}
+
+/* Refinamentos adicionais para a seção About */
+
+/* Gradiente sutil no fundo da seção */
+.about {
+  background: radial-gradient(circle at 90% 10%, rgba(226, 255, 0, 0.05), transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(242, 48, 120, 0.05), transparent 40%);
+}
+
+/* Efeito hover nos itens da lista de benefícios */
+.benefits-list li {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.benefits-list li:hover {
+  transform: translateX(5px);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="light"] .benefits-list li:hover {
+  background-color: rgba(5, 18, 89, 0.08);
+}
+
+/* Sombra sutil no botão CTA */
+.about .btn {
+  box-shadow: 0 4px 15px rgba(242, 48, 120, 0.25);
+}
+
+/* Destaque sutil na imagem */
+.about-img img {
+  transition: transform 0.5s ease;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+.about-img img:hover {
+  transform: scale(1.03);
+}
+
+/* Ajuste do espaçamento para melhor layout */
+@media (max-width: 768px) {
+  .about-img {
+    margin: 0 auto 2.5rem !important;
+  }
+
+  .benefits-list li {
+    padding: 1rem !important;
+    margin-bottom: 1.2rem !important;
+  }
+}
+
+/* Estrutura base */
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Layout para desktop - imagem à esquerda, texto à direita */
+@media (min-width: 769px) {
+  .about-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .about-img {
+    flex: 1;
+    min-width: 300px;
+    max-width: 40%;
+    order: 1;
+  }
+
+  .about-img img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+
+  .about-content {
+    flex: 2;
+    max-width: 60%;
+    order: 2;
+    /* Posiciona à direita */
+  }
+}
+
+/* Layout para mobile - imagem abaixo do título, acima do texto */
+@media (max-width: 768px) {
+  .about-img {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto 2rem;
+    order: unset;
+    /* Remove a ordem */
+  }
+
+  .about-content {
+    width: 100%;
+    max-width: 100%;
+    order: unset;
+    /* Remove a ordem */
+  }
+}
+
+/* Estrutura base da seção */
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem;
+  background-color: var(--bg-color);
+  overflow: hidden;
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Título da seção */
+.section-title {
+  font-size: 2.8rem;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  line-height: 1.3;
+}
+
+.section-title span {
+  color: var(--secundary-color);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--secundary-color);
+}
+
+/* Layout para desktop - imagem à esquerda, conteúdo à direita */
+.about-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.about-img {
+  flex: 1;
+  min-width: 250px;
+  max-width: 30%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.about-img img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.about-content {
+  flex: 2;
+  min-width: 300px;
+  max-width: 60%;
+  text-align: left;
+}
+
+/* Layout responsivo para dispositivos móveis */
+@media (max-width: 768px) {
+  .about {
+    padding: 4rem 1.5rem;
+  }
+
+  .about-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .about-img {
+    max-width: 100%;
+    margin-bottom: 2rem;
+    order: -1;
+    /* Garante que a imagem fique no topo em mobile */
+  }
+
+  .about-img img {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .about-content {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .about-intro {
+    text-align: center;
+  }
+
+  .about-cta-text {
+    text-align: center;
+  }
+
+  .cta-container {
+    text-align: center;
+  }
+
+  .about .btn {
+    width: 100%;
+  }
+}
+
+/* Efeitos visuais para melhorar a aparência */
+.about-img img:hover {
+  transform: scale(1.03);
+}
+
+.benefits-list li {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  padding: 0.8rem;
+  border-radius: 8px;
+}
+
+.benefits-list li:hover {
+  transform: translateX(5px);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="light"] .benefits-list li:hover {
+  background-color: rgba(5, 18, 89, 0.08);
+}
+
+.about .btn {
+  box-shadow: 0 4px 15px rgba(242, 48, 120, 0.25);
+}
+
+/* Gradiente sutil no fundo */
+.about {
+  background: var(--bg-color);
+  background-image: radial-gradient(circle at 90% 10%, rgba(226, 255, 0, 0.05), transparent 40%),
+    radial-gradient(circle at 10% 90%, rgba(242, 48, 120, 0.05), transparent 40%);
 }

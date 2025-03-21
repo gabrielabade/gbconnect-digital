@@ -672,3 +672,94 @@ function initWhatsAppFloat() {
 
 // Tornar funções necessárias globalmente acessíveis para o HTML
 window.sendToWhatsApp = sendToWhatsApp;
+
+/**
+ * Animações específicas para a seção About
+ * Adicionar este código no seu arquivo script.js
+ */
+
+// Função para inicializar animações da seção About
+function initAboutAnimations() {
+  // Seleciona os elementos da seção About
+  const aboutSection = document.querySelector('.about');
+  const aboutTitle = document.querySelector('.about .section-title');
+  const aboutImg = document.querySelector('.about-img');
+  const aboutIntro = document.querySelector('.about-intro');
+  const benefitsItems = document.querySelectorAll('.benefits-list li');
+  const aboutCta = document.querySelector('.about .cta-container');
+
+  // Configura o ScrollReveal para esta seção se a biblioteca estiver disponível
+  if (typeof ScrollReveal !== 'undefined') {
+    // Configurações base do ScrollReveal
+    const sr = ScrollReveal({
+      distance: '50px',
+      duration: 1000,
+      easing: 'ease-in-out',
+      origin: 'bottom',
+      reset: false
+    });
+
+    // Anima cada elemento com um delay sequencial
+    sr.reveal(aboutTitle, { delay: 100 });
+    sr.reveal(aboutImg, { delay: 200, origin: 'top' });
+    sr.reveal(aboutIntro, { delay: 300 });
+
+    // Anima cada item da lista sequencialmente
+    benefitsItems.forEach((item, index) => {
+      sr.reveal(item, { delay: 400 + (index * 100) });
+    });
+
+    sr.reveal('.about-cta-text', { delay: 800 });
+    sr.reveal(aboutCta, { delay: 900 });
+  } else {
+    // Fallback para animações CSS se o ScrollReveal não estiver disponível
+
+    // Adiciona classe para animação em cada elemento
+    const addAnimationClass = (el, className, delay) => {
+      if (!el) return;
+      setTimeout(() => {
+        el.classList.add(className);
+      }, delay);
+    };
+
+    // Função para verificar se elemento está visível na viewport
+    const isElementVisible = (el) => {
+      if (!el) return false;
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.bottom >= 0
+      );
+    };
+
+    // Função para animar quando o elemento está visível
+    const animateOnScroll = () => {
+      if (isElementVisible(aboutSection)) {
+        addAnimationClass(aboutTitle, 'animate-fade-in-down', 100);
+        addAnimationClass(aboutImg, 'animate-fade-in-left', 200);
+        addAnimationClass(aboutIntro, 'animate-fade-in-up', 300);
+
+        benefitsItems.forEach((item, index) => {
+          addAnimationClass(item, 'animate-fade-in-right', 400 + (index * 100));
+        });
+
+        addAnimationClass(document.querySelector('.about-cta-text'), 'animate-fade-in-up', 800);
+        addAnimationClass(aboutCta, 'animate-fade-in-up', 900);
+
+        // Remove o listener após animar
+        window.removeEventListener('scroll', animateOnScroll);
+      }
+    };
+
+    // Adiciona evento de scroll para animar quando a seção estiver visível
+    window.addEventListener('scroll', animateOnScroll);
+    // Verifica imediatamente ao carregar a página
+    animateOnScroll();
+  }
+}
+
+// Adicionar a chamada para esta função na inicialização do site
+document.addEventListener('DOMContentLoaded', () => {
+  // Outras inicializações...
+  initAboutAnimations();
+});
