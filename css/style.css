@@ -1636,6 +1636,7 @@ section .testimonial-container {
 }
 
 .portfolio h2 {
+  font-size: 3rem;
   margin-bottom: 4rem;
 }
 
@@ -1664,18 +1665,10 @@ section .testimonial-container {
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
+  width: 28rem;
   height: 4px;
   background: var(--text-color);
   transition: width 0.3s ease;
-}
-
-.category-title:hover {
-  transform: scale(1.05);
-}
-
-.category-title:hover::before {
-  width: 150px;
 }
 
 .portfolio-wrapper {
@@ -1827,6 +1820,13 @@ section .testimonial-container {
 
 .portfolio-carousel .swiper-pagination-bullet-active {
   background: var(--secundary-color);
+}
+
+/* Oculta os bullets de paginação em desktop */
+@media (min-width: 1024px) {
+  .portfolio-carousel .swiper-pagination {
+    display: none !important;
+  }
 }
 
 /* ==================== TESTIMONIAL SECTION ==================== */
@@ -3636,4 +3636,321 @@ body {
   background: var(--bg-color);
   background-image: radial-gradient(circle at 90% 10%, rgba(226, 255, 0, 0.05), transparent 40%),
     radial-gradient(circle at 10% 90%, rgba(242, 48, 120, 0.05), transparent 40%);
+}
+
+/* ==================== APRIMORAMENTOS PARA SEÇÃO DE PORTFOLIO ==================== */
+
+/* Melhorar a visibilidade e aparência dos bullets de paginação */
+.portfolio-carousel .swiper-pagination {
+  bottom: 10px !important;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 0;
+  z-index: 10;
+}
+
+.portfolio-carousel .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.portfolio-carousel .swiper-pagination-bullet-active {
+  background: var(--secundary-color);
+  transform: scale(1.2);
+}
+
+/* Garantir que os bullets apareçam em ambos os temas */
+[data-theme="light"] .portfolio-carousel .swiper-pagination-bullet {
+  background: rgba(5, 18, 89, 0.3);
+  /* Cor ajustada para tema claro */
+  border: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .portfolio-carousel .swiper-pagination-bullet-active {
+  background: var(--secundary-color);
+  border: 1px solid transparent;
+}
+
+/* Melhorar o overlay dos projetos para ser mais elegante */
+.portfolio-layer {
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.7) 40%,
+      rgba(0, 0, 0, 0.4) 80%,
+      rgba(0, 0, 0, 0.2) 100%) !important;
+  transition: opacity 0.4s ease, transform 0.4s ease !important;
+  transform: translateY(100%);
+  opacity: 0;
+  display: flex !important;
+}
+
+.portfolio-item:hover .portfolio-layer {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Melhorar a aparência dos títulos e textos no overlay */
+.portfolio-layer h4 {
+  font-size: 2.4rem !important;
+  margin-bottom: 1rem !important;
+  color: var(--main-color) !important;
+  font-weight: 700;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.4s ease 0.1s, opacity 0.4s ease 0.1s !important;
+}
+
+.portfolio-layer p {
+  font-size: 1.4rem !important;
+  margin-bottom: 1.2rem !important;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.2s, opacity 0.4s ease 0.2s !important;
+  max-width: 90%;
+}
+
+.portfolio-item:hover .portfolio-layer h4,
+.portfolio-item:hover .portfolio-layer p,
+.portfolio-item:hover .portfolio-layer .tech-stack,
+.portfolio-item:hover .portfolio-layer a {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Melhorar o design do tech stack */
+.tech-stack {
+  display: flex;
+  gap: 8px;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.4s ease 0.3s, opacity 0.4s ease 0.3s !important;
+}
+
+.tech-stack span {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.4rem 0.8rem;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  color: var(--white-custom);
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.3s ease;
+}
+
+.tech-stack span:hover {
+  background: var(--main-color);
+  color: var(--bg-color);
+}
+
+/* Melhorar o botão de link do projeto */
+.portfolio-layer a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 4.5rem;
+  height: 4.5rem;
+  background: var(--secundary-color);
+  border-radius: 50%;
+  margin-top: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  transition: transform 0.4s ease 0.4s, opacity 0.4s ease 0.4s, background 0.3s ease !important;
+}
+
+.portfolio-layer a i {
+  font-size: 2rem;
+  color: var(--white-custom);
+  transition: transform 0.3s ease;
+}
+
+.portfolio-layer a:hover {
+  background: var(--main-color);
+  transform: translateY(0) scale(1.1);
+}
+
+.portfolio-layer a:hover i {
+  transform: rotate(15deg);
+}
+
+/* Melhorar os controles de navegação do slider */
+.portfolio-carousel .swiper-button-next,
+.portfolio-carousel .swiper-button-prev {
+  width: 45px !important;
+  height: 45px !important;
+  background-color: var(--secundary-color) !important;
+  border-radius: 50% !important;
+  color: var(--white-custom) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-50%) !important;
+  opacity: 0.7;
+  transition: all 0.3s ease !important;
+}
+
+.portfolio-carousel .swiper-button-next:after,
+.portfolio-carousel .swiper-button-prev:after {
+  font-size: 1.6rem !important;
+  font-weight: bold;
+}
+
+.portfolio-carousel .swiper-button-next:hover,
+.portfolio-carousel .swiper-button-prev:hover {
+  background-color: var(--main-color) !important;
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1) !important;
+}
+
+.portfolio-carousel .swiper-button-next {
+  right: 10px !important;
+}
+
+.portfolio-carousel .swiper-button-prev {
+  left: 10px !important;
+}
+
+/* Melhorar a imagem do projeto para evitar o efeito de esticamento */
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  filter: brightness(0.9) grayscale(30%);
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.05);
+  filter: brightness(1) grayscale(0%);
+}
+
+/* Melhorar a aparência dos cards de projeto */
+.portfolio-item {
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  height: 400px !important;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  margin: 15px;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Ajustes para garantir compatibilidade em dispositivos móveis */
+@media (max-width: 768px) {
+  .portfolio-item {
+    height: 350px !important;
+    margin: 10px;
+  }
+
+  .portfolio-layer h4 {
+    font-size: 2rem !important;
+  }
+
+  .portfolio-layer p {
+    font-size: 1.3rem !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  .tech-stack span {
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .portfolio-carousel .swiper-button-next,
+  .portfolio-carousel .swiper-button-prev {
+    width: 35px !important;
+    height: 35px !important;
+  }
+
+  .portfolio-carousel .swiper-button-next:after,
+  .portfolio-carousel .swiper-button-prev:after {
+    font-size: 1.2rem !important;
+  }
+
+  /* Melhorar comportamento em touch devices */
+  .portfolio-layer {
+    transform: translateY(65%);
+    opacity: 1;
+    background: linear-gradient(to top,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.7) 30%,
+        rgba(0, 0, 0, 0.2) 100%) !important;
+  }
+
+  .portfolio-layer h4 {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .portfolio-item.touched .portfolio-layer {
+    transform: translateY(0);
+  }
+
+  .portfolio-item.touched .portfolio-layer p,
+  .portfolio-item.touched .portfolio-layer .tech-stack,
+  .portfolio-item.touched .portfolio-layer a {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Melhorias gerais na seção de portfólio */
+.portfolio {
+  position: relative;
+  padding: 10rem 7% 5rem;
+}
+
+.portfolio h2 {
+  margin-bottom: 5rem;
+}
+
+.category-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 5px;
+  margin-bottom: 3rem;
+}
+
+.portfolio-wrapper:hover .category-title::after {
+  width: 120px;
+}
+
+/* Adicionar um toque de classe com um background sutil */
+.portfolio {
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(226, 255, 0, 0.03), transparent 30%),
+    radial-gradient(circle at 90% 90%, rgba(242, 48, 120, 0.03), transparent 30%);
+}
+
+/* Ajustes específicos para tema claro */
+[data-theme="light"] .portfolio-layer {
+  background: linear-gradient(to top,
+      rgba(5, 18, 89, 0.85) 0%,
+      rgba(5, 18, 89, 0.7) 40%,
+      rgba(5, 18, 89, 0.4) 80%,
+      rgba(5, 18, 89, 0.2) 100%) !important;
+}
+
+[data-theme="light"] .portfolio-layer h4 {
+  color: var(--white-custom) !important;
+}
+
+[data-theme="light"] .tech-stack span {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white-custom);
+}
+
+[data-theme="light"] .tech-stack span:hover {
+  background: var(--white-custom);
+  color: var(--main-color);
 }
