@@ -3057,3 +3057,189 @@ body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
+/* Ajustes para a seção home em dispositivos móveis */
+
+/* Melhorias nos botões de CTA para mobile */
+@media (max-width: 768px) {
+
+  /* Layout principal da seção Home */
+  .home-content {
+    padding: 0 15px !important;
+  }
+
+  /* Títulos mais compactos para mobile */
+  .home-content h1 {
+    font-size: 2.8rem !important;
+    margin-bottom: 1.5rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .home-content h2 {
+    font-size: 1.8rem !important;
+    margin-bottom: 1.8rem !important;
+  }
+
+  /* Hero description mais compacta */
+  .hero-description {
+    padding: 1.2rem !important;
+    margin-bottom: 2rem !important;
+    font-size: 1.4rem !important;
+  }
+
+  /* Ajustes nos serviços minimals */
+  .services-minimal {
+    gap: 1.5rem !important;
+    margin-bottom: 2rem !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+
+  .service-mini {
+    width: 90px !important;
+  }
+
+  .service-mini i {
+    font-size: 2.5rem !important;
+  }
+
+  .service-mini span {
+    font-size: 1.2rem !important;
+  }
+
+  /* Ajustes nos botões CTA */
+  .cta-buttons {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    margin-bottom: 2rem !important;
+    width: 100% !important;
+  }
+
+  .cta-buttons a {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 1.2rem !important;
+    font-size: 1.5rem !important;
+  }
+
+  /* Ajustes nos trust indicators */
+  .trust-indicators {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .trust-item {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 0.8rem !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 8px !important;
+  }
+
+  /* Ajustes nas redes sociais */
+  .social-media {
+    margin-bottom: 1.5rem !important;
+  }
+}
+
+/* Ajustes específicos para telas muito pequenas */
+@media (max-width: 375px) {
+  .home-content h1 {
+    font-size: 2.4rem !important;
+  }
+
+  .home-content h2 {
+    font-size: 1.6rem !important;
+  }
+
+  .hero-description {
+    font-size: 1.3rem !important;
+  }
+
+  .service-mini {
+    width: 80px !important;
+  }
+}
+
+/* Melhor contraste para tema claro em mobile */
+@media (max-width: 768px) {
+  [data-theme="light"] .trust-item {
+    background: rgba(5, 18, 89, 0.05) !important;
+  }
+
+  [data-theme="light"] .hero-description {
+    background: rgba(230, 235, 255, 0.8) !important;
+  }
+}
+
+/* Ajustes para garantir contraste de cores nos dois temas */
+
+/* Tema escuro (padrão) */
+.hero-description {
+  background: rgba(5, 18, 89, 0.7);
+  border-left: 4px solid var(--secundary-color);
+}
+
+.hero-description p {
+  color: var(--text-color);
+}
+
+.hero-description strong {
+  color: var(--main-color);
+}
+
+/* Tema claro */
+[data-theme="light"] .hero-description {
+  background: rgba(230, 235, 255, 0.7);
+  border-left: 4px solid var(--secundary-color);
+}
+
+[data-theme="light"] .hero-description p {
+  color: var(--text-dark);
+}
+
+[data-theme="light"] .hero-description strong {
+  color: var(--main-color);
+}
+
+/* Botões CTA ajustados para ambos os temas */
+.btn-primary {
+  color: var(--bg-color);
+  background: var(--main-color);
+}
+
+.btn-secondary {
+  color: var(--white-custom);
+  background: var(--secundary-color);
+}
+
+/* Ajustes específicos para o tema claro */
+[data-theme="light"] .btn-primary {
+  color: var(--white-custom);
+  background: var(--main-color);
+}
+
+[data-theme="light"] .btn-secondary {
+  color: var(--white-custom);
+  background: var(--secundary-color);
+}
+
+/* Garantir que os trust-items ficam bem visíveis em ambos os temas */
+.trust-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 0.8rem 1.2rem;
+}
+
+[data-theme="light"] .trust-item {
+  background: rgba(5, 18, 89, 0.05);
+}
+
+[data-theme="light"] .trust-item i {
+  color: var(--main-color);
+}
+
+[data-theme="light"] .trust-item span {
+  color: var(--text-dark);
+}
