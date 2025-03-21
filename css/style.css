@@ -21,6 +21,19 @@ html {
   padding: 0;
 }
 
+html[data-theme="dark"] .header .navbar a:hover {
+  color: var(--secundary-color) !important;
+}
+
+html[data-theme="dark"] .header.sticky .navbar a:hover {
+  color: var(--main-color) !important;
+}
+
+.header.sticky .navbar a:hover {
+  color: var(--secundary-color) !important;
+  /* Cor rosa independente do tema */
+}
+
 /* Variáveis CSS para modo escuro (padrão) */
 :root {
   --bg-color: #051259;
@@ -329,7 +342,7 @@ body {
 }
 
 .header.sticky .navbar a:hover {
-  color: var(--main-color);
+  color: var(--bg-color);
 }
 
 /* Estilo para o link ativo */
@@ -355,6 +368,16 @@ body {
 .header.sticky .navbar a::before {
   background: var(--secundary-color);
   opacity: .7;
+}
+
+[data-theme="dark"] .navbar.active {
+  background: var(--bg-color) !important;
+  /* Azul escuro no modo dark */
+}
+
+[data-theme="light"] .navbar.active {
+  background: var(--main-color) !important;
+  /* Mantém azul no modo light */
 }
 
 /* Ícone do menu mobile */
@@ -2697,13 +2720,19 @@ section .testimonial-container {
     z-index: 1001;
   }
 
+  .navbar a.active::after,
+  .navbar a.active::before,
+  .navbar a::after {
+    display: none;
+  }
+
   .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: var(--main-color);
+    background: var(--bg-color) !important;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -2712,8 +2741,32 @@ section .testimonial-container {
     padding: 0 5%;
   }
 
+  [data-theme="dark"] .navbar a {
+    color: var(--text-color) !important;
+  }
+
+  [data-theme="dark"] .navbar.active {
+    background: var(--bg-color) !important;
+  }
+
+  [data-theme="light"] .navbar.active {
+    background: var(--main-color) !important;
+  }
+
+  [data-theme="dark"] .navbar a.active {
+    color: var(--secundary-color) !important;
+    background-color: rgba(242, 48, 120, 0.2);
+    font-weight: 700;
+  }
+
+  [data-theme="dark"] .navbar a:hover {
+    color: var(--secundary-color) !important;
+  }
+
   .navbar.active {
     display: flex;
+    background-color: var(--secundary-color);
+    border-radius: 5px;
   }
 
   .navbar a {
