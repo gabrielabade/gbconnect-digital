@@ -2477,46 +2477,6 @@ section .testimonial-container {
   z-index: 1000;
 }
 
-/* Notificação de Prova Social */
-.social-proof-notification {
-  display: none;
-  background: var(--secundary-color);
-  color: var(--bg-color);
-  border-radius: 8px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  margin-bottom: 15px;
-  max-width: 300px;
-  animation: slideIn 0.5s ease-out;
-}
-
-.social-proof-notification.show {
-  display: flex;
-  align-items: center;
-}
-
-.social-proof-notification i {
-  color: var(--main-color);
-  font-size: 20px;
-  margin-right: 10px;
-}
-
-.notification-content {
-  flex: 1;
-}
-
-.notification-content p {
-  color: var(--bg-color);
-}
-
-.close-notification {
-  background: none;
-  border: none;
-  color: var(--bg-color);
-  cursor: pointer;
-  padding: 5px;
-}
-
 /* Botão do WhatsApp */
 .whatsapp-float {
   position: fixed;
@@ -2537,11 +2497,6 @@ section .testimonial-container {
 .whatsapp-float i {
   font-size: 24px;
   margin-right: 8px;
-}
-
-.timeAgo {
-  font-size: 1.2rem;
-  color: var(--text-color);
 }
 
 /* Pop-up de Saída */
