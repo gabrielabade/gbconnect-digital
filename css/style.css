@@ -3916,6 +3916,7 @@ body {
 }
 
 .scroll-indicator {
+  text-align: center;
   font-size: xx-small;
 }
 
