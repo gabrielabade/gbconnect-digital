@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Inicializa o sistema de tema (claro/escuro)
   initThemeSystem();
 
+  // Garante que o logo esteja correto desde o início
+  updateLogo();
+
   // Inicializa o FAQ Accordion
   initAccordion();
 
@@ -55,7 +58,7 @@ menuIcon.onclick = () => {
 /**
  * Manipula eventos de scroll:
  * 1. Ativa/desativa links de navegação baseado na seção visível
- * 2. Fixa o header e troca logo quando necessário
+ * 2. Fixa o header e atualiza o logo quando necessário
  * 3. Fecha o menu mobile quando o usuário rola a página
  */
 window.onscroll = () => {
@@ -75,23 +78,36 @@ window.onscroll = () => {
         link.classList.remove('active');
       });
       // Adicionar classe 'active' ao link correspondente à seção atual
-      const activeLink = document.querySelector('header nav a[href*=' + id + ']');
+      const activeLink = document.querySelector(`header nav a[href*=${id}]`);
       if (activeLink) {
         activeLink.classList.add('active');
       }
     }
   });
 
-  // Torna o header fixo após certo ponto de rolagem e troca a logo
-  header.classList.toggle('sticky', window.scrollY > 100);
-  logo.src = window.scrollY > 100 ? './images/logo-nav.webp' : './images/logocolor1.webp';
+  // Verifica se o header existe antes de manipulá-lo
+  if (header) {
+    // Verifica se o estado "sticky" mudou
+    const wasSticky = header.classList.contains('sticky');
+    const shouldBeSticky = window.scrollY > 100;
+
+    if (wasSticky !== shouldBeSticky) {
+      // Atualiza a classe sticky
+      header.classList.toggle('sticky', shouldBeSticky);
+
+      // Atualiza o logo apenas quando o estado de sticky muda
+      updateLogo();
+    }
+  }
 
   // Fecha o menu mobile quando o usuário rola a página
-  menuIcon.classList.remove('bx-x');
-  navbar.classList.remove('active');
+  if (menuIcon) {
+    menuIcon.classList.remove('bx-x');
+  }
 
-  // Atualiza a logo com base no tema atual
-  updateLogo();
+  if (navbar) {
+    navbar.classList.remove('active');
+  }
 };
 
 // ========== INICIALIZAÇÃO DE COMPONENTES ==========
@@ -538,6 +554,8 @@ function setTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
   updateToggleIcon(theme);
+
+  updateLogo();
 }
 
 /**
@@ -565,12 +583,22 @@ function updateLogo() {
   const currentTheme = document.documentElement.getAttribute('data-theme');
   const isSticky = document.querySelector('.header')?.classList.contains('sticky');
 
-  // Evita carregar a mesma imagem se já estiver carregada
-  const newSrc = currentTheme === 'light'
-    ? './images/logo-white.webp'
-    : (isSticky ? './images/logo-nav.webp' : './images/logocolor1.webp');
+  // Define qual imagem usar em cada cenário
+  let newSrc;
 
-  if (logo.src !== newSrc) {
+  if (currentTheme === 'light') {
+    // No tema light, sempre usa logo-white.webp
+    newSrc = './images/logo-white.webp';
+  } else {
+    // No tema dark, alterna conforme rolagem
+    newSrc = isSticky ? './images/logo-nav.webp' : './images/logocolor1.webp';
+  }
+
+  // Atualiza só se necessário (comparando apenas o nome do arquivo)
+  const currentLogoName = logo.src.split('/').pop();
+  const newLogoName = newSrc.split('/').pop();
+
+  if (currentLogoName !== newLogoName) {
     logo.src = newSrc;
   }
 }
