@@ -450,11 +450,121 @@ function initTimelineAnimations() {
 }
 
 /**
- * Função para enviar formulário de contato para o WhatsApp
- * Valida os campos e formata a mensagem antes de enviar
+ * Inicializa o formulário de contato com validações e feedback visual
+ */
+function initContactForm() {
+  const form = document.getElementById('contactForm');
+  if (!form) return; // Verifica se o formulário existe
+
+  const inputs = form.querySelectorAll('input, textarea');
+
+  // Adiciona efeitos de animação aos inputs quando focados
+  inputs.forEach(input => {
+    // Animação ao focar no input
+    input.addEventListener('focus', () => {
+      input.parentElement.classList.add('input-focused');
+    });
+
+    // Remove animação ao tirar o foco
+    input.addEventListener('blur', () => {
+      if (!input.value.trim()) {
+        input.parentElement.classList.remove('input-focused');
+      }
+    });
+
+    // Mantém o efeito se já tiver valor
+    if (input.value.trim()) {
+      input.parentElement.classList.add('input-focused');
+    }
+  });
+
+  // Inicializa os checkboxes personalizados
+  initServiceCheckboxes();
+
+  // Adiciona máscara ao campo de telefone
+  const phoneInput = document.getElementById('phone');
+  if (phoneInput) {
+    phoneInput.addEventListener('input', formatPhoneNumber);
+  }
+}
+
+/**
+ * Inicializa os checkboxes de serviços
+ */
+function initServiceCheckboxes() {
+  const serviceOptions = document.querySelectorAll('.service-option');
+
+  serviceOptions.forEach(option => {
+    const checkbox = option.querySelector('input[type="checkbox"]');
+
+    if (!checkbox) return;
+
+    // Verifica estado inicial
+    if (checkbox.checked) {
+      option.classList.add('selected');
+    }
+
+    // Adiciona evento de mudança
+    checkbox.addEventListener('change', function () {
+      if (this.checked) {
+        option.classList.add('selected');
+      } else {
+        option.classList.remove('selected');
+      }
+    });
+
+    // Garantia de clicabilidade (solução para problema em alguns navegadores)
+    option.addEventListener('click', function (e) {
+      if (e.target !== checkbox) {
+        e.preventDefault();
+        checkbox.checked = !checkbox.checked;
+
+        // Atualiza estilo visual
+        if (checkbox.checked) {
+          option.classList.add('selected');
+        } else {
+          option.classList.remove('selected');
+        }
+
+        // Dispara evento de mudança
+        checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    });
+  });
+}
+
+/**
+ * Formata o número de telefone no padrão xx xxxxx-xxxx enquanto o usuário digita
+ */
+function formatPhoneNumber(event) {
+  const input = event.target;
+  let value = input.value.replace(/\D/g, ''); // Remove todos os caracteres não numéricos
+
+  if (value.length > 11) {
+    value = value.substring(0, 11); // Limita a 11 dígitos (com DDD)
+  }
+
+  // Aplica a formatação conforme o usuário digita
+  if (value.length > 0) {
+    if (value.length <= 2) {
+      input.value = value;
+    } else if (value.length <= 7) {
+      input.value = `${value.substring(0, 2)} ${value.substring(2)}`;
+    } else {
+      input.value = `${value.substring(0, 2)} ${value.substring(2, 7)}-${value.substring(7)}`;
+    }
+  }
+}
+
+/**
+ * Função aprimorada para enviar formulário de contato para o WhatsApp
+ * Inclui validações mais robustas e feedback visual para o usuário
  */
 function sendToWhatsApp() {
+  // Número de telefone para onde a mensagem será enviada
   const phoneNumber = "5548991056014";
+
+  // Obtenção dos valores dos campos
   const fields = {
     name: document.getElementById("name").value.trim(),
     company: document.getElementById("company").value.trim(),
@@ -463,32 +573,50 @@ function sendToWhatsApp() {
     message: document.getElementById("message").value.trim()
   };
 
-  // Validação de campos vazios
-  if (Object.values(fields).some(field => !field)) {
-    alert("Por favor, preencha todos os campos antes de enviar.");
+  // Validação de campos vazios com feedback visual
+  let hasError = false;
+  Object.entries(fields).forEach(([fieldName, value]) => {
+    const field = document.getElementById(fieldName);
+    if (!value) {
+      field.classList.add('error');
+      hasError = true;
+
+      // Animação de shake para campos vazios
+      field.classList.add('shake');
+      setTimeout(() => field.classList.remove('shake'), 500);
+    } else {
+      field.classList.remove('error');
+    }
+  });
+
+  if (hasError) {
+    showNotification('Por favor, preencha todos os campos obrigatórios.', 'error');
     return;
   }
 
   // Validação de telefone
-  const phoneRegex = /^(?:\+?55)?(?:\d{2})?(?:9\d{8})$/;
-  if (!phoneRegex.test(fields.phone.replace(/\D/g, ''))) {
-    alert("Por favor, insira um número de telefone válido.");
+  const phoneClean = fields.phone.replace(/\D/g, '');
+  const phoneRegex = /^(?:\+?55)?(?:\d{2})?\d{8,9}$/;
+  if (!phoneRegex.test(phoneClean)) {
+    document.getElementById("phone").classList.add('error');
+    showNotification('Por favor, insira um número de telefone válido.', 'error');
     return;
   }
 
   // Validação de email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(fields.email)) {
-    alert("Por favor, insira um email válido.");
+    document.getElementById("email").classList.add('error');
+    showNotification('Por favor, insira um email válido.', 'error');
     return;
   }
 
-  // Serviços selecionados
-  const services = Array.from(document.querySelectorAll('input[name="service"]:checked'))
-    .map(service => service.nextSibling.textContent.trim())
+  // Serviços selecionados - ajustado para nova estrutura
+  const services = Array.from(document.querySelectorAll('.service-option input[type="checkbox"]:checked'))
+    .map(checkbox => checkbox.closest('.service-option').querySelector('.checkbox-text').textContent.trim())
     .join(", ");
 
-  // Montagem da mensagem
+  // Montagem da mensagem formatada
   const whatsappMessage = `Olá, meu nome é *${fields.name}*!  
 ───────────────  
 📋 *Dados do Contato*  
@@ -502,9 +630,166 @@ ${fields.message}
   
 Gostaria de mais informações. Aguardo seu retorno!`;
 
-  // Envio da mensagem
-  window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+  // Mostrar uma notificação de sucesso antes de redirecionar
+  showNotification('Redirecionando para o WhatsApp...', 'success');
+
+  // Pequeno atraso antes de abrir o WhatsApp
+  setTimeout(() => {
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+  }, 1000);
 }
+
+/**
+ * Exibe uma notificação estilizada para feedback do usuário
+ * @param {string} message - Mensagem a ser exibida
+ * @param {string} type - Tipo de notificação ('success', 'error', 'info')
+ */
+function showNotification(message, type = 'info') {
+  // Verifica se já existe uma notificação e remove
+  const existingNotification = document.querySelector('.form-notification');
+  if (existingNotification) {
+    existingNotification.remove();
+  }
+
+  // Cria o elemento de notificação
+  const notification = document.createElement('div');
+  notification.className = `form-notification ${type}`;
+
+  // Ícone baseado no tipo
+  let icon = '';
+  switch (type) {
+    case 'success':
+      icon = '<i class="bx bx-check-circle"></i>';
+      break;
+    case 'error':
+      icon = '<i class="bx bx-error-circle"></i>';
+      break;
+    default:
+      icon = '<i class="bx bx-info-circle"></i>';
+  }
+
+  // Define o conteúdo
+  notification.innerHTML = `
+    ${icon}
+    <span>${message}</span>
+  `;
+
+  // Adiciona ao DOM
+  document.body.appendChild(notification);
+
+  // Adiciona a classe de animação após um pequeno delay
+  setTimeout(() => {
+    notification.classList.add('show');
+  }, 10);
+
+  // Remove a notificação após alguns segundos
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => notification.remove(), 300);
+  }, 3000);
+}
+
+// Adiciona estilo CSS para as notificações
+function addNotificationStyles() {
+  // Verifica se os estilos já existem
+  if (document.querySelector('#notification-styles')) return;
+
+  const styleElement = document.createElement('style');
+  styleElement.id = 'notification-styles';
+  styleElement.textContent = `
+    /* Estilos para as notificações do formulário */
+    .form-notification {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      max-width: 90%;
+    }
+    
+    .form-notification.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .form-notification i {
+      font-size: 1.8rem;
+    }
+    
+    .form-notification.success {
+      background: rgba(46, 204, 113, 0.9);
+    }
+    
+    .form-notification.error {
+      background: rgba(231, 76, 60, 0.9);
+    }
+    
+    /* Estilos para feedback visual nos campos */
+    #contactForm input.error,
+    #contactForm textarea.error {
+      border-color: rgba(231, 76, 60, 0.6) !important;
+      box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3) !important;
+      background: rgba(231, 76, 60, 0.05) !important;
+    }
+    
+    @keyframes shake {
+      0%, 100% {transform: translateX(0);}
+      20%, 60% {transform: translateX(-5px);}
+      40%, 80% {transform: translateX(5px);}
+    }
+    
+    .shake {
+      animation: shake 0.5s ease;
+    }
+    
+    /* Estilo para checkbox selecionado */
+    .service-option.selected {
+      background: rgba(242, 48, 120, 0.2) !important;
+      border-color: var(--secundary-color) !important;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(242, 48, 120, 0.2);
+    }
+    
+    /* Ajuste para tema claro */
+    [data-theme="light"] .form-notification {
+      background: rgba(255, 255, 255, 0.9);
+      color: #051259;
+      box-shadow: 0 5px 15px rgba(5, 18, 89, 0.1);
+      border: 1px solid rgba(5, 18, 89, 0.1);
+    }
+    
+    [data-theme="light"] .form-notification.success {
+      background: rgba(46, 204, 113, 0.9);
+      color: white;
+    }
+    
+    [data-theme="light"] .form-notification.error {
+      background: rgba(231, 76, 60, 0.9);
+      color: white;
+    }
+  `;
+  document.head.appendChild(styleElement);
+}
+
+// Inicializar quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', () => {
+  initContactForm();
+  addNotificationStyles();
+});
+
+// Exportar função para uso global
+window.sendToWhatsApp = sendToWhatsApp;
 
 // ========== SISTEMA DE TEMAS CLARO/ESCURO ==========
 
