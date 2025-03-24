@@ -1095,6 +1095,7 @@ section .testimonial-container {
 
 .benefit-text {
   font-size: 1.5rem;
+  margin-left: 1.4rem;
   line-height: 1.5;
   color: var(--text-color);
   flex: 1;
