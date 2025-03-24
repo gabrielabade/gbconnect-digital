@@ -111,39 +111,101 @@ window.onscroll = () => {
 };
 
 // ========== INICIALIZAÇÃO DE COMPONENTES ==========
-
 /**
  * Inicializa o sistema de FAQ Accordion
- * Controla a abertura/fechamento das perguntas frequentes
+ * Controla a abertura/fechamento das perguntas frequentes com animações suaves
+ * Versão atualizada para melhor compatibilidade com a estrutura HTML renovada
  */
 function initAccordion() {
   const accordionItems = document.querySelectorAll('.accordion-item');
 
+  // Se não encontrar itens de acordeão, encerra a função
+  if (accordionItems.length === 0) {
+    console.log('Nenhum item de acordeão encontrado');
+    return;
+  }
+
+  // Adicionar evento de clique a cada cabeçalho do accordion
   accordionItems.forEach(item => {
     const header = item.querySelector('.accordion-header');
     const content = item.querySelector('.accordion-content');
 
     if (header && content) {
+      // Definir altura inicial dos conteúdos como zero
+      content.style.maxHeight = null;
+
       header.addEventListener('click', () => {
+        // Verifica se este item já está ativo
         const isActive = item.classList.contains('active');
 
-        // Fecha todos os itens
+        // Fecha todos os items
         accordionItems.forEach(otherItem => {
-          otherItem.classList.remove('active');
           const otherContent = otherItem.querySelector('.accordion-content');
+          otherItem.classList.remove('active');
           if (otherContent) {
             otherContent.style.maxHeight = null;
           }
         });
 
-        // Abre o item atual se não estava ativo
+        // Se o item clicado não estava ativo, ativa-o
         if (!isActive) {
           item.classList.add('active');
           content.style.maxHeight = content.scrollHeight + "px";
+
+          // Rola a página para mostrar o conteúdo se necessário (com atraso para permitir a animação)
+          setTimeout(() => {
+            const yOffset = -120; // Offset para considerar o header fixo
+            const y = item.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }, 300);
         }
       });
+
+      // Adiciona suporte para navegação com teclado (acessibilidade)
+      header.addEventListener('keydown', (e) => {
+        // Enter ou Space ativa o item
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          header.click();
+        }
+      });
+
+      // Adiciona atributos ARIA para acessibilidade
+      const contentId = `accordion-content-${Math.random().toString(36).substring(2, 9)}`;
+      content.id = contentId;
+      header.setAttribute('aria-expanded', 'false');
+      header.setAttribute('aria-controls', contentId);
+
+      // Atualiza os atributos ARIA quando o estado muda
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+            const isActive = item.classList.contains('active');
+            header.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+          }
+        });
+      });
+
+      observer.observe(item, { attributes: true });
     }
   });
+
+  // Verificar se há um hash na URL para abrir um item específico
+  if (window.location.hash) {
+    const targetId = window.location.hash.substring(1);
+    const targetItem = document.getElementById(targetId);
+
+    if (targetItem && targetItem.classList.contains('accordion-item')) {
+      setTimeout(() => {
+        const header = targetItem.querySelector('.accordion-header');
+        if (header) {
+          header.click();
+        }
+      }, 500);
+    }
+  }
+
+  console.log('Inicialização do acordeão concluída com sucesso');
 }
 
 /**

@@ -2087,10 +2087,24 @@ section .testimonial-container {
 /* ==================== FAQ SECTION ==================== */
 
 .faq {
-  margin-top: 20rem;
-  min-height: 50vh;
-  padding: 3rem 8% 2rem;
+  margin-top: 6rem;
+  padding: 5rem 0;
   background: var(--bg-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.faq::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 10% 10%, rgba(226, 255, 0, 0.05), transparent 30%),
+    radial-gradient(circle at 90% 90%, rgba(242, 48, 120, 0.05), transparent 30%);
+  z-index: 0;
+  pointer-events: none;
 }
 
 .faq h2 span {
@@ -2098,76 +2112,669 @@ section .testimonial-container {
 }
 
 .faq-container {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 4rem;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.faq .heading {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.faq .heading span {
+  color: var(--secundary-color);
+  position: relative;
+}
+
+.faq .heading span::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background-color: rgba(226, 255, 0, 0.2);
+  z-index: -1;
+  border-radius: 4px;
+}
+
+.faq-intro {
+  max-width: 850px;
+  margin: 0 auto 4rem;
+  text-align: center;
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+.faq-intro a {
+  color: var(--secundary-color);
+  font-weight: 600;
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+
+.faq-intro a:hover {
+  color: var(--main-color);
 }
 
 .accordion {
-  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
 }
 
 .accordion-item {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(10px);
-  border-radius: 2rem;
-  box-shadow: 0 .1rem .5rem var(--shadow-color);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: .5rem;
-  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
 }
 
 .accordion-header {
   width: 100%;
   padding: 2rem;
-  background: rgba(255, 255, 255, 0.09);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--text-color);
   border: none;
   text-align: left;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
 .accordion-header:hover {
-  background: rgba(215, 242, 7, 0.1);
+  background: rgba(226, 255, 0, 0.08);
 }
 
 .accordion-header i {
-  font-size: 2rem;
-  transition: .2s;
+  font-size: 2.2rem;
+  transition: transform 0.3s ease;
+  color: var(--main-color);
 }
 
 .accordion-content {
-  padding: 0;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
-  background: var(--secundary-color);
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.accordion-content-wrapper {
+  padding: 2.5rem;
 }
 
 .accordion-content p {
-  font-size: 1.5rem;
-  padding: 3.5rem;
-  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
 }
 
 .accordion-item.active .accordion-header {
-  background: var(--main-color);
-  color: var(--bg-color);
+  background: var(--secundary-color);
+  color: white;
 }
 
 .accordion-item.active .accordion-header i {
-  transform: rotate(45deg);
+  transform: rotate(-180deg);
+  color: white;
 }
 
 .accordion-item.active .accordion-content {
-  max-height: 700px;
+  max-height: 2000px;
+  transition: max-height 1s ease-in-out;
+}
+
+/* Estilos para listas com checkmarks */
+.faq-benefits,
+.faq-checklist {
+  margin: 2rem 0;
+  padding-left: 1rem;
+}
+
+.faq-benefits h4 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--main-color);
+}
+
+.faq-benefits ul,
+.faq-checklist {
+  list-style: none;
+}
+
+.faq-benefits li,
+.faq-checklist li {
+  position: relative;
+  margin-bottom: 1rem;
+  padding-left: 3rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+}
+
+.check-icon {
+  font-size: 1.8rem;
+  color: var(--main-color);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.faq-checklist li i {
+  font-size: 2rem;
+  color: var(--main-color);
+  margin-right: 1.2rem;
+  flex-shrink: 0;
+}
+
+.faq-checklist li span {
+  flex: 1;
+}
+
+/* Nota de informação */
+.faq-note {
+  display: flex;
+  align-items: flex-start;
+  background: rgba(226, 255, 0, 0.05);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--main-color);
+  margin: 2rem 0;
+}
+
+.faq-note i {
+  font-size: 2.2rem;
+  color: var(--main-color);
+  margin-right: 1.2rem;
+  flex-shrink: 0;
+}
+
+/* Cartões de serviços */
+.faq-services {
+  display: flex;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.faq-service-card {
+  flex: 1;
+  min-width: 250px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.faq-service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: var(--main-color);
+}
+
+.faq-service-card i {
+  font-size: 3.5rem;
+  color: var(--main-color);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  transition: transform 0.5s ease;
+}
+
+.faq-service-card:hover i {
+  transform: scale(1.2) rotate(5deg);
+  color: var(--secundary-color);
+}
+
+.faq-service-card h4 {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  color: var(--secundary-color);
+}
+
+.faq-service-card p {
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+/* Bônus e destaques */
+.faq-bonus {
+  background: rgba(226, 255, 0, 0.08);
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2.5rem 0 1rem;
+  border: 1px dashed var(--main-color);
+}
+
+.bonus-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.bonus-header i {
+  font-size: 2.5rem;
+  color: var(--main-color);
+  margin-right: 1rem;
+}
+
+.bonus-header h4 {
+  font-size: 1.8rem;
+  color: var(--secundary-color);
+}
+
+.faq-bonus p {
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+/* Lista de recursos */
+.faq-features {
+  list-style: none;
+  margin: 1.5rem 0;
+}
+
+.faq-features li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.6rem;
+}
+
+.faq-features li i {
+  font-size: 2rem;
+  color: var(--main-color);
+  margin-right: 1.2rem;
+  flex-shrink: 0;
+}
+
+.faq-emphasis {
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: var(--secundary-color);
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(242, 48, 120, 0.08);
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Seção de preços */
+.price-intro {
+  font-size: 1.7rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.price-section {
+  margin: 2rem 0;
+}
+
+.price-category {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  color: var(--main-color);
+  margin: 3rem 0 1.5rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.price-category i {
+  font-size: 2.4rem;
+  margin-right: 1rem;
+}
+
+.price-table {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+  flex-wrap: wrap;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.price-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.price-service {
+  flex: 1;
+  min-width: 200px;
+}
+
+.price-service strong {
+  font-size: 1.8rem;
+  color: var(--text-color);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.delivery-time,
+.service-includes {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  color: var(--secundary-color);
+  margin-top: 0.8rem;
+}
+
+.delivery-time i {
+  margin-right: 0.5rem;
+  font-size: 1.6rem;
+}
+
+.price-range {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  min-width: 280px;
+}
+
+.price-tag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.price-tag.special {
+  background: rgba(226, 255, 0, 0.1);
+  border-left: 3px solid var(--main-color);
+}
+
+.price-label {
+  font-size: 1.4rem;
+  color: var(--text-color);
+}
+
+.price-value {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--secundary-color);
+}
+
+.price-note {
+  margin: 2.5rem 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
+}
+
+.note-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.note-header i {
+  font-size: 2.4rem;
+  color: var(--main-color);
+  margin-right: 1rem;
+}
+
+.note-details {
+  margin-left: 3.5rem;
+}
+
+.note-details p {
+  margin-bottom: 0.8rem;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.check-yes {
+  color: var(--main-color);
+  font-size: 1.8rem;
+  margin-right: 0.8rem;
+}
+
+.check-no {
+  color: var(--secundary-color);
+  font-size: 1.8rem;
+  margin-right: 0.8rem;
+}
+
+.cta-price {
+  text-align: center;
+  margin: 3rem 0 1rem;
+}
+
+.cta-price p {
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+}
+
+.cta-price .btn {
+  display: inline-block;
+  padding: 1.2rem 2.5rem;
+  font-size: 1.6rem;
+  background: var(--secundary-color);
+  color: white;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 2px solid var(--secundary-color);
+}
+
+.cta-price .btn:hover {
+  background: transparent;
+  color: var(--secundary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Conclusão FAQ */
+.faq-conclusion {
+  margin-top: 2rem;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border-left: 4px solid var(--secundary-color);
+}
+
+.faq-conclusion strong {
+  color: var(--secundary-color);
+}
+
+/* Ajustes para tema claro */
+[data-theme="light"] .accordion-item {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(5, 18, 89, 0.1);
+  box-shadow: 0 5px 15px rgba(5, 18, 89, 0.05);
+}
+
+[data-theme="light"] .accordion-header {
+  background: white;
+  color: var(--main-color);
+}
+
+[data-theme="light"] .accordion-header:hover {
+  background: rgba(5, 18, 89, 0.05);
+}
+
+[data-theme="light"] .accordion-item.active .accordion-header {
+  background: var(--secundary-color);
+  color: white;
+}
+
+[data-theme="light"] .accordion-content {
+  background: #f0f2ff;
+  border-top: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .accordion-content p,
+[data-theme="light"] .accordion-content li,
+[data-theme="light"] .accordion-content h4 {
+  color: #051259;
+}
+
+[data-theme="light"] .faq-service-card {
+  background: white;
+  border: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .faq-bonus {
+  background: rgba(5, 18, 89, 0.05);
+}
+
+[data-theme="light"] .price-row {
+  background: white;
+  border: 1px solid rgba(5, 18, 89, 0.08);
+}
+
+[data-theme="light"] .price-tag {
+  background: rgba(5, 18, 89, 0.05);
+}
+
+[data-theme="light"] .price-tag.special {
+  background: rgba(226, 255, 0, 0.15);
+}
+
+[data-theme="light"] .faq-benefits li,
+[data-theme="light"] .faq-checklist li {
+  color: #051259;
+}
+
+[data-theme="light"] .faq-service-card {
+  background: white;
+  border: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .faq-service-card p {
+  color: #051259;
+}
+
+[data-theme="light"] .price-tag {
+  background: rgba(5, 18, 89, 0.05);
+}
+
+[data-theme="light"] .price-tag .price-label {
+  color: #051259;
+}
+
+[data-theme="light"] .faq-note {
+  background: rgba(5, 18, 89, 0.05);
+  border-left: 4px solid var(--main-color);
+}
+
+[data-theme="light"] .faq-note span {
+  color: #051259;
+}
+
+[data-theme="light"] .check-icon,
+[data-theme="light"] .faq-checklist li i,
+[data-theme="light"] .faq-features li i {
+  color: var(--main-color);
+}
+
+[data-theme="light"] .faq-benefits ul,
+[data-theme="light"] .faq-checklist,
+[data-theme="light"] .faq-features {
+  color: #051259;
+}
+
+/* Ajustes adicionais para melhorar o contraste */
+[data-theme="light"] .price-service strong {
+  color: #051259;
+}
+
+[data-theme="light"] .delivery-time,
+[data-theme="light"] .service-includes {
+  color: var(--secundary-color);
+}
+
+[data-theme="light"] .accordion-content-wrapper {
+  color: #051259;
+}
+
+/* Garantir contraste para elementos dentro do accordion quando ativo */
+[data-theme="light"] .accordion-item.active .accordion-content-wrapper * {
+  color: #051259;
+}
+
+[data-theme="light"] .accordion-item.active .accordion-content .check-icon,
+[data-theme="light"] .accordion-item.active .accordion-content i {
+  color: var(--main-color);
+}
+
+[data-theme="light"] .accordion-item.active .accordion-content strong {
+  color: var(--main-color);
+}
+
+[data-theme="light"] .accordion-item.active .accordion-content h4 {
+  color: var(--main-color);
+}
+
+[data-theme="light"] .accordion-item.active .accordion-content .faq-emphasis,
+[data-theme="light"] .accordion-item.active .accordion-content .price-value {
+  color: var(--secundary-color);
+}
+
+/* Ajustes para os cards de serviço dentro de um accordion ativo */
+[data-theme="light"] .accordion-item.active .faq-service-card {
+  background: white;
+  box-shadow: 0 5px 15px rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .accordion-item.active .faq-service-card h4 {
+  color: var(--secundary-color);
+}
+
+[data-theme="light"] .accordion-item.active .faq-bonus {
+  background: rgba(5, 18, 89, 0.05);
+  border: 1px dashed var(--main-color);
+}
+
+/* Ajustes para seção de preços no tema light quando ativo */
+[data-theme="light"] .accordion-item.active .price-row {
+  background: white;
+  border: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .accordion-item.active .price-category {
+  color: var(--main-color);
+  border-bottom: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+/* Melhorar visibilidade das notas no tema light quando ativo */
+[data-theme="light"] .accordion-item.active .note-header i {
+  color: var(--main-color);
 }
 
 /* ==================== TRUST SECTION & TIMELINE ==================== */
@@ -4265,5 +4872,111 @@ body {
   .testimonial-slide blockquote::before,
   .testimonial-slide blockquote::after {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .faq-services {
+    flex-direction: column;
+  }
+
+  .faq-service-card {
+    width: 100%;
+  }
+
+  .price-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .price-service {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq {
+    padding: 4rem 0;
+  }
+
+  .faq .heading {
+    font-size: 2.8rem;
+  }
+
+  .faq-intro {
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+  }
+
+  .accordion-header {
+    font-size: 1.6rem;
+    padding: 1.5rem;
+  }
+
+  .accordion-content-wrapper {
+    padding: 1.8rem;
+  }
+
+  .accordion-content p {
+    font-size: 1.5rem;
+  }
+
+  .faq-benefits h4,
+  .bonus-header h4,
+  .price-category {
+    font-size: 1.8rem;
+  }
+
+  .faq-benefits li,
+  .faq-checklist li,
+  .faq-features li {
+    font-size: 1.5rem;
+  }
+
+  .price-service strong {
+    font-size: 1.6rem;
+  }
+
+  .price-value {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq .heading {
+    font-size: 2.4rem;
+  }
+
+  .faq-intro {
+    font-size: 1.5rem;
+  }
+
+  .accordion-header {
+    font-size: 1.5rem;
+    padding: 1.2rem 1.5rem;
+  }
+
+  .accordion-content-wrapper {
+    padding: 1.5rem;
+  }
+
+  .accordion-content p {
+    font-size: 1.4rem;
+  }
+
+  .faq-benefits h4,
+  .bonus-header h4 {
+    font-size: 1.6rem;
+  }
+
+  .faq-benefits li,
+  .faq-checklist li,
+  .faq-features li {
+    font-size: 1.4rem;
+  }
+
+  .cta-price .btn {
+    width: 100%;
+    padding: 1.2rem;
   }
 }
