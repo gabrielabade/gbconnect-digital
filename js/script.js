@@ -791,3 +791,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // Outras inicializações...
   initAboutAnimations();
 });
+
