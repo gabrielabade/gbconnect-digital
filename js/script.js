@@ -1139,3 +1139,32 @@ document.addEventListener('DOMContentLoaded', () => {
   initAboutAnimations();
 });
 
+// Função para mudar logo do footer de acordo com o tema
+function updateFooterLogo() {
+  const footerLogo = document.querySelector('.footer-logo img');
+  const isDarkTheme = document.documentElement.getAttribute('data-theme') === 'dark';
+
+  if (footerLogo) {
+    if (isDarkTheme) {
+      footerLogo.src = './images/logo-white.webp'; // Versão clara do logo
+    } else {
+      footerLogo.src = './images/logocolor1.webp'; // Versão original do logo
+    }
+  }
+}
+
+// Executar quando o tema mudar
+document.addEventListener('DOMContentLoaded', function () {
+  updateFooterLogo();
+
+  // Observe mudanças no atributo data-theme
+  const observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (mutation.attributeName === 'data-theme') {
+        updateFooterLogo();
+      }
+    });
+  });
+
+  observer.observe(document.documentElement, { attributes: true });
+});
