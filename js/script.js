@@ -1414,27 +1414,45 @@ function addNotificationStyles() {
  * Este pop-up oferece uma oferta especial para incentivar a conversão
  */
 function initExitPopup() {
+  // Seleciona o elemento do pop-up
   const exitPopup = document.getElementById('exitPopup');
+  // Se o elemento não existir, encerra a função
   if (!exitPopup) return;
 
-  const closePopupButton = document.querySelector('.close-popup');
-  const btnSecondary = document.querySelector('.exit-popup .btn-secondary');
+  // Seleciona os botões do pop-up
+  const closePopupButton = document.querySelector('.close-popup'); // Botão X para fechar
+  const btnSecondary = document.querySelector('.exit-popup .btn-secondary'); // Botão "Agora não"
+  const btnPrimary = document.querySelector('.exit-popup .btn-primary'); // Botão "Quero Aproveitar!"
 
-  // Fechar o pop-up ao clicar no botão de fechar
+  // Fecha o pop-up ao clicar no botão X (fechar)
   if (closePopupButton) {
     closePopupButton.addEventListener('click', () => {
       closeExitPopup(exitPopup);
     });
   }
 
-  // Fechar o pop-up ao clicar no botão "Agora não"
+  // Fecha o pop-up ao clicar no botão "Agora não"
   if (btnSecondary) {
     btnSecondary.addEventListener('click', () => {
       closeExitPopup(exitPopup);
     });
   }
 
-  // Fechar o popup ao clicar fora dele
+  // Fecha o pop-up ao clicar no botão "Quero Aproveitar!" e rola para a seção de contato
+  if (btnPrimary) {
+    btnPrimary.addEventListener('click', () => {
+      closeExitPopup(exitPopup);
+      // Pequeno delay para garantir que o popup feche antes de rolar
+      setTimeout(() => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    });
+  }
+
+  // Fecha o popup ao clicar fora dele (na área escura)
   exitPopup.addEventListener('click', (e) => {
     if (e.target === exitPopup) {
       closeExitPopup(exitPopup);
