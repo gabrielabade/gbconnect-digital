@@ -1419,6 +1419,8 @@ function initExitPopup() {
 
   const closePopupButton = document.querySelector('.close-popup');
   const btnSecondary = document.querySelector('.exit-popup .btn-secondary');
+  const btnPrimary = document.querySelector('.exit-popup .btn-primary');
+  const contactForm = document.querySelector('#contact form');
 
   // Fechar o pop-up ao clicar no botão de fechar
   if (closePopupButton) {
@@ -1434,6 +1436,18 @@ function initExitPopup() {
     });
   }
 
+  // Fechar o pop-up ao clicar no botão "Quero Aproveitar" e mostrar o balão informativo
+  if (btnPrimary) {
+    btnPrimary.addEventListener('click', (e) => {
+      closeExitPopup(exitPopup);
+
+      // Pequeno atraso para garantir que o scroll termine antes de mostrar o balão
+      setTimeout(() => {
+        showFormTooltip();
+      }, 500);
+    });
+  }
+
   // Fechar o popup ao clicar fora dele
   exitPopup.addEventListener('click', (e) => {
     if (e.target === exitPopup) {
@@ -1446,6 +1460,84 @@ function initExitPopup() {
 
   // Adicionar acessibilidade
   setupExitPopupAccessibility(exitPopup);
+}
+
+/**
+ * Cria e exibe um balão informativo acima do formulário
+ */
+function showFormTooltip() {
+  // Verificar se o balão já existe para não criar duplicados
+  if (document.getElementById('formTooltip')) return;
+
+  // Criar o elemento do balão
+  const tooltip = document.createElement('div');
+  tooltip.id = 'formTooltip';
+  tooltip.className = 'form-tooltip';
+  tooltip.innerHTML = `
+    <div class="tooltip-content">
+      <p>Para aproveitar sua oferta exclusiva de 15% de desconto, preencha o formulário abaixo! 🚀</p>
+      <button class="tooltip-close"><i class='bx bx-x'></i></button>
+    </div>
+  `;
+
+  // Adicionar estilos inline (você pode mover isso para seu CSS)
+  tooltip.style.cssText = `
+    position: relative;
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+  `;
+
+  tooltip.querySelector('.tooltip-content').style.cssText = `
+    background-color: #f8f9fa;
+    border-left: 4px solid #0d6efd;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  `;
+
+  tooltip.querySelector('p').style.cssText = `
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+  `;
+
+  tooltip.querySelector('.tooltip-close').style.cssText = `
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+  `;
+
+  // Adicionar animação ao CSS (você pode mover isso para seu CSS)
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Inserir o balão antes do formulário de contato
+  const contactForm = document.querySelector('#contact form');
+  if (contactForm) {
+    contactForm.parentNode.insertBefore(tooltip, contactForm);
+
+    // Adicionar event listener para fechar o balão
+    tooltip.querySelector('.tooltip-close').addEventListener('click', () => {
+      tooltip.remove();
+    });
+
+    // Remover o balão automaticamente após 10 segundos
+    setTimeout(() => {
+      if (tooltip.parentNode) {
+        tooltip.remove();
+      }
+    }, 10000);
+  }
 }
 
 /**
@@ -1546,6 +1638,11 @@ function setupExitPopupAccessibility(exitPopup) {
     }
   });
 }
+
+// Inicializar o popup quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', () => {
+  initExitPopup();
+});
 
 /**
  * Inicializa as funcionalidades do botão flutuante do WhatsApp
