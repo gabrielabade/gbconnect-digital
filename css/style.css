@@ -1629,6 +1629,44 @@ section .testimonial-container {
   box-shadow: 0px 10px 20px rgba(5, 18, 89, 0.2);
 }
 
+/* Ícones nos cards */
+.card-icon {
+  font-size: 2.8rem;
+  color: var(--secundary-color);
+  margin-bottom: 1.5rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card popular com marcador */
+.card.popular {
+  border: 2px solid var(--secundary-color) !important;
+  position: relative;
+  transform: translateY(-10px);
+}
+
+/* Etiqueta "Mais Solicitado" */
+.card.popular {
+  position: relative;
+  padding-top: 25px;
+}
+
+.popular-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--secundary-color);
+  color: white;
+  padding: 5px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 10px 10px 0 0;
+}
+
 /* ==================== PORTFOLIO SECTION ==================== */
 
 .portfolio {
