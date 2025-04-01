@@ -1701,10 +1701,10 @@ section .testimonial-container {
 .category-title::before {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -1px;
   left: 50%;
   transform: translateX(-50%);
-  width: 28rem;
+  width: 18rem;
   height: 4px;
   background: var(--text-color);
   transition: width 0.3s ease;
