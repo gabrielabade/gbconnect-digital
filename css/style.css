@@ -1785,6 +1785,7 @@ section .testimonial-container {
 }
 
 .portfolio-layer p {
+  color: var(--white-custom);
   font-size: 1.6rem;
   margin: .3rem 0 1rem;
   margin-bottom: 0.5rem;
