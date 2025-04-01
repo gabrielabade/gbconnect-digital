@@ -1713,8 +1713,10 @@ section .testimonial-container {
 .portfolio-wrapper {
   position: relative;
   max-width: 1200px;
-  margin: auto;
-  padding: 2rem;
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
 }
 
 .portfolio-box.mySwiper {
@@ -1823,6 +1825,11 @@ section .testimonial-container {
 }
 
 /* Portfolio Swiper Navigation */
+.portfolio-carousel {
+  position: relative;
+  width: 100%;
+}
+
 .portfolio-carousel .swiper-button-next,
 .portfolio-carousel .swiper-button-prev {
   background-color: var(--secundary-color);
@@ -5025,12 +5032,14 @@ body {
 
 /* Melhorar a aparência dos cards de projeto */
 .portfolio-item {
-  border-radius: 12px !important;
+  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  height: 400px !important;
+  width: 100% !important;
+  height: auto !important;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  margin: 15px;
+  margin: 0 auto !important;
+  overflow: hidden;
 }
 
 .portfolio-item:hover {
@@ -5040,9 +5049,19 @@ body {
 
 /* Ajustes para garantir compatibilidade em dispositivos móveis */
 @media (max-width: 768px) {
+  .swiper-slide {
+    width: 85% !important;
+    margin: 0 auto !important;
+  }
+
   .portfolio-item {
-    height: 350px !important;
-    margin: 10px;
+    margin: 0 auto !important;
+    display: block;
+  }
+
+  .portfolio-content.swiper-wrapper {
+    display: flex;
+    align-items: center;
   }
 
   .portfolio-layer h4 {

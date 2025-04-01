@@ -396,6 +396,8 @@ function initPortfolioSwiper() {
       spaceBetween: 20,
       loop: slideCount > 2, // Ativa loop apenas se houver mais de 2 slides
       grabCursor: true,
+      centeredSlides: true, // Centraliza os slides ativos
+      roundLengths: true, // Arredonda os valores de largura e altura para evitar renderização borrada
       pagination: {
         el: swiperContainer.querySelector('.swiper-pagination'),
         clickable: true,
@@ -406,17 +408,25 @@ function initPortfolioSwiper() {
       },
       // Diferentes configurações baseadas no tamanho da tela
       breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10,
+          centeredSlides: true,
+        },
         640: {
           slidesPerView: 1,
           spaceBetween: 20,
+          centeredSlides: true,
         },
         768: {
           slidesPerView: 2,
-          spaceBetween: 30,
+          spaceBetween: 20,
+          centeredSlides: false,
         },
         1024: {
           slidesPerView: 3,
           spaceBetween: 30,
+          centeredSlides: false,
         }
       },
       // Carregamento lazy de imagens para melhor performance
@@ -430,13 +440,37 @@ function initPortfolioSwiper() {
         nextSlideMessage: 'Próximo slide',
         firstSlideMessage: 'Este é o primeiro slide',
         lastSlideMessage: 'Este é o último slide',
-      }
+      },
+      // Configuração para evitar distorções em dispositivos móveis
+      observer: true,
+      observeParents: true,
+      resizeObserver: true
     });
 
     // Garantir que imagens sejam carregadas corretamente
     swiperInstance.on('imagesReady', function () {
       swiperInstance.update();
     });
+
+    // Atualizar o Swiper quando a janela for redimensionada
+    window.addEventListener('resize', function () {
+      setTimeout(function () {
+        swiperInstance.update();
+      }, 300);
+    });
+
+    // Corrigir problema de layout em dispositivos móveis
+    if (window.innerWidth <= 768) {
+      slides.forEach(slide => {
+        slide.style.width = '85%';
+        slide.style.margin = '0 auto';
+      });
+
+      // Força a atualização após um pequeno delay
+      setTimeout(function () {
+        swiperInstance.update();
+      }, 500);
+    }
   });
 }
 
