@@ -5424,3 +5424,119 @@ body {
     padding: 1.2rem;
   }
 }
+
+/* Correção para o carrossel de portfólio em dispositivos móveis */
+
+/* Ajustes específicos para mobile que garantem a centralização das imagens */
+@media (max-width: 768px) {
+
+  /* Configuração para garantir que apenas 1 slide seja exibido por vez */
+  .portfolio-carousel .swiper-slide {
+    width: 100% !important;
+    /* Em vez de porcentagem, usamos width 100% */
+  }
+
+  /* Remover margens personalizadas que podem estar causando problemas */
+  .portfolio-carousel .swiper-slide .portfolio-item {
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Garantir que a imagem não transborde */
+  .portfolio-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Garantir que os controles de navegação fiquem visíveis */
+  .portfolio-carousel .swiper-button-next,
+  .portfolio-carousel .swiper-button-prev {
+    opacity: 0.7;
+  }
+
+  /* Distância adequada para os botões de navegação */
+  .portfolio-carousel .swiper-button-next {
+    right: 10px;
+  }
+
+  .portfolio-carousel .swiper-button-prev {
+    left: 10px;
+  }
+}
+
+/* Ajustes adicionais para telas muito pequenas */
+@media (max-width: 480px) {
+
+  /* Aumentar a visibilidade dos controles de navegação */
+  .portfolio-carousel .swiper-button-next,
+  .portfolio-carousel .swiper-button-prev {
+    opacity: 0.8;
+    background-color: rgba(242, 48, 120, 0.8) !important;
+  }
+}
+/* Ajuste fino para eliminar completamente a exibição de slides adjacentes */
+
+/* Em dispositivos móveis, garantir que apenas um slide completo seja visível */
+@media (max-width: 768px) {
+
+  /* Garantir largura exata - sem chance de mostrar outros slides */
+  .portfolio-carousel .swiper-slide {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Aumentar o padding do container para criar espaço entre slides */
+  .portfolio-box.mySwiper {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Garantir que o conteúdo não transborde */
+  .portfolio-item {
+    width: 100% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  /* Remover qualquer margem que possa estar causando o vazamento */
+  .portfolio-content.swiper-wrapper {
+    margin: 0 !important;
+  }
+
+  /* Ajustar a navegação para não interferir na visibilidade do slide */
+  .portfolio-carousel .swiper-button-next {
+    right: 0 !important;
+    transform: translateX(50%) !important;
+  }
+
+  .portfolio-carousel .swiper-button-prev {
+    left: 0 !important;
+    transform: translateX(-50%) !important;
+  }
+
+  /* Eliminar qualquer espaçamento entre slides que possa estar causando o problema */
+  .portfolio-carousel .swiper-wrapper {
+    display: flex !important;
+    align-items: center !important;
+  }
+}
+
+/* Para telas muito pequenas, aumentar os controles para facilitar a navegação */
+@media (max-width: 480px) {
+
+  .portfolio-carousel .swiper-button-next,
+  .portfolio-carousel .swiper-button-prev {
+    width: 35px !important;
+    height: 35px !important;
+    background-color: rgba(242, 48, 120, 0.85) !important;
+  }
+
+  .portfolio-carousel .swiper-button-next:after,
+  .portfolio-carousel .swiper-button-prev:after {
+    font-size: 16px !important;
+  }
+}

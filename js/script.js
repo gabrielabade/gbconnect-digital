@@ -380,6 +380,11 @@ function initTestimonialSwiper() {
  * Inicializa o Swiper para a seção de portfólio
  * Configura múltiplos sliders de portfolio com controles e breakpoints responsivos
  */
+/**
+ * Função refinada para inicializar o Swiper do portfólio
+ * Configuração otimizada para eliminar completamente a exibição 
+ * de slides adjacentes em dispositivos móveis
+ */
 function initPortfolioSwiper() {
   const projectSwipers = document.querySelectorAll('.portfolio-box.mySwiper');
 
@@ -390,14 +395,22 @@ function initPortfolioSwiper() {
     // Não inicializa o Swiper se não houver slides suficientes
     if (slideCount < 1) return;
 
-    // Configuração do Swiper
+    // Verificar tamanho da tela para aplicar configurações específicas
+    const isMobile = window.innerWidth <= 768;
+
+    // Configuração refinada do Swiper
     const swiperInstance = new Swiper(swiperContainer, {
-      slidesPerView: 1,
-      spaceBetween: 20,
+      // Configurações básicas
+      slidesPerView: isMobile ? 1 : 'auto', // Forçar exatamente 1 slide em mobile
+      spaceBetween: isMobile ? 0 : 20, // Remover espaçamento em mobile
       loop: slideCount > 2, // Ativa loop apenas se houver mais de 2 slides
+      loopAdditionalSlides: 1, // Adiciona slides extras para o loop funcionar melhor
       grabCursor: true,
-      centeredSlides: true, // Centraliza os slides ativos
-      roundLengths: true, // Arredonda os valores de largura e altura para evitar renderização borrada
+
+      // Desativar centeredSlides em mobile para evitar problemas de alinhamento
+      centeredSlides: false,
+
+      // Paginação e navegação
       pagination: {
         el: swiperContainer.querySelector('.swiper-pagination'),
         clickable: true,
@@ -406,74 +419,70 @@ function initPortfolioSwiper() {
         nextEl: swiperContainer.querySelector('.swiper-button-next'),
         prevEl: swiperContainer.querySelector('.swiper-button-prev'),
       },
-      // Diferentes configurações baseadas no tamanho da tela
+
+      // Breakpoints refinados
       breakpoints: {
+        // Mobile pequeno
         320: {
           slidesPerView: 1,
-          spaceBetween: 10,
-          centeredSlides: true,
+          spaceBetween: 0,
+          centeredSlides: false
         },
+        // Mobile grande
         640: {
           slidesPerView: 1,
-          spaceBetween: 20,
-          centeredSlides: true,
+          spaceBetween: 0,
+          centeredSlides: false
         },
+        // Tablet
         768: {
           slidesPerView: 2,
           spaceBetween: 20,
-          centeredSlides: false,
+          centeredSlides: false
         },
+        // Desktop
         1024: {
           slidesPerView: 3,
           spaceBetween: 30,
-          centeredSlides: false,
+          centeredSlides: false
         }
       },
-      // Carregamento lazy de imagens para melhor performance
-      lazy: {
-        loadPrevNext: true,
-        loadPrevNextAmount: 2,
-      },
-      // Acessibilidade aprimorada
-      a11y: {
-        prevSlideMessage: 'Slide anterior',
-        nextSlideMessage: 'Próximo slide',
-        firstSlideMessage: 'Este é o primeiro slide',
-        lastSlideMessage: 'Este é o último slide',
-      },
-      // Configuração para evitar distorções em dispositivos móveis
-      observer: true,
-      observeParents: true,
-      resizeObserver: true
+
+      // Melhorar o comportamento em dispositivos móveis
+      touchReleaseOnEdges: true, // Permite soltar o toque nas bordas
+      preventClicks: false, // Permite cliques nos slides
+      preventClicksPropagation: false // Não impede propagação de cliques
     });
 
-    // Garantir que imagens sejam carregadas corretamente
-    swiperInstance.on('imagesReady', function () {
-      swiperInstance.update();
-    });
-
-    // Atualizar o Swiper quando a janela for redimensionada
-    window.addEventListener('resize', function () {
-      setTimeout(function () {
-        swiperInstance.update();
-      }, 300);
-    });
-
-    // Corrigir problema de layout em dispositivos móveis
-    if (window.innerWidth <= 768) {
+    // Garantir que os slides estejam corretamente dimensionados após inicialização
+    if (isMobile) {
+      // Configurar slides para ocupar exatamente a largura disponível
       slides.forEach(slide => {
-        slide.style.width = '85%';
-        slide.style.margin = '0 auto';
+        slide.style.width = '100%';
       });
-
-      // Força a atualização após um pequeno delay
-      setTimeout(function () {
-        swiperInstance.update();
-      }, 500);
     }
+
+    // Atualizar o Swiper após inicialização e redimensionamento
+    setTimeout(() => {
+      swiperInstance.update();
+    }, 300);
+
+    window.addEventListener('resize', () => {
+      setTimeout(() => {
+        // Atualizar o layout do Swiper ao redimensionar
+        swiperInstance.update();
+
+        // Ajustar os slides conforme o tamanho da tela
+        const isMobileNow = window.innerWidth <= 768;
+        if (isMobileNow) {
+          slides.forEach(slide => {
+            slide.style.width = '100%';
+          });
+        }
+      }, 200);
+    });
   });
 }
-
 // ========== ANIMAÇÕES E EFEITOS ==========
 
 /**
