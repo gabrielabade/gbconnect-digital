@@ -518,13 +518,14 @@ section .testimonial-container {
 .btn-primary {
   background: var(--main-color);
   color: var(--bg-color);
-  padding: 1.5rem 3rem;
+  padding: 1.6rem 3.2rem;
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.5px;
   border-radius: 8px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(218, 255, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(226, 255, 0, 0.25);
 }
 
 /* Animação de pulso para botões de destaque */
@@ -586,10 +587,11 @@ section .testimonial-container {
 .btn-secondary {
   background: var(--secundary-color);
   color: var(--text-color);
-  padding: 1.5rem 3rem;
+  padding: 1.6rem 3.2rem;
   font-size: 1.8rem;
   font-weight: 600;
   border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(242, 48, 120, 0.15);
 }
 
 .btn-secondary:hover {
@@ -630,7 +632,7 @@ section .testimonial-container {
   display: flex;
   justify-content: center;
   gap: 3rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
   flex-wrap: wrap;
 }
 
@@ -638,14 +640,18 @@ section .testimonial-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 150px;
+  width: 160px;
+  padding: 1.5rem 1rem;
+  border-radius: 10px;
   transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .service-mini i {
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: var(--main-color);
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .service-mini span {
@@ -655,7 +661,8 @@ section .testimonial-container {
 }
 
 .service-mini:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  background: rgba(226, 255, 0, 0.1);
 }
 
 /* ==================== SEÇÃO HOME ==================== */
@@ -668,6 +675,7 @@ section .testimonial-container {
   padding-top: 8rem;
   position: relative;
   overflow: hidden;
+  background-position: center;
 }
 
 /* Conteúdo principal da seção home */
@@ -682,17 +690,18 @@ section .testimonial-container {
 
 /* Título principal com gradiente */
 .home-content h1 {
-  font-size: 5.2rem;
+  font-size: 4.6rem;
+  max-width: 800px;
   font-weight: 800;
   letter-spacing: -0.5px;
   line-height: 1.2;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
   background: linear-gradient(45deg, var(--main-color), var(--secundary-color));
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   animation: fadeInDown 1s ease;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Efeito de gradiente animado para títulos */
@@ -740,10 +749,11 @@ section .testimonial-container {
 
 /* Subtítulo */
 .home-content h2 {
-  font-size: 2.6rem;
+  font-size: 2.4rem;
+  font-weight: 500;
   color: var(--text-color);
   margin-bottom: 2.4rem;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 /* Texto regular */
@@ -764,21 +774,26 @@ section .testimonial-container {
 .hero-description {
   max-width: 800px;
   margin: 0 auto 3rem;
-  padding: 1.5rem 2rem;
+  padding: 1.8rem 2.5rem;
   border-left: 4px solid var(--secundary-color);
-  background: rgba(5, 18, 89, 0.7);
-  border-radius: 8px;
+  background: rgba(5, 18, 89, 0.8);
+  border-radius: 10px;
   text-align: left;
   font-size: 1.7rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.hero-description p {
+  margin: 0;
 }
 
 /* Ajuste para o tema claro */
 [data-theme="light"] .hero-description {
-  background: rgba(230, 235, 255, 0.7) !important;
+  background: rgba(230, 235, 255, 0.9);
+  box-shadow: 0 8px 25px rgba(5, 18, 89, 0.08);
   border-left: 4px solid var(--secundary-color) !important;
   color: var(--text-dark) !important;
-  box-shadow: 0 4px 10px rgba(5, 18, 89, 0.05);
 }
 
 [data-theme="light"] .hero-description strong {
@@ -792,7 +807,7 @@ section .testimonial-container {
   flex-direction: row;
   justify-content: center;
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   width: 100%;
 }
 
@@ -803,7 +818,7 @@ section .testimonial-container {
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
   width: 100%;
 }
 
@@ -811,10 +826,16 @@ section .testimonial-container {
   display: flex;
   align-items: center;
   gap: 1rem;
+  padding: 1rem 1.8rem;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
 }
 
 .trust-item i {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
+  margin-right: 1rem;
   color: var(--main-color);
 }
 
@@ -856,15 +877,15 @@ section .testimonial-container {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 4rem;
-  height: 4rem;
+  width: 4.5rem;
+  height: 4.5rem;
   background: transparent;
   border: .2rem solid var(--main-color);
   border-radius: 50%;
   box-shadow: 0 .2rem .5rem rgba(0, 0, 0, 0.1);
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--main-color);
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 
 .home-content .social-media a:hover {
@@ -915,6 +936,42 @@ section .testimonial-container {
   background: var(--bg-color);
   opacity: 0.6;
   z-index: 1;
+}
+
+/* Correção para o overlay do background no tema escuro */
+[data-theme="dark"] .home-img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(5, 18, 89, 0.8), rgba(5, 18, 89, 0.7));
+  z-index: 2;
+}
+
+/* Versão específica para o tema claro */
+[data-theme="light"] .home-img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(230, 235, 255, 0.85), rgba(245, 247, 255, 0.9));
+  z-index: 2;
+}
+
+/* Ajuste o seletor original para afetar apenas o tema padrão (escuro) inicialmente */
+.home-img::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(5, 18, 89, 0.8), rgba(5, 18, 89, 0.7));
+  z-index: 2;
 }
 
 /* Ajuste para o tema claro */
@@ -4399,6 +4456,24 @@ body {
   color: var(--main-color);
 }
 
+[data-theme="light"] .service-mini {
+  background: rgba(5, 18, 89, 0.05);
+  border: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .service-mini:hover {
+  background: rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .trust-item {
+  background: rgba(5, 18, 89, 0.05);
+  border: 1px solid rgba(5, 18, 89, 0.1);
+}
+
+[data-theme="light"] .trust-item:hover {
+  background: rgba(5, 18, 89, 0.1);
+}
+
 /* Botões CTA ajustados para ambos os temas */
 .btn-primary {
   color: var(--bg-color);
@@ -4537,6 +4612,51 @@ body {
     width: 100% !important;
     padding: 1.2rem !important;
     font-size: 1.5rem !important;
+  }
+
+  .home-content h1 {
+    font-size: 3rem;
+  }
+
+  .home-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-description {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .service-mini {
+    width: 120px;
+    padding: 1rem;
+  }
+
+  .service-mini i {
+    font-size: 2.8rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 1.4rem;
+  }
+
+  .trust-indicators {
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    margin-bottom: 1rem;
+    width: 100%;
+    justify-content: center;
   }
 }
 
@@ -5698,4 +5818,22 @@ body {
 /* Efeito hover no checkbox */
 .service-option:hover input[type="checkbox"] {
   border-color: var(--main-color) !important;
+}
+
+.particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 3;
+  /* Acima do background, mas abaixo do conteúdo */
+  pointer-events: none;
+  /* Permite clicar através do canvas */
+}
+
+/* Ajuste para que o conteúdo fique acima das partículas */
+.home-content {
+  position: relative;
+  z-index: 4;
 }

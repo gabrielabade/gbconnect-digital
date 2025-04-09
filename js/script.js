@@ -1748,3 +1748,269 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Log para depuração
 console.log('GB Connect script loaded');
+
+
+// ========== ANIMAÇÃO DE PARTÍCULAS ==========
+document.addEventListener('DOMContentLoaded', function () {
+  const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return; // Sai da função se o canvas não existir
+
+  const ctx = canvas.getContext('2d');
+
+  // Configurar o tamanho do canvas para ocupar toda a tela
+  function setCanvasSize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  setCanvasSize();
+  window.addEventListener('resize', setCanvasSize);
+
+  // Detectar o tema atual
+  function getCurrentTheme() {
+    return document.documentElement.getAttribute('data-theme') || 'dark';
+  }
+
+  // Ajustar configurações com base no tamanho da tela
+  let particleCount, connectDistance, particleOpacity, particleSize;
+
+  function updateSettings() {
+    if (window.innerWidth < 480) { // Telas muito pequenas
+      particleCount = 25;
+      connectDistance = 70;
+      particleOpacity = 0.3;
+      particleSize = 2.5;
+    } else if (window.innerWidth < 768) { // Telas de celular maiores
+      particleCount = 40;
+      connectDistance = 80;
+      particleOpacity = 0.4;
+      particleSize = 2.8;
+    } else if (window.innerWidth < 1024) { // Tablets
+      particleCount = 60;
+      connectDistance = 90;
+      particleOpacity = 0.5;
+      particleSize = 3;
+    } else { // Desktop
+      particleCount = 80;
+      connectDistance = 100;
+      particleOpacity = 0.6;
+      particleSize = 3;
+    }
+  }
+
+  updateSettings();
+  window.addEventListener('resize', function () {
+    updateSettings();
+    init(); // Reinicializa as partículas quando a tela é redimensionada
+  });
+
+  // Array para armazenar as partículas
+  let particles = [];
+
+  // Rastreamento da posição do mouse
+  const mouse = {
+    x: null,
+    y: null,
+    radius: window.innerWidth < 768 ? 100 : 150 // Raio de influência menor em dispositivos móveis
+  };
+
+  // Detectar movimento do mouse
+  window.addEventListener('mousemove', function (event) {
+    mouse.x = event.x;
+    mouse.y = event.y;
+  });
+
+  // Configurar evento para touch em dispositivos móveis
+  window.addEventListener('touchmove', function (event) {
+    if (event.touches.length > 0) {
+      mouse.x = event.touches[0].clientX;
+      mouse.y = event.touches[0].clientY;
+    }
+  });
+
+  // Resetar posição do mouse quando não estiver interagindo
+  window.addEventListener('mouseleave', function () {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  window.addEventListener('touchend', function () {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  // Configurações de cores para diferentes temas
+  const colors = {
+    dark: [
+      `rgba(226, 255, 0, ${particleOpacity})`, // Amarelo
+      `rgba(242, 48, 120, ${particleOpacity})`, // Rosa
+      `rgba(255, 255, 255, ${particleOpacity * 0.8})` // Branco
+    ],
+    light: [
+      `rgba(5, 18, 89, ${particleOpacity})`, // Azul escuro
+      `rgba(242, 48, 120, ${particleOpacity})`, // Rosa
+      `rgba(0, 0, 0, ${particleOpacity * 0.8})` // Preto
+    ]
+  };
+
+  function getThemeColors() {
+    const theme = getCurrentTheme();
+    return {
+      dark: [
+        `rgba(226, 255, 0, ${particleOpacity})`, // Amarelo
+        `rgba(242, 48, 120, ${particleOpacity})`, // Rosa
+        `rgba(255, 255, 255, ${particleOpacity * 0.8})` // Branco
+      ],
+      light: [
+        `rgba(5, 18, 89, ${particleOpacity})`, // Azul escuro
+        `rgba(242, 48, 120, ${particleOpacity})`, // Rosa
+        `rgba(0, 0, 0, ${particleOpacity * 0.8})` // Preto
+      ]
+    }[theme] || colors.dark;
+  }
+
+  // Classe Partícula
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * particleSize + 1; // Tamanho variável com base na configuração
+      this.baseX = this.x; // Posição base para retornar
+      this.baseY = this.y;
+      this.density = (Math.random() * 20) + 1; // Densidade para movimento (reduzida para movimento mais suave)
+      this.theme = getCurrentTheme();
+      this.colors = getThemeColors();
+      this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
+      this.speedFactor = window.innerWidth < 768 ? 15 : 10; // Movimento mais lento em dispositivos móveis
+    }
+
+    // Atualizar cor baseada no tema atual
+    updateColor() {
+      const currentTheme = getCurrentTheme();
+      if (this.theme !== currentTheme) {
+        this.theme = currentTheme;
+        this.colors = getThemeColors();
+        this.color = this.colors[Math.floor(Math.random() * this.colors.length)];
+      }
+    }
+
+    // Desenhar a partícula
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+
+    // Atualizar a partícula (movimento e interação)
+    update() {
+      // Verificar se o tema mudou
+      this.updateColor();
+
+      // Interação com o mouse
+      if (mouse.x !== null && mouse.y !== null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        // Apenas reagir se estiver dentro do raio de influência
+        if (distance < mouse.radius) {
+          const forceDirectionX = dx / distance;
+          const forceDirectionY = dy / distance;
+          const force = (mouse.radius - distance) / mouse.radius;
+
+          const directionX = forceDirectionX * force * this.density;
+          const directionY = forceDirectionY * force * this.density;
+
+          this.x -= directionX;
+          this.y -= directionY;
+        }
+      }
+
+      // Retornar lentamente à posição original
+      if (this.x !== this.baseX) {
+        const dx = this.x - this.baseX;
+        this.x -= dx / this.speedFactor;
+      }
+      if (this.y !== this.baseY) {
+        const dy = this.y - this.baseY;
+        this.y -= dy / this.speedFactor;
+      }
+
+      this.draw();
+    }
+  }
+
+  // Inicializar partículas
+  function init() {
+    particles = [];
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  // Conectar partículas com linhas
+  function connect() {
+    // Não desenha linhas em telas muito pequenas para evitar visual poluído
+    if (window.innerWidth < 480) return;
+
+    // Opacidade reduzida para conexões em dispositivos móveis
+    const connectionOpacity = window.innerWidth < 768 ? 0.1 : 0.2;
+
+    for (let a = 0; a < particles.length; a++) {
+      for (let b = a; b < particles.length; b++) {
+        const dx = particles[a].x - particles[b].x;
+        const dy = particles[a].y - particles[b].y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        // Conectar partículas que estão próximas
+        if (distance < connectDistance) {
+          const theme = getCurrentTheme();
+          const baseColor = theme === 'light' ? 'rgba(5, 18, 89, ' : 'rgba(226, 255, 0, ';
+
+          // Opacidade baseada na distância
+          const opacity = (1 - (distance / connectDistance)) * connectionOpacity;
+          ctx.strokeStyle = baseColor + opacity + ')';
+          ctx.lineWidth = window.innerWidth < 768 ? 0.5 : 1; // Linhas mais finas em mobile
+          ctx.beginPath();
+          ctx.moveTo(particles[a].x, particles[a].y);
+          ctx.lineTo(particles[b].x, particles[b].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  // Animação principal
+  function animate() {
+    // Limpar o canvas com pequena opacidade para criar efeito de rastro
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Atualizar e desenhar partículas
+    particles.forEach(particle => particle.update());
+
+    // Conectar partículas
+    connect();
+
+    // Continuar a animação
+    requestAnimationFrame(animate);
+  }
+
+  // Iniciar a animação
+  init();
+  animate();
+
+  // Observar mudanças no tema
+  const observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (mutation.attributeName === 'data-theme') {
+        // As partículas serão atualizadas no próximo frame
+      }
+    });
+  });
+
+  // Iniciar observação das mudanças de tema
+  observer.observe(document.documentElement, {
+    attributes: true
+  });
+});
