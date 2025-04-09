@@ -5627,3 +5627,75 @@ body {
     line-height: 1.5 !important;
   }
 }
+
+/* Melhorar espaçamento na resposta do FAQ sobre gestão de redes sociais */
+@media (max-width: 768px) {
+
+  /* Ajuste para a seção "inclui" e "não inclui" */
+  .faq-note .note-details p {
+    margin-bottom: 15px !important;
+    padding: 8px 0 !important;
+    display: flex !important;
+    align-items: flex-start !important;
+  }
+
+  /* Espaçamento entre o check e o texto */
+  .check-yes,
+  .check-no {
+    margin-right: 10px !important;
+    display: inline-block !important;
+    min-width: 20px !important;
+  }
+
+  /* Melhorar a legibilidade do texto */
+  .note-details strong {
+    display: inline-block !important;
+    margin-right: 5px !important;
+  }
+}
+
+/* Melhorar a aparência dos checkboxes do formulário */
+.service-option input[type="checkbox"] {
+  /* Redefinir aparência padrão */
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+
+  /* Criar checkbox customizado */
+  width: 10px !important;
+  height: 10px !important;
+  background-color: #fff !important;
+  border: 2px solid var(--secundary-color) !important;
+  border-radius: 3px !important;
+  display: inline-block !important;
+  position: relative !important;
+  margin-right: 8px !important;
+  vertical-align: middle !important;
+  cursor: pointer !important;
+}
+
+/* Estilo para o checkbox marcado */
+.service-option input[type="checkbox"]:checked {
+  background-color: var(--white-custom) !important;
+}
+
+/* Adicionar um ícone de check quando selecionado */
+.service-option input[type="checkbox"]:checked:after {
+  content: '\2714' !important;
+  font-size: 10px !important;
+  color: var(--secundary-color) !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+/* Melhorar o espaçamento e alinhamento do texto */
+.service-option .checkbox-text {
+  vertical-align: middle !important;
+}
+
+/* Efeito hover no checkbox */
+.service-option:hover input[type="checkbox"] {
+  border-color: var(--main-color) !important;
+}
