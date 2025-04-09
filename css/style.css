@@ -5475,6 +5475,7 @@ body {
     background-color: rgba(242, 48, 120, 0.8) !important;
   }
 }
+
 /* Ajuste fino para eliminar completamente a exibição de slides adjacentes */
 
 /* Em dispositivos móveis, garantir que apenas um slide completo seja visível */
@@ -5538,5 +5539,91 @@ body {
   .portfolio-carousel .swiper-button-next:after,
   .portfolio-carousel .swiper-button-prev:after {
     font-size: 16px !important;
+  }
+}
+
+/* Ocultar as setas de navegação no portfolio em telas menores */
+@media (max-width: 768px) {
+
+  .portfolio-carousel .swiper-button-next,
+  .portfolio-carousel .swiper-button-prev {
+    display: none !important;
+  }
+
+  /* Garantir que os bullets de paginação estejam visíveis para navegação alternativa */
+  .portfolio-carousel .swiper-pagination {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Estilos globais para os depoimentos (tanto mobile quanto desktop) */
+.testimonial-box.mySwiper {
+  overflow: hidden !important;
+  padding: 0 !important;
+  /* Remover padding que pode estar causando problemas */
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.testimonial-box.mySwiper .swiper-wrapper {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.testimonial-slide {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 20px !important;
+  /* Adicionar padding adequado dentro do slide */
+  box-sizing: border-box !important;
+  /* Garantir que o padding não aumente a largura */
+}
+
+/* Garantir que o conteúdo dentro dos slides tenha espaço adequado */
+.testimonial-slide blockquote {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 15px !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+/* Aumentar a altura do container para acomodar todo o conteúdo */
+.testimonial-wrapper {
+  min-height: 400px !important;
+  /* Ajuste conforme necessário */
+}
+
+/* Ocultar as setas de navegação no portfolio apenas em mobile */
+@media (max-width: 768px) {
+
+  .portfolio-carousel .swiper-button-next,
+  .portfolio-carousel .swiper-button-prev {
+    display: none !important;
+  }
+
+  .portfolio-carousel .swiper-pagination {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Ajustes específicos para mobile nos depoimentos */
+  .testimonial-slide {
+    padding: 15px !important;
+  }
+
+  .testimonial-wrapper {
+    min-height: 450px !important;
+    /* Aumentar altura para mobile */
+  }
+
+  /* Ajustar tamanho da fonte se necessário */
+  .testimonial-slide blockquote {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
   }
 }

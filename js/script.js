@@ -358,9 +358,14 @@ function initTestimonialSwiper() {
 
   new Swiper(testimonialContainer, {
     slidesPerView: 1,
-    spaceBetween: 50,
+    spaceBetween: 0, /* Reduzir espaçamento para evitar problemas */
     loop: true,
     grabCursor: true,
+    centeredSlides: true,
+    autoHeight: true, /* Importante: ajusta altura automaticamente baseado no conteúdo */
+    observer: true, /* Observa mudanças nos slides */
+    observeParents: true, /* Observa mudanças nos elementos pai */
+    updateOnWindowResize: true, /* Atualiza ao redimensionar a janela */
     autoplay: {
       delay: 5000,
       disableOnInteraction: false,
@@ -372,10 +377,35 @@ function initTestimonialSwiper() {
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
+    },
+    // Configurações específicas para cada tamanho de tela
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        centeredSlides: true
+      },
+      768: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        centeredSlides: true
+      },
+      1024: {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        centeredSlides: true
+      }
+    },
+    // Atualiza o swiper após a inicialização para garantir dimensões corretas
+    on: {
+      init: function () {
+        setTimeout(() => {
+          this.update(); // Atualiza o Swiper
+        }, 100);
+      }
     }
   });
 }
-
 /**
  * Inicializa o Swiper para a seção de portfólio
  * Configura múltiplos sliders de portfolio com controles e breakpoints responsivos
