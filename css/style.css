@@ -4324,18 +4324,18 @@ body {
 
   /* Títulos mais compactos para mobile */
   .home-content h1 {
-    font-size: 2rem !important;
+    font-size: 3rem !important;
   }
 
   .home-content h2 {
-    font-size: 1rem !important;
+    font-size: 2rem !important;
   }
 
   /* Hero description mais compacta */
   .hero-description {
     padding: 1.2rem !important;
     margin-bottom: 2rem !important;
-    font-size: 1.4rem !important;
+    font-size: 1rem !important;
   }
 
   /* Ajustes nos serviços minimals */
@@ -4386,11 +4386,11 @@ body {
 /* Ajustes específicos para telas muito pequenas */
 @media (max-width: 375px) {
   .home-content h1 {
-    font-size: 2rem !important;
+    font-size: 3rem !important;
   }
 
   .home-content h2 {
-    font-size: 1.4rem !important;
+    font-size: 2rem !important;
   }
 
   .hero-description {
@@ -4602,11 +4602,11 @@ body {
   }
 
   .home-content h1 {
-    font-size: 3rem;
+    font-size: 3rem !important;
   }
 
   .home-content h2 {
-    font-size: 1.8rem;
+    font-size: 2rem !important;
   }
 
   .hero-description {
