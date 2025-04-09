@@ -672,7 +672,7 @@ section .testimonial-container {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding-top: 10rem;
+  margin-top: 5rem;
   position: relative;
   overflow: hidden;
   background-position: center;
@@ -690,7 +690,7 @@ section .testimonial-container {
 
 /* Título principal com gradiente */
 .home-content h1 {
-  font-size: 4.6rem;
+  font-size: 4.5rem;
   max-width: 800px;
   font-weight: 800;
   letter-spacing: -0.5px;
@@ -4117,12 +4117,12 @@ section .testimonial-container {
   /* Trust Indicators */
   .trust-indicators {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
+    flex-direction: column !important;
+    gap: 0.2rem !important;
   }
 
   .trust-item {
@@ -4373,13 +4373,6 @@ body {
     text-align: center !important;
     padding: 1.2rem !important;
     font-size: 1.5rem !important;
-  }
-
-  /* Ajustes nos trust indicators */
-  .trust-indicators {
-    flex-direction: column !important;
-    gap: 1rem !important;
-    margin-bottom: 2rem !important;
   }
 
   .trust-item {
