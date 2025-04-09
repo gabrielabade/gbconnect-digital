@@ -4037,7 +4037,8 @@ section .testimonial-container {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 6rem 5% 2rem;
+    margin-top: 8rem;
+    padding: 5rem 4% 1rem;
     text-align: center;
   }
 
@@ -4050,20 +4051,20 @@ section .testimonial-container {
   }
 
   .home-content h1 {
-    font-size: 2.4rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
     line-height: 1.3;
   }
 
   .home-content h2 {
-    font-size: 1.6rem;
+    font-size: 1rem;
     margin-bottom: 1.5rem;
   }
 
   .hero-description {
     width: 100%;
     padding: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     border-left: 4px solid var(--secundary-color);
     font-size: 1.4rem;
     line-height: 1.5;
@@ -4272,11 +4273,11 @@ section .testimonial-container {
   }
 
   .home-content h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .home-content h2 {
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
 
   .etapa {
@@ -4323,14 +4324,11 @@ body {
 
   /* Títulos mais compactos para mobile */
   .home-content h1 {
-    font-size: 2.8rem !important;
-    margin-bottom: 1.5rem !important;
-    line-height: 1.3 !important;
+    font-size: 2rem !important;
   }
 
   .home-content h2 {
-    font-size: 1.8rem !important;
-    margin-bottom: 1.8rem !important;
+    font-size: 1rem !important;
   }
 
   /* Hero description mais compacta */
@@ -4376,31 +4374,27 @@ body {
   }
 
   .trust-item {
-    width: 100% !important;
+    width: 90% !important;
     justify-content: center !important;
-    padding: 0.8rem !important;
+    padding: 1rem !important;
     background: rgba(255, 255, 255, 0.05) !important;
     border-radius: 8px !important;
   }
 
-  /* Ajustes nas redes sociais */
-  .social-media {
-    margin-bottom: 1.5rem !important;
-  }
 }
 
 /* Ajustes específicos para telas muito pequenas */
 @media (max-width: 375px) {
   .home-content h1 {
-    font-size: 2.4rem !important;
+    font-size: 2rem !important;
   }
 
   .home-content h2 {
-    font-size: 1.6rem !important;
+    font-size: 1.4rem !important;
   }
 
   .hero-description {
-    font-size: 1.3rem !important;
+    font-size: 1rem !important;
   }
 
   .service-mini {
@@ -5775,8 +5769,8 @@ body {
   -moz-appearance: none !important;
 
   /* Criar checkbox customizado */
-  width: 10px !important;
-  height: 10px !important;
+  width: 5px !important;
+  height: 5px !important;
   background-color: #fff !important;
   border: 2px solid var(--secundary-color) !important;
   border-radius: 3px !important;
