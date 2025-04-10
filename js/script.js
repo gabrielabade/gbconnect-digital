@@ -53,6 +53,9 @@ function initializeApp() {
 
   // Inicializa os recursos adicionais
   initAdditionalFeatures();
+
+  // Lidar com hash inicial na URL
+  handleInitialHash();
 }
 
 /**
@@ -70,6 +73,12 @@ function initUIComponents() {
 
   // Inicializa os sliders de portfolio
   initPortfolioSwiper();
+
+  // Adiciona a inicialização da rolagem suave
+  initSmoothScrolling();
+
+  // Adiciona o estilo de scroll-padding
+  addScrollPaddingStyle();
 }
 
 /**
@@ -101,6 +110,93 @@ function initAdditionalFeatures() {
 document.addEventListener('DOMContentLoaded', initializeApp);
 
 // ========== NAVEGAÇÃO E MENU MOBILE ==========
+
+/**
+ * Inicializa o sistema de rolagem suave quando os links do menu são clicados
+ */
+function initSmoothScrolling() {
+  // Seleciona todos os links da navegação
+  const navLinks = document.querySelectorAll('.navbar a[href^="#"]');
+
+  // Adiciona o evento de clique a cada link
+  navLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      // Previne o comportamento padrão do link
+      e.preventDefault();
+
+      // Fecha o menu mobile se estiver aberto
+      if (menuIcon && navbar.classList.contains('active')) {
+        closeMenu();
+      }
+
+      // Obtém o ID da seção alvo
+      const targetId = this.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+
+      if (targetSection) {
+        // Calcula o offset com base na altura do cabeçalho
+        const headerHeight = document.querySelector('.header').offsetHeight;
+        // Adiciona um pequeno espaço extra (20px) para melhorar a visualização
+        const scrollPadding = 20;
+
+        // Calcula a posição para onde rolar
+        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - scrollPadding;
+
+        // Executa a rolagem suave
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+
+        // Atualiza a URL (opcional)
+        history.pushState(null, null, targetId);
+      }
+    });
+  });
+}
+
+/**
+ * Adiciona CSS para corrigir o posicionamento usando scroll-padding
+ */
+function addScrollPaddingStyle() {
+  // Cria um elemento de estilo
+  const styleEl = document.createElement('style');
+  styleEl.textContent = `
+    html {
+      scroll-padding-top: 100px; /* Ajuste este valor de acordo com a altura do seu cabeçalho */
+      scroll-behavior: smooth;
+    }
+  `;
+
+  // Adiciona o estilo ao head
+  document.head.appendChild(styleEl);
+}
+
+/**
+ * Lida com o hash inicial na URL quando a página é carregada
+ */
+function handleInitialHash() {
+  // Verifica se há um hash na URL ao carregar a página
+  if (window.location.hash) {
+    // Espera um pouco para garantir que a página foi completamente carregada
+    setTimeout(() => {
+      const targetId = window.location.hash;
+      const targetSection = document.querySelector(targetId);
+
+      if (targetSection) {
+        const headerHeight = document.querySelector('.header').offsetHeight;
+        const scrollPadding = 20;
+
+        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - scrollPadding;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 500); // Tempo maior para garantir que tudo esteja carregado
+  }
+}
 
 /**
  * Manipula o clique no ícone do menu mobile
