@@ -1938,7 +1938,7 @@ section .testimonial-container {
 
 .testimonial-container {
   min-height: 60vh !important;
-  padding: 6rem 0 8rem;
+  padding: 8rem 0 10rem;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, rgba(5, 18, 89, 0.95), rgba(5, 18, 89, 0.85)),
