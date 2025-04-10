@@ -3244,7 +3244,7 @@ section .testimonial-container {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  margin-top: 9rem;
+  padding-top: 9rem;
 }
 
 .contact-form-wrapper::before {
@@ -3513,7 +3513,6 @@ section .testimonial-container {
 
   .contact-form-wrapper {
     padding: 2.5rem;
-    margin-top: 0;
   }
 
   .contact-title {
