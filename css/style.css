@@ -307,6 +307,7 @@ body {
   font-weight: 600;
   margin-right: 3.5rem;
   text-align: center;
+  text-transform: uppercase;
 }
 
 /* Efeito de linha sob os links de navegação */
@@ -457,7 +458,7 @@ section .testimonial-container {
 
 /* Estilo dos títulos de seção */
 .services .heading {
-  font-size: 4.5rem;
+  font-size: 3.5rem;
   text-align: center;
   margin-bottom: 6rem;
   position: relative;
