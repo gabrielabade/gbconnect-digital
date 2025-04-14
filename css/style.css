@@ -3388,6 +3388,7 @@ section .testimonial-container {
 
 /* Correção para input-focused */
 .input-focused {
+  border-radius: 5px;
   border-color: var(--secundary-color) !important;
   box-shadow: 0 0 0 3px rgba(242, 48, 120, 0.1) !important;
 }
