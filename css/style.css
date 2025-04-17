@@ -1,7 +1,9 @@
 /* ==================== CONFIGURAÇÕES BÁSICAS E VARIÁVEIS ==================== */
 
-/* Importação de fontes */
+/* Importação de fontes - Adicionando Montserrat para títulos */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 /* Reset global de estilos */
 * {
@@ -15,42 +17,36 @@
   font-family: 'Poppins', sans-serif;
 }
 
-body,
-html {
-  margin: 0;
-  padding: 0;
-}
-
-html[data-theme="dark"] .header .navbar a:hover {
-  color: var(--secundary-color) !important;
-}
-
-html[data-theme="dark"] .header.sticky .navbar a:hover {
-  color: var(--main-color) !important;
-}
-
-.header.sticky .navbar a:hover {
-  color: var(--secundary-color) !important;
-  /* Cor rosa independente do tema */
-}
-
 /* Variáveis CSS para modo escuro (padrão) */
 :root {
+  /* Cores primárias */
   --bg-color: #051259;
   /* Azul escuro - fundo principal */
-  --main-color: #E2FF00;
-  /* Amarelo neon - cor de destaque primária */
+  --main-color: #E2E56A;
+  /* Amarelo suavizado - cor de destaque primária */
   --secundary-color: #F23078;
   /* Rosa/magenta - cor de destaque secundária */
+
+  /* Cores secundárias */
+  --blue-medium: #273B89;
+  /* Azul médio para áreas de transição */
+  --blue-light: #E6ECFF;
+  /* Azul claro para fundos secundários */
+
+  /* Cores neutras e de texto */
   --text-color: #FFFFFF;
   /* Branco - cor de texto padrão */
+  --text-dark: #333745;
+  /* Cinza escuro para textos secundários */
+
+  /* Cores de interface */
   --card-bg: rgba(255, 255, 255, 0.03);
   /* Fundo de cards com transparência */
   --card-border: rgba(255, 255, 255, 0.15);
   /* Borda de cards com transparência */
-  --header-bg: rgba(218, 255, 0, 0.95);
-  /* Fundo do header - amarelo transparente */
-  --header-sticky-bg: rgba(0, 13, 91, 0.95);
+  --header-bg: #CFF305;
+  /* Fundo do header - azul médio transparente */
+  --header-sticky-bg: rgba(5, 18, 89, 0.95);
   /* Fundo do header fixo - azul escuro */
   --nav-text: #051259;
   /* Cor do texto na navegação */
@@ -70,14 +66,29 @@ html[data-theme="dark"] .header.sticky .navbar a:hover {
 
 /* Variáveis CSS para modo claro */
 [data-theme="light"] {
+  /* Cores primárias */
   --bg-color: #f5f7ff;
-  /* Azul muito claro - fundo principal */
+  /* Cinza azulado muito claro - fundo principal */
   --main-color: #051259;
   /* Azul escuro - cor de destaque primária */
   --secundary-color: #F23078;
   /* Rosa/magenta - cor de destaque secundária (mantida) */
+
+  /* Cores secundárias */
+  --blue-medium: #273B89;
+  /* Azul médio para áreas de transição */
+  --blue-light: #E6ECFF;
+  /* Azul claro para fundos secundários */
+
+  /* Cores neutras e de texto */
   --text-color: #051259;
   /* Azul escuro - cor de texto padrão */
+  --text-dark: #333745;
+  /* Cinza escuro para textos secundários */
+  --text-medium: #273B89;
+  /* Azul médio para textos secundários */
+
+  /* Cores de interface */
   --card-bg: rgba(255, 255, 255, 0.8);
   /* Fundo de cards com transparência */
   --card-border: rgba(5, 18, 89, 0.15);
@@ -100,12 +111,6 @@ html[data-theme="dark"] .header.sticky .navbar a:hover {
   /* Borda dos formulários */
   --white-custom: #FFFFFF;
   /* Branco personalizado para tema claro */
-
-  /* Definições adicionais para texto no modo claro */
-  --text-dark: #051259;
-  /* Azul escuro para texto enfático */
-  --text-medium: #112277;
-  /* Azul médio para textos secundários */
 }
 
 /* Estilização da seleção de texto */
@@ -687,6 +692,7 @@ section .testimonial-container {
   max-width: 1200px;
   padding: 0 20px;
   text-align: center;
+  margin-top: 12rem;
 }
 
 /* Título principal com gradiente */
@@ -1429,7 +1435,7 @@ section .testimonial-container {
   border-radius: 10px;
   text-transform: uppercase;
   background: var(--secundary-color);
-  color: var(--text-color);
+  color: var(--white-custom);
   border: 2px solid var(--secundary-color);
   position: relative;
   overflow: hidden;
@@ -2193,7 +2199,8 @@ section .testimonial-container {
 
 .faq {
   margin-top: 6rem;
-  padding: 5rem 0;
+  padding: 5rem 2rem;
+  /* Add horizontal padding for better spacing */
   background: var(--bg-color);
   position: relative;
   overflow: hidden;
@@ -5453,17 +5460,38 @@ body {
 }
 
 @media (max-width: 768px) {
+
   .faq {
-    padding: 4rem 0;
+    padding: 4rem 1.5rem;
+    /* Adjust padding for consistent spacing */
+  }
+  .faq .faq-container {
+    margin-top: 7.8rem;
+    padding: 0 1.5rem;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .faq .accordion:last-child .accordion-content {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .faq-container::after {
+    content: '';
+    display: block;
+    height: 0;
+    margin-bottom: -4rem; /* Remove extra space below FAQ content */
   }
 
   .faq .heading {
     font-size: 2.8rem;
+    margin-bottom: 2rem;
+    /* Add margin below heading */
   }
 
   .faq-intro {
     font-size: 1.6rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    /* Reduce bottom margin for better balance */
   }
 
   .accordion-header {
@@ -5830,4 +5858,208 @@ body {
 .home-content {
   position: relative;
   z-index: 4;
+}
+
+/* Ajustes para o botão .btn-primary no modo dark */
+.btn-primary {
+  background: var(--header-bg) !important;
+  /* Cor inicial amarela do header */
+  color: var(--bg-color);
+  /* Texto na cor do fundo */
+  border: 2px solid transparent;
+  /* Sem borda inicialmente */
+  transition: all 0.3s ease;
+  /* Transição suave */
+}
+
+.btn-primary:hover {
+  background: transparent !important;
+  /* Fundo transparente ao passar o mouse */
+  color: var(--secundary-color) !important;
+  /* Texto na cor rosa */
+  border-color: var(--secundary-color) !important;
+  /* Borda na cor rosa */
+}
+
+
+/* Para manter a compatibilidade com os temas */
+section {
+  background-color: var(--bg-color);
+  /* Usa a variável que já existe no seu CSS */
+}
+
+/* Melhorar a transição entre seções alternadas */
+section+section {
+  padding-top: 0;
+  /* Remove padding extra entre seções */
+}
+
+/* ==================== BACKGROUNDS DE SEÇÃO APRIMORADOS ==================== */
+
+/* Ajustes para eliminar espaços entre seções */
+section {
+  padding: 6rem 0;
+  /* Padding vertical uniforme */
+  margin: 0 !important;
+  /* Remove margens que causam espaços */
+}
+
+/* Gradientes sutis para tema escuro */
+[data-theme="dark"] .section-primary {
+  background: linear-gradient(135deg, #051259 0%, #0a237a 100%);
+}
+
+[data-theme="dark"] .section-secondary {
+  background: linear-gradient(135deg, #0a237a 0%, #051259 100%);
+}
+
+/* Gradientes sutis para tema claro */
+[data-theme="light"] .section-primary {
+  background: linear-gradient(135deg, #f5f7ff 0%, #e6ecff 100%);
+}
+
+[data-theme="light"] .section-secondary {
+  background: linear-gradient(135deg, #e6ecff 0%, #f5f7ff 100%);
+}
+
+/* Gradientes mais suaves */
+[data-theme="dark"] .section-gradient-blue {
+  background: linear-gradient(135deg, #051259 0%, #0a237a 100%);
+}
+
+[data-theme="dark"] .section-gradient-subtle {
+  background: linear-gradient(135deg, #051259 0%, #071769 100%);
+}
+
+[data-theme="light"] .section-gradient-blue {
+  background: linear-gradient(135deg, #f5f7ff 0%, #e6ecff 100%);
+}
+
+[data-theme="light"] .section-gradient-subtle {
+  background: linear-gradient(135deg, #f5f7ff 0%, #eef2ff 100%);
+}
+
+/* Seções com bordas sutis */
+[data-theme="dark"] .section-bordered-top {
+  background-color: #051259;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .section-bordered-bottom {
+  background-color: #051259;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] .section-bordered-top {
+  background-color: #f5f7ff;
+  border-top: 1px solid rgba(5, 18, 89, 0.08);
+}
+
+[data-theme="light"] .section-bordered-bottom {
+  background-color: #f5f7ff;
+  border-bottom: 1px solid rgba(5, 18, 89, 0.08);
+}
+
+/* Sombra interna sutil */
+[data-theme="dark"] .section-shadow {
+  background-color: #051259;
+  box-shadow: inset 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="light"] .section-shadow {
+  background-color: #f5f7ff;
+  box-shadow: inset 0 5px 15px rgba(5, 18, 89, 0.05);
+}
+
+/* Separador de seção com linha sutil */
+.section-bordered {
+  position: relative;
+}
+
+/* Linha superior para tema escuro */
+[data-theme="dark"] .section-bordered::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+/* Linha superior para tema claro */
+[data-theme="light"] .section-bordered::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(5, 18, 89, 0.1), transparent);
+}
+
+/* Seção com destaque para tema escuro */
+[data-theme="dark"] .section-highlight {
+  background-color: rgba(242, 48, 120, 0.08);
+  /* Rosa com opacidade baixa */
+}
+
+/* Seção com destaque para tema claro */
+[data-theme="light"] .section-highlight {
+  background-color: rgba(242, 48, 120, 0.05);
+  /* Rosa com opacidade ainda mais baixa */
+}
+
+/* Seção com barra lateral para tema escuro */
+[data-theme="dark"] .section-accent {
+  border-left: 4px solid var(--secundary-color);
+  background: linear-gradient(90deg, rgba(242, 48, 120, 0.1) 0%, rgba(5, 18, 89, 1) 5%);
+}
+
+/* Seção com barra lateral para tema claro */
+[data-theme="light"] .section-accent {
+  border-left: 4px solid var(--secundary-color);
+  background: linear-gradient(90deg, rgba(242, 48, 120, 0.05) 0%, rgba(245, 247, 255, 1) 5%);
+}
+
+/* Elementos decorativos */
+[data-theme="dark"] .section-with-accent {
+  position: relative;
+  background-color: #051259;
+}
+
+[data-theme="dark"] .section-with-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--secundary-color);
+  border-radius: 0 0 3px 3px;
+}
+
+[data-theme="light"] .section-with-accent {
+  position: relative;
+  background-color: #f5f7ff;
+}
+
+[data-theme="light"] .section-with-accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--secundary-color);
+  border-radius: 0 0 3px 3px;
+}
+
+/* Container interno para manter o conteúdo alinhado */
+.inner-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
