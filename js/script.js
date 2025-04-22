@@ -113,6 +113,7 @@ document.addEventListener('DOMContentLoaded', initializeApp);
 
 /**
  * Inicializa o sistema de rolagem suave quando os links do menu são clicados
+ * Versão aprimorada para garantir funcionamento correto
  */
 function initSmoothScrolling() {
   // Seleciona todos os links da navegação
@@ -135,12 +136,18 @@ function initSmoothScrolling() {
 
       if (targetSection) {
         // Calcula o offset com base na altura do cabeçalho
-        const headerHeight = document.querySelector('.header').offsetHeight;
+        // Verificação adicional para garantir que o header existe
+        const header = document.querySelector('.header');
+        const headerHeight = header ? header.offsetHeight : 0;
+
         // Adiciona um pequeno espaço extra (20px) para melhorar a visualização
         const scrollPadding = 20;
 
         // Calcula a posição para onde rolar
-        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - scrollPadding;
+        const targetPosition = targetSection.getBoundingClientRect().top +
+          window.pageYOffset -
+          headerHeight -
+          scrollPadding;
 
         // Executa a rolagem suave
         window.scrollTo({
@@ -150,6 +157,10 @@ function initSmoothScrolling() {
 
         // Atualiza a URL (opcional)
         history.pushState(null, null, targetId);
+
+        // Atualiza visualmente o link ativo na navbar
+        navLinks.forEach(navLink => navLink.classList.remove('active'));
+        this.classList.add('active');
       }
     });
   });
@@ -157,13 +168,21 @@ function initSmoothScrolling() {
 
 /**
  * Adiciona CSS para corrigir o posicionamento usando scroll-padding
+ * Versão aprimorada para usar a altura real do header
  */
 function addScrollPaddingStyle() {
+  // Obtém a altura do header para um valor mais preciso
+  const header = document.querySelector('.header');
+  const headerHeight = header ? header.offsetHeight : 0;
+
+  // Adiciona um pouco mais de espaço para uma melhor experiência
+  const paddingValue = headerHeight + 20;
+
   // Cria um elemento de estilo
   const styleEl = document.createElement('style');
   styleEl.textContent = `
     html {
-      scroll-padding-top: 100px; /* Ajuste este valor de acordo com a altura do seu cabeçalho */
+      scroll-padding-top: ${paddingValue}px;
       scroll-behavior: smooth;
     }
   `;
@@ -174,6 +193,7 @@ function addScrollPaddingStyle() {
 
 /**
  * Lida com o hash inicial na URL quando a página é carregada
+ * Versão aprimorada para garantir rolagem correta
  */
 function handleInitialHash() {
   // Verifica se há um hash na URL ao carregar a página
@@ -184,17 +204,28 @@ function handleInitialHash() {
       const targetSection = document.querySelector(targetId);
 
       if (targetSection) {
-        const headerHeight = document.querySelector('.header').offsetHeight;
+        const header = document.querySelector('.header');
+        const headerHeight = header ? header.offsetHeight : 0;
         const scrollPadding = 20;
 
-        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset - headerHeight - scrollPadding;
+        const targetPosition = targetSection.getBoundingClientRect().top +
+          window.pageYOffset -
+          headerHeight -
+          scrollPadding;
 
         window.scrollTo({
           top: targetPosition,
           behavior: 'smooth'
         });
+
+        // Atualiza visualmente o link ativo na navbar
+        const navLinks = document.querySelectorAll('.navbar a[href^="#"]');
+        navLinks.forEach(link => link.classList.remove('active'));
+
+        const activeLink = document.querySelector(`.navbar a[href="${targetId}"]`);
+        if (activeLink) activeLink.classList.add('active');
       }
-    }, 500); // Tempo maior para garantir que tudo esteja carregado
+    }, 700); // Tempo maior para garantir que tudo esteja carregado
   }
 }
 
@@ -226,14 +257,19 @@ function closeMenu() {
 
 /**
  * Atualiza a navegação com base na seção atual
+ * Versão aprimorada para melhor detecção de seções
  * @param {number} scrollPosition - Posição atual do scroll
  */
 function updateNavigation(scrollPosition) {
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('header nav a');
 
+  // Obtém a altura do header para ajustar o offset
+  const header = document.querySelector('.header');
+  const headerHeight = header ? header.offsetHeight : 0;
+
   sections.forEach(sec => {
-    const offset = sec.offsetTop - 150;
+    const offset = sec.offsetTop - headerHeight - 100; // Melhor ajuste de offset
     const height = sec.offsetHeight;
     const id = sec.getAttribute('id');
 
@@ -244,7 +280,8 @@ function updateNavigation(scrollPosition) {
       });
 
       // Adiciona classe 'active' ao link correspondente à seção atual
-      const activeLink = document.querySelector(`header nav a[href*=${id}]`);
+      // Seletor aprimorado para garantir correspondência precisa
+      const activeLink = document.querySelector(`header nav a[href="#${id}"]`);
       if (activeLink) {
         activeLink.classList.add('active');
       }
