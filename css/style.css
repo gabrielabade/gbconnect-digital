@@ -5465,21 +5465,25 @@ body {
     padding: 4rem 1.5rem;
     /* Adjust padding for consistent spacing */
   }
+
   .faq .faq-container {
     margin-top: 7.8rem;
     padding: 0 1.5rem;
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
+
   .faq .accordion:last-child .accordion-content {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
   }
+
   .faq-container::after {
     content: '';
     display: block;
     height: 0;
-    margin-bottom: -4rem; /* Remove extra space below FAQ content */
+    margin-bottom: -4rem;
+    /* Remove extra space below FAQ content */
   }
 
   .faq .heading {
@@ -6062,4 +6066,203 @@ section {
   max-width: 1320px;
   margin: 0 auto;
   padding: 0 2rem;
+}
+
+/* ==================== CORREÇÕES PARA PROBLEMAS REPORTADOS ==================== */
+
+/* 1. Botão WhatsApp Float - Melhorar posicionamento e formato */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  background-color: var(--main-color) !important;
+  padding: 0; /* Remove qualquer padding que possa causar desalinhamento */
+}
+
+/* Ajuste do ícone dentro do botão */
+.whatsapp-float i {
+  font-size: 28px;
+  color: var(--bg-color) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0; /* Remove qualquer margem que possa causar desalinhamento */
+  height: auto; /* Ajusta a altura para evitar problemas de centralização */
+}
+
+/* Efeito hover aprimorado */
+.whatsapp-float:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5) !important;
+}
+
+/* Animação de pulso para destacar ocasionalmente */
+@keyframes whatsapp-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  }
+
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  }
+}
+
+.whatsapp-pulse {
+  animation: whatsapp-pulse 2s infinite;
+}
+
+/* 2. Navbar em modo escuro (sticky) - Corrigir contraste no hover */
+[data-theme="dark"] .header.sticky .navbar a:hover {
+  color: var(--main-color) !important;
+  /* Cor amarela para melhor contraste */
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .header.sticky .navbar a.active {
+  color: var(--secundary-color) !important;
+  /* Manter rosa para o item ativo */
+}
+
+/* 3. Navegação da navbar - Garantir rolagem suave para as seções */
+html {
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 100px !important;
+  /* Ajustar conforme altura do header */
+}
+
+/* Garantir que os links de navegação funcionem corretamente */
+.navbar a[href^="#"] {
+  cursor: pointer;
+}
+
+/* 4. Service Options no formulário - Modernizar checkboxes */
+.service-option {
+  display: flex !important;
+  align-items: center !important;
+  background-color: rgba(242, 48, 120, 0.08) !important;
+  border: 1px solid rgba(242, 48, 120, 0.1) !important;
+  border-radius: 50px !important;
+  padding: 10px 15px !important;
+  margin: 5px !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  position: relative !important;
+  /* Para posicionamento do pseudo-elemento */
+  overflow: hidden !important;
+}
+
+/* Eliminar a aparência padrão do checkbox */
+.service-option input[type="checkbox"] {
+  position: absolute !important;
+  opacity: 0 !important;
+  cursor: pointer !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+/* Criar um checkbox customizado moderno */
+.service-option .checkbox-text {
+  display: flex !important;
+  align-items: center !important;
+  padding-left: 0 !important;
+  /* Remover padding que possa estar presente */
+  position: relative !important;
+  width: 100% !important;
+  color: var(--text-color) !important;
+}
+
+/* Adicionar indicador visual antes do texto */
+.service-option .checkbox-text:before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 10px !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 2px solid var(--secundary-color) !important;
+  border-radius: 50% !important;
+  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+
+/* Estilo quando o checkbox está marcado */
+.service-option input[type="checkbox"]:checked+.checkbox-text:before {
+  background-color: var(--secundary-color) !important;
+  border-color: var(--secundary-color) !important;
+}
+
+/* Adicionar o ícone de check quando selecionado */
+.service-option input[type="checkbox"]:checked+.checkbox-text:after {
+  content: '\2714' !important;
+  position: absolute !important;
+  left: 6px !important;
+  /* Posicionar no centro do círculo */
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  color: white !important;
+  font-size: 12px !important;
+}
+
+/* Efeito hover */
+.service-option:hover {
+  background-color: rgba(242, 48, 120, 0.15) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 10px rgba(242, 48, 120, 0.15) !important;
+}
+
+/* Estado selecionado com destaque visual */
+.service-option.selected {
+  background-color: rgba(242, 48, 120, 0.25) !important;
+  border-color: var(--secundary-color) !important;
+  box-shadow: 0 5px 15px rgba(242, 48, 120, 0.2) !important;
+}
+
+/* Ajuste para tema claro */
+.service-option .checkbox-text {
+  color: var(--text-dark) !important;
+}
+
+.service-option .checkbox-text:before {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  border-color: var(--secundary-color) !important;
+}
+
+/* Eliminar qualquer estilo de input-focused indesejado */
+.service-option.input-focused {
+  background-color: rgba(242, 48, 120, 0.15) !important;
+}
+
+/* Ajustes adicionais para garantir compatibilidade mobile */
+@media (max-width: 768px) {
+  .service-option {
+    padding: 8px 12px !important;
+  }
+
+  .service-option .checkbox-text:before {
+    width: 16px !important;
+    height: 16px !important;
+    margin-right: 8px !important;
+  }
+
+  .service-option input[type="checkbox"]:checked+.checkbox-text:after {
+    left: 4px !important;
+    font-size: 10px !important;
+  }
 }
