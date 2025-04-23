@@ -540,6 +540,31 @@ function initTestimonialSwiper() {
   });
 }
 /**
+ * Função para carregar imagens do carrossel de forma preguiçosa
+ */
+function lazyLoadCarouselImages() {
+  const carouselContainers = document.querySelectorAll('.portfolio-carousel');
+  if (!carouselContainers.length) return;
+
+  carouselContainers.forEach(carouselContainer => {
+    // Apenas carrega imagens para os slides visíveis e alguns adjacentes
+    const slides = carouselContainer.querySelectorAll('.swiper-slide');
+    const swiper = carouselContainer.swiper;
+    const visibleIndex = swiper ? swiper.activeIndex : 0;
+
+    slides.forEach((slide, index) => {
+      // Carrega imagens para o slide visível e alguns adjacentes
+      if (Math.abs(index - visibleIndex) < 3) {
+        const img = slide.querySelector('img[data-src]');
+        if (img && img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+      }
+    });
+  });
+}
+/**
  * Inicializa o Swiper para a seção de portfólio
  * Configura múltiplos sliders de portfolio com controles e breakpoints responsivos
  */
@@ -569,6 +594,8 @@ function initPortfolioSwiper() {
       loop: slideCount > 2, // Ativa loop apenas se houver mais de 2 slides
       loopAdditionalSlides: 1, // Adiciona slides extras para o loop funcionar melhor
       grabCursor: true,
+      lazy: true, // Ativar lazy loading nativo do Swiper
+      preloadImages: false, // Não pré-carregar todas as imagens
 
       // Desativar centeredSlides em mobile para evitar problemas de alinhamento
       centeredSlides: false,
@@ -611,10 +638,12 @@ function initPortfolioSwiper() {
         }
       },
 
-      // Melhorar o comportamento em dispositivos móveis
-      touchReleaseOnEdges: true, // Permite soltar o toque nas bordas
-      preventClicks: false, // Permite cliques nos slides
-      preventClicksPropagation: false // Não impede propagação de cliques
+      // Eventos para lazy loading
+      on: {
+        init: lazyLoadCarouselImages,
+        slideChange: lazyLoadCarouselImages,
+        resize: lazyLoadCarouselImages
+      }
     });
 
     // Garantir que os slides estejam corretamente dimensionados após inicialização
@@ -628,12 +657,14 @@ function initPortfolioSwiper() {
     // Atualizar o Swiper após inicialização e redimensionamento
     setTimeout(() => {
       swiperInstance.update();
+      lazyLoadCarouselImages(); // Carrega as imagens iniciais
     }, 300);
 
     window.addEventListener('resize', () => {
       setTimeout(() => {
         // Atualizar o layout do Swiper ao redimensionar
         swiperInstance.update();
+        lazyLoadCarouselImages(); // Atualiza lazy loading após redimensionamento
 
         // Ajustar os slides conforme o tamanho da tela
         const isMobileNow = window.innerWidth <= 768;
