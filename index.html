@@ -9,7 +9,7 @@
   <!-- SEO Meta Tags Aprimoradas -->
   <title>GB Connect | Desenvolvimento de Sites Profissionais</title>
   <meta name="description"
-    content="Especialistas em desenvolvimento web, branding e marketing digital. Transformamos pequenos negócios com sites profissionais, presença no Google e gestão de redes sociais.">
+    content="Desenvolvemos soluções digitais personalizadas para pequenos negócios, incluindo desenvolvimento de websites e otimização de presença no Google.">
   <meta name="keywords"
     content="desenvolvimento web, criação de sites, marketing digital, sites profissionais, presença no google, redes sociais, SEO, pequenos negócios, presença digital, landing page, one page, site multi page">
   <meta name="author" content="GB Connect">
@@ -45,6 +45,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="css/style.css">
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="css/style.css" as="style">
+  <!-- Preload logo image -->
+  <link rel="preload" href="./images/logocolor1.webp" as="image">
 
   <!-- Cache e performance -->
   <meta http-equiv="Cache-Control" content="public, max-age=31536000">
@@ -240,7 +244,7 @@
 <body>
   <!-- Header -->
   <header class="header">
-    <a href="#" class="logo"><img src="./images/logocolor1.webp" alt="GB Connect"></a>
+    <a href="#" class="logo"><img src="./images/logocolor1.webp" alt="GB Connect" loading="lazy"></a>
 
     <nav class="navbar">
       <a href="#home" class="active">Início</a>
@@ -253,7 +257,7 @@
       <a href="#contact">Contato</a>
     </nav>
 
-    <div class="bx bx-menu" id="menu-icon"></div>
+    <div class="bx bx-menu" id="menu-icon" aria-label="Menu de navegação"></div>
   </header>
 
   <!-- Seção Home  -->
@@ -311,14 +315,17 @@
 
       <!-- Links sociais -->
       <div class="social-media">
-        <a href="https://www.instagram.com/gbconnect.digital" target="_blank" title="Siga-nos no Instagram">
-          <i class='bx bxl-instagram'></i>
+        <a href="https://www.instagram.com/gbconnect.digital" target="_blank" title="Siga-nos no Instagram"
+          aria-label="Instagram da GB Connect">
+          <i class='bx bxl-instagram' aria-hidden="true"></i>
         </a>
-        <a href="mailto:gabriela.bade@hotmail.com" target="_blank" title="Fale conosco por Email">
-          <i class='bx bx-envelope'></i>
+        <a href="mailto:gabriela.bade@hotmail.com" target="_blank" title="Fale conosco por Email"
+          aria-label="Enviar email para GB Connect">
+          <i class='bx bx-envelope' aria-hidden="true"></i>
         </a>
-        <a href="https://wa.me/5548991056014" target="_blank" title="Fale conosco no WhatsApp" class="whatsapp-button">
-          <i class='bx bxl-whatsapp'></i>
+        <a href="https://wa.me/5548991056014" target="_blank" title="Fale conosco no WhatsApp" class="whatsapp-button"
+          aria-label="Contato via WhatsApp">
+          <i class='bx bxl-whatsapp' aria-hidden="true"></i>
         </a>
       </div>
     </div>
@@ -396,7 +403,7 @@
       <div class="services-box">
         <div class="card-header">
           <i class='bx bx-code-alt'></i>
-          <h3>Conquiste Clientes com um Site Profissional</h3>
+          <h3>Conquiste Clientes com uma Presença Web Eficiente</h3>
         </div>
 
         <p class="result-line">Aumente suas vendas com uma presença online otimizada</p>
@@ -533,7 +540,7 @@
     </div>
 
     <div id="tipos-de-sites" class="tipos-sites">
-      <h2>Escolha o Tipo de Site Ideal para Você</h2>
+      <h2>Escolha a Solução Web Ideal para Você</h2>
       <div class="cards-container">
         <!-- Card Site Multi Page -->
         <div class="card">
@@ -681,7 +688,8 @@
               <!-- Studio Dani Bade -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/studio-dani-bade.webp" alt="Studio Dani Bade" loading="lazy">
+                  <img src="images/studio-dani-bade.webp"
+                    alt="Site para Studio de Estética Dani Bade - Página inicial com serviços estéticos" loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Studio Estética</h4>
                     <p>Site para apresentação de serviços estéticos, com agendamento fácil e
@@ -702,7 +710,8 @@
               <!-- Ciclista -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/ciclista-tio-pinguinho.webp" alt="Loja de Bicicletas" loading="lazy">
+                  <img src="images/ciclista-tio-pinguinho.webp"
+                    alt="Site para Loja de Bicicletas - Página inicial de demonstração" loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Ciclista</h4>
                     <p>Página interativa que apresenta serviços, formulário para orçamento,
@@ -723,7 +732,8 @@
               <!-- Psicóloga -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/psicologa.webp" alt="Site de Psicóloga" loading="lazy">
+                  <img src="images/psicologa.webp" alt="Site de Psicóloga - Página inicial de demonstração"
+                    loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Psicóloga</h4>
                     <p>Site profissional para psicóloga, com apresentação de serviços, informações sobre a profissional
@@ -745,7 +755,8 @@
               <!-- Fotógrafo -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/fotografo.webp" alt="Site de Fotógrafo" loading="lazy">
+                  <img src="images/fotografo.webp" alt="Site de Fotógrafo - - Página inicial de demonstração"
+                    loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Fotógrafo</h4>
                     <p>Site profissional para fotógrafo, com galeria de imagens, apresentação de serviços e formulário
@@ -767,7 +778,8 @@
               <!-- Nutricionista -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/nutricionista.webp" alt="Site de Nutricionista" loading="lazy">
+                  <img src="images/nutricionista.webp" alt="Site de Nutricionista - Página inicial de demonstração"
+                    loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Nutricionista</h4>
                     <p>Site profissional para nutricionista, com apresentação de serviços, informações sobre a
@@ -788,7 +800,8 @@
               <!-- Mecânica -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/mecanica.webp" alt="Site de Mecânica" loading="lazy">
+                  <img src="images/mecanica.webp" alt="Site de Mecânica - Página inicial de demonstração"
+                    loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Mecânica</h4>
                     <p>Site profissional para oficina mecânica, com apresentação de serviços, localização e formulário
@@ -810,7 +823,8 @@
               <!-- Advocacia -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/advocacia.webp" alt="Site de Advocacia" loading="lazy">
+                  <img src="images/advocacia.webp" alt="Site de Advocacia - Página inicial de demonstração"
+                    loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Advocacia</h4>
                     <p>Site profissional para escritório de advocacia, com apresentação de serviços, equipe e formulário
@@ -831,7 +845,8 @@
               <!-- Ortopedista -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/ortopedista.webp" alt="Site de Ortopedista" loading="lazy">
+                  <img src="images/ortopedista.webp" alt="Site de Ortopedista - Página inicial de demonstração"
+                    loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Ortopedista</h4>
                     <p>Site profissional para ortopedista, com apresentação de serviços, informações sobre o
@@ -853,7 +868,8 @@
               <!-- Lift Detox -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/lift-detox.webp" alt="Lift Detox Black" loading="lazy">
+                  <img src="images/lift-detox.webp"
+                    alt="Site para Representante Lift Detox Black - Página inicial de demonstração" loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Lift Detox Black</h4>
                     <p>Página de produto com design responsivo e alternância entre modos claro e
@@ -874,7 +890,8 @@
               <!-- Floricultura -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/floricultura.webp" alt="Floricultura Bloom" loading="lazy">
+                  <img src="images/floricultura.webp"
+                    alt="Site para Floricultura Bloom - Página inicial de demonstração" loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Floricultura Bloom</h4>
                     <p>Site interativo para explorar produtos, depoimentos e localização de uma
@@ -895,7 +912,8 @@
               <!-- Personal Trainer -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/personal-trainer.webp" alt="Personal Trainer" loading="lazy">
+                  <img src="images/personal-trainer.webp"
+                    alt="Site Para Personal Trainer - Página inicial de demonstração" loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Personal Trainer</h4>
                     <p>Landing page responsiva para consultoria online, com formulário de contato e
@@ -916,7 +934,8 @@
               <!-- Business Card -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/business-card.webp" alt="Business Card" loading="lazy">
+                  <img src="images/business-card.webp" alt="Website Business Card - Página inicial de demonstração"
+                    loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Cartão de Visita Digital</h4>
                     <p>Agregador de links online, funcionando como um cartão de visitas digital com informações e
@@ -937,7 +956,7 @@
               <!-- Cafeteria -->
               <div class="swiper-slide">
                 <div class="portfolio-item">
-                  <img src="images/cafeteria.webp" alt="Cafeteria" loading="lazy">
+                  <img src="images/cafeteria.webp" alt="Site Cafeteria - Página inicial de demonstração" loading="lazy">
                   <div class="portfolio-layer">
                     <h4>Cafeteria</h4>
                     <p>O Good Café é um site criado para representar uma cafeteria moderna, com
