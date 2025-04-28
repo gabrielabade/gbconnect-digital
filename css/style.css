@@ -6086,7 +6086,8 @@ section {
   transition: all 0.3s ease;
   text-decoration: none;
   background-color: var(--main-color) !important;
-  padding: 0; /* Remove qualquer padding que possa causar desalinhamento */
+  padding: 0;
+  /* Remove qualquer padding que possa causar desalinhamento */
 }
 
 /* Ajuste do ícone dentro do botão */
@@ -6096,8 +6097,10 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0; /* Remove qualquer margem que possa causar desalinhamento */
-  height: auto; /* Ajusta a altura para evitar problemas de centralização */
+  margin: 0;
+  /* Remove qualquer margem que possa causar desalinhamento */
+  height: auto;
+  /* Ajusta a altura para evitar problemas de centralização */
 }
 
 /* Efeito hover aprimorado */
@@ -6264,5 +6267,31 @@ html {
   .service-option input[type="checkbox"]:checked+.checkbox-text:after {
     left: 4px !important;
     font-size: 10px !important;
+  }
+}
+
+.audience-intro {
+  text-align: center;
+  font-size: 1.8rem;
+  margin: -2rem auto 4rem;
+  max-width: 900px;
+  color: var(--text-color);
+  line-height: 1.5;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Ajustes para o tema claro */
+[data-theme="light"] .audience-intro {
+  color: var(--text-dark);
+  opacity: 0.85;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+  .audience-intro {
+    font-size: 1.6rem;
+    margin: -1rem auto 3rem;
+    padding: 0 1.5rem;
   }
 }
